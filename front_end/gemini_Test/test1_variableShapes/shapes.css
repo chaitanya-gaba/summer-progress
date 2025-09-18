@@ -131,7 +131,7 @@ button[type="reset"]:hover {
 #hexagon {
     position: relative;
     width: 10vmin; 
-    height: 17.32vmin;
+    height: 17vmin;
     background-color: #e67e22;
 }
 #hexagon:before,
@@ -144,11 +144,11 @@ button[type="reset"]:hover {
 }
 #hexagon:before {
     bottom: 100%;
-    border-bottom: 8.66vmin solid #e67e22;
+    border-bottom: 10vmin solid #e67e22;
 }
 #hexagon:after {
     top: 100%;
-    border-top: 8.66vmin solid #e67e22;
+    border-top: 10vmin solid #e67e22;
 }
 
 /* --- Racetrack Slider Styles --- */
