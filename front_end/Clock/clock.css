@@ -9,8 +9,8 @@ body {
 
 /* The clock face */
 .clock {
-    width: 60vh;
-    height: 60vh;
+    width: 30rem;
+    height: 30rem;
     border-radius: 50%; /* This makes it a circle */
     border: 10px solid #333;
     position: relative; /* This is the anchor for all the hands and numbers */
@@ -30,19 +30,19 @@ body {
 
 /* Specific styles for each hand */
 .hour-hand {
-    width: 1.3vh;
-    height: 16vh;
+    width: 0.8rem;
+    height: 8rem;
 }
 
 .minute-hand {
-    width: 0.8vh;
-    height: 22vh;
+    width: 0.4rem;
+    height: 11rem;
     z-index: 5;
 }
 
 .second-hand {
-    width: 0.3vh;
-    height: 24vh;
+    width: 0.18rem;
+    height: 12rem;
     background-color: red;
     z-index: 10;
 }
@@ -52,7 +52,7 @@ body {
     position: absolute;
     /* width: 100%;
     height: 100%; */
-    font-size: 1.5rem;
+    font-size: 2.1rem;
     font-weight: bold;
     color: #555;
     /* This flex property helps position the text inside */
@@ -84,7 +84,7 @@ body {
     height: 15px;
     background-color: #555;
     /* Pivot from the center of the clock (150px is half the clock's height) */
-    transform-origin: 0% 30vh;
+    transform-origin: 0% 15rem;
 }
 
 /* ---- Dark Mode Styles ---- */
