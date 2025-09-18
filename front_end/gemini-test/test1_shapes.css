@@ -1,0 +1,230 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* vh is perfect for full-screen height */
+    margin: 0;
+    background: #EEAECA;
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+}
+
+/* This targets the <nav> container that holds all your buttons */
+.shape_controller {
+    position: absolute; /* Position it relative to the page body */
+    top: 2.5vh;         /* Position from top relative to screen height */
+    left: 50%;          /* Move its left edge to the center of the screen */
+    transform: translateX(-50%); /* Shift it left by half its own width to perfectly center it */
+    display: flex;      /* Use flexbox to easily space out the buttons */
+    gap: 1.5vw;         /* Gap relative to screen width */
+}
+
+/* This styles each individual button */
+button {
+    /* For the bigger size */
+    padding: 1.2vh 2.8vw; /* Use vh for vertical padding, vw for horizontal */
+    font-size: 1.8vmin;   /* vmin is great for fonts so they scale nicely */
+    font-weight: bold;
+
+    /* For the capsule shape and look */
+    border: none;       /* Removes the default browser border */
+    border-radius: 50vw; /* A large viewport value also creates the pill shape */
+    background-color: #4A90E2; /* A nice, clean blue */
+    color: white;       /* White text */
+    
+    /* For interactivity */
+    cursor: pointer;    /* Shows a hand icon when you hover over it */
+    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* A simple effect for when you hover over a button */
+button:hover {
+    background-color: #357ABD;
+    transform: translateY(-0.3vh); /* Lifts the button slightly */
+    box-shadow: 0 0.4vmin 0.8vmin rgba(0, 0, 0, 0.1);
+}
+
+/* A different style for your reset button to make it stand out */
+button[type="reset"] {
+    background-color: #6c757d; /* A neutral grey */
+}
+
+button[type="reset"]:hover {
+    background-color: #5a6268;
+}
+
+/* Common style for ALL shapes */
+.shape {
+    /* Hide all shapes by default */
+    display: none; 
+}
+
+/* This is the magic class we will add with JavaScript */
+.shape.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    
+    /* Scale the active shape back to its full size */
+    transform: translate(-50%, -50%) scale(1);
+
+    /* ADD THIS FOR 3D SHADOW EFFECT */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),  /* Main shadow */
+                0 6px 6px rgba(0, 0, 0, 0.15); /* Closer, sharper shadow */
+}
+
+.shape-display {
+    /* 1. Create a large, fixed-size "stage" */
+    width: 50vmin;  /* Using vmin to create a responsive square stage */
+    height: 50vmin;
+
+    /* 2. Center the shape within this new stage */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* === Individual Shape Styles (using vmin to maintain aspect ratio) === */
+
+#square {
+    width: 15vmin;
+    height: 15vmin;
+    background-color: #3498db; /* Blue */
+}
+
+#rectangle {
+    width: 25vmin;
+    height: 15vmin;
+    background-color: #e74c3c; /* Red */
+}
+
+#circle {
+    width: 15vmin;
+    height: 15vmin;
+    background-color: #9b59b6; /* Purple */
+    border-radius: 50%;
+}
+
+/* Triangles are often made with borders */
+#triangle {
+    width: 0;
+    height: 0;
+    background-color: transparent; /* No background needed */
+    border-left: 7.5vmin solid transparent;
+    border-right: 7.5vmin solid transparent;
+    border-bottom: 15vmin solid #f1c40f; /* Yellow */
+}
+
+#triangle.active {
+    /* 1. Remove the incorrect square box-shadow that it inherits */
+    box-shadow: none;
+
+    /* 2. Add a new shadow that follows the triangle's shape */
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* Rhombus and Parallelogram use the 'transform' property */
+#rhombus {
+    width: 12vmin;
+    height: 12vmin;
+    background-color: #1abc9c; /* Turquoise */
+    transform: rotate(45deg);
+}
+
+#parallelogram {
+    width: 22vmin;
+    height: 15vmin;
+    background-color: #8a704a; /* Green */
+    transform: skewX(-20deg);
+}
+
+#hexagon {
+    position: relative;
+    width: 10vmin; 
+    height: 17.32vmin; /* This is width * sqrt(3), using vmin maintains the ratio */
+    background-color: #e67e22; /* Orange */
+}
+#hexagon:before,
+#hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 5vmin solid transparent;
+    border-right: 5vmin solid transparent;
+}
+#hexagon:before {
+    bottom: 100%;
+    border-bottom: 10vmin solid #e67e22;
+}
+#hexagon:after {
+    top: 100%;
+    border-top: 10vmin solid #e67e22;
+}
+
+/* --- Racetrack Slider Styles --- */
+
+.resize-container {
+    /* Positioning */
+    position: absolute;
+    bottom: 2.5vh;      /* Position from bottom relative to screen height */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Styling */
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 1. Reset the default slider appearance */
+#size-slider {
+    -webkit-appearance: none; /* Hides the default slider style on WebKit browsers */
+    appearance: none;
+    width: 30vw; /* Make slider width responsive */
+    height: 5vh;
+    background: transparent; /* Make the default background invisible */
+    cursor: pointer;
+}
+
+/* 2. Style the Racetrack */
+#size-slider::-webkit-slider-runnable-track {
+    height: 2.8vmin;
+    background: #4A5568; /* Asphalt color */
+    border-radius: 2vmin;
+    border: 0.2vmin dashed white; /* White lane markings */
+}
+
+/* Firefox */
+#size-slider::-moz-range-track { 
+    height: 1.8vmin;
+    background: #4A5568;
+    border-radius: 2vmin;
+    border: 0.2vmin dashed white;
+}
+
+/* 3. Style the Car (the thumb) - UPDATED FOR F1 SIDE VIEW */
+#size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Important to override default thumb */
+    height: 3.5vmin;
+    width: 6vmin;
+    background-color: transparent;
+    /* NEW SVG for F1 Car Side View */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60"><rect x="10" y="25" width="80" height="20" rx="5" fill="%23E53E3E"/><path d="M70 25 L100 20 L110 30 L80 35 Z" fill="%23E53E3E"/><path d="M20 25 L0 30 L10 40 L30 35 Z" fill="%23E53E3E"/><circle cx="25" cy="45" r="10" fill="%232D3748"/><circle cx="85" cy="45" r="10" fill="%232D3748"/><circle cx="25" cy="45" r="5" fill="%23718096"/><circle cx="85" cy="45" r="5" fill="%23718096"/><rect x="40" y="20" width="30" height="10" fill="%232D3748" rx="3"/><polygon points="80,25 90,15 95,20 85,30" fill="%232D3748"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: -0.85vmin; /* Adjusted to center the F1 car on the track */
+    border: none;
+}
+
+/* Firefox Version */
+/* #size-slider::-moz-range-thumb {
+    height: 3.5vmin;
+    width: 6vmin;
+    background-color: transparent;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60"><rect x="10" y="25" width="80" height="20" rx="5" fill="%23E53E3E"/><path d="M70 25 L100 20 L110 30 L80 35 Z" fill="%23E53E3E"/><path d="M20 25 L0 30 L10 40 L30 35 Z" fill="%23E53E3E"/><circle cx="25" cy="45" r="10" fill="%232D3748"/><circle cx="85" cy="45" r="10" fill="%232D3748"/><circle cx="25" cy="45" r="5" fill="%23718096"/><circle cx="85" cy="45" r="5" fill="%23718096"/><rect x="40" y="20" width="30" height="10" fill="%232D3748" rx="3"/><polygon points="80,25 90,15 95,20 85,30" fill="%232D3748"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+} */
