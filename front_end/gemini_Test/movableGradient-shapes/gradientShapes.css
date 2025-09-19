@@ -1,0 +1,38 @@
+body {
+  /* This is just to center our capsule on the page */
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background-color: #222;
+}
+
+.capsule {
+  width: 400px;
+  height: 150px;
+
+  /* 1. The Shape: Use a large border-radius to make the ends perfectly round */
+  border-radius: 999px; /* Any large value works */
+
+  /* 2. The Gradient: Create a background much larger than the element */
+  background: linear-gradient(
+    90deg, 
+    #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0
+  );
+  background-size: 400% 400%; /* Make the gradient huge */
+
+  /* 3. The Animation: Apply our moving animation */
+  animation: moveGradient 10s ease-in-out infinite;
+}
+
+/* 4. Define the Animation: Tell the gradient how to move */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%; /* Start at the left */
+  }
+  50% {
+    background-position: 100% 50%; /* Move to the right */
+  }
+  100% {
+    background-position: 0% 50%; /* Move back to the left */
+  }
+}
