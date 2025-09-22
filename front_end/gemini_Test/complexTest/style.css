@@ -262,18 +262,18 @@
 }
 
 .buttonHover {
-    margin: 2rem;
-  height: 2rem;
-  width: 6rem;
-  border: 0.2rem solid rgb(97,97,255);
-  background: linear-gradient(to right,rgb(97,97,255) 0%,rgb(97,97,255) 100%);
-  background-size: 0% 100%;    /* start empty */
-  background-repeat: no-repeat;
-  background-position: left center;
-  color: rgb(97,97,255);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-size 0.9s ease;
+    margin-top: 2rem;
+    height: 2rem;
+    width: 6rem;
+    border: 0.2rem solid rgb(97,97,255);
+    background: linear-gradient(to right,rgb(97,97,255) 0%,rgb(97,97,255) 100%);
+    background-size: 0% 100%;    /* start empty */
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: rgb(97,97,255);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-size 0.9s ease;
 }
 
 .buttonHover:hover {
