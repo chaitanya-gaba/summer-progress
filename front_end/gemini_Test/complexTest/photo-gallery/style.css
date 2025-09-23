@@ -1,0 +1,20 @@
+.photoGallery {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2rem;
+    background-color: #f0f0f0;
+}
+
+/* .photoGallery h2 {
+    display: flex;
+    justify-content: center;
+} */
+
+.gallery-grid img {
+    border-radius: 2rem;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.09);
+}
