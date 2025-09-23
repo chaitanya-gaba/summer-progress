@@ -1,0 +1,84 @@
+.q4 {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+}
+
+.bouncingBall .ball {
+    position: absolute;
+    height: 30vw;
+    width: 30vw;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, red, rgb(253, 179, 179));
+    left: 50%;
+    margin: 0 auto;
+    transform-origin: center bottom;
+    animation: bounce 4s ease-in-out infinite;
+    z-index: -1;
+}
+
+.bouncingBall .surface {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 30%;
+    height: 1rem;
+    background-color: #333;
+    border-radius: 0.5rem;
+    transform: translateX(-50%);
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        bottom: 1rem;
+        transform: translateX(-50%) translateY(0);
+        height: 15vw;
+        width: 45vw;
+    }
+    50% {
+        bottom: 10rem; /* bounce height */
+        transform: translateX(-50%) translateY(-30%);
+        height: 30vw;
+        width: 30vw;
+    }
+}
+
+.LoadingSpinner {
+    width: 10rem;
+    height: 10rem;
+    border: 0.3em solid transparent;
+    border-top: 0.5em solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.buttonHover {
+    margin-top: 2rem;
+    height: 2rem;
+    width: 6rem;
+    border: 0.2rem solid rgb(97,97,255);
+    background: linear-gradient(to right,rgb(97,97,255) 0%,rgb(97,97,255) 100%);
+    background-size: 0% 100%;    /* start empty */
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: rgb(97,97,255);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-size 0.9s ease;
+}
+
+.buttonHover:hover {
+  background-size: 100% 100%;  /* expand fill horizontally */
+  color: white;                /* invert text color */
+}
