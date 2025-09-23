@@ -1,0 +1,28 @@
+.q5 {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.digitalClock {
+    /* position: absolute; */
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 1rem;
+}
+
+.hour, .minute, .second {
+    display: flex;
+    justify-content: center; /* justify = alignment in primary axis */
+    align-items: center; /* align = alignment in secondary axis */
+    width: 20rem;
+    height: 20rem;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 1.2rem;
+    font-family: 'Digital-7', sans-serif;
+    font-size: 9em;
+}
