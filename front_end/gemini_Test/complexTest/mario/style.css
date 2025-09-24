@@ -2,10 +2,47 @@ body {
     background: #87ceeb; /* Sky blue */
     font-family: sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100%;
-    }
+}
+
+.blockBar {
+    position: absolute;
+    height: 5rem;
+    width: 70rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blocks {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: space-evenly;
+}
+
+.block {
+    height: 4rem;
+    width: 4rem;
+    background-color: transparent;
+    background-image: url('https://i.pinimg.com/736x/56/f2/b4/56f2b4279cbf7ec63224d33ceb9ea489.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.marioRun {
+    position: absolute;
+    height: 3rem;
+    width: 5rem;
+    bottom: 80%;
+    left: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scaleX(-1);
+    transition: bottom 0.2s ease, left 0.2s ease;
+}
 
 .progressBar {
     position: absolute;
@@ -72,3 +109,4 @@ body {
     left: calc(100% - 2.2rem); /* track width minus mario width */
   }
 }
+
