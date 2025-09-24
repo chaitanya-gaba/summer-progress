@@ -80,7 +80,7 @@ body {
     height: 0.1rem;
     width: calc(100% - 2.4rem);
     background: linear-gradient(to right, rgb(14, 233, 109), rgb(90, 194, 102));
-    top: 75%; /* vertically center inside track */
+    bottom: 25%; /* vertically center inside track */
     left: 0.9rem;
     transform: translateY(-50%); /* center precisely */
     border-radius: 0.05rem;
@@ -109,4 +109,3 @@ body {
     left: calc(100% - 2.2rem); /* track width minus mario width */
   }
 }
-
