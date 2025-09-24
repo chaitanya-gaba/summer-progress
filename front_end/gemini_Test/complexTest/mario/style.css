@@ -1,0 +1,74 @@
+body {
+    background: #87ceeb; /* Sky blue */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    }
+
+.progressBar {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.track {
+    height: 2rem;
+    width: 48rem;
+    background-color: rgb(82, 45, 0);
+    border: 0.2rem solid black;
+    border-radius: 2rem;
+}
+
+.mario {
+    position: absolute;
+    height: 2.3rem;
+    width: 2.2rem;
+    padding: 0.2rem;
+    bottom: 0.5rem;
+    animation: runToCastle 5s linear forwards;
+    background-image: url('https://upload.wikimedia.org/wikipedia/en/5/5c/Mario_by_Shigehisa_Nakaue.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scaleX(-1);
+    z-index: 2;
+}
+
+.run {
+    position: absolute;
+    height: 0.1rem;
+    width: calc(100% - 2.4rem);
+    background: linear-gradient(to right, rgb(14, 233, 109), rgb(90, 194, 102));
+    top: 75%; /* vertically center inside track */
+    left: 0.9rem;
+    transform: translateY(-50%); /* center precisely */
+    border-radius: 0.05rem;
+    z-index: 1;
+}
+
+.castle {
+    position: absolute;
+    height: 2.3rem;
+    width: 2.2rem;
+    padding: 0.4rem;
+    bottom: 0.5rem;
+    right: 0;
+    background-image: url('https://i.pinimg.com/originals/3b/d3/e7/3bd3e7fcf03935e331b008d1f9398f61.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* transform: scaleX(-1); */
+}
+
+@keyframes runToCastle {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 2.2rem); /* track width minus mario width */
+  }
+}
