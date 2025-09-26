@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Title of the page -->
+  <title>Example of Google Semantics and SEO Best Practices</title>
+  
+  <!-- Meta description shown in search results -->
+  <meta name="description" content="A sample page demonstrating semantic HTML, structured data, and SEO techniques recommended by Google." />
+  
+  <!-- Canonical URL to avoid duplicate content issues -->
+  <link rel="canonical" href="https://www.example.com/sample-page" />
+  
+  <!-- Hreflang for language targeting -->
+  <link rel="alternate" hreflang="en-us" href="https://www.example.com/sample-page" />
+  
+  <!-- Open Graph tags for social sharing previews -->
+  <meta property="og:title" content="Example of Google Semantics and SEO Best Practices" />
+  <meta property="og:description" content="A sample page demonstrating semantic HTML, structured data, and SEO techniques recommended by Google." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.example.com/sample-page" />
+  <meta property="og:image" content="https://www.example.com/images/og-image.jpg" />
+  
+  <!-- Structured Data using JSON-LD (Schema.org for Article) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Example of Google Semantics and SEO Best Practices",
+    "description": "A sample page demonstrating semantic HTML, structured data, and SEO techniques recommended by Google.",
+    "author": {
+      "@type": "Person",
+      "name": "John Doe"
+    },
+    "datePublished": "2025-09-26",
+    "image": "https://www.example.com/images/article-image.jpg"
+  }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <!-- Page Header with logo and navigation -->
+  <header role="banner">
+    <h1>My Website</h1>
+    <nav role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/about" >About</a></li>
+        <li><a href="/blog" >Blog</a></li>
+        <li><a href="/contact" >Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content area -->
+  <main role="main">
+    <!-- Article representing self-contained content -->
+    <article>
+      <header>
+        <h2>Understanding Google Semantics</h2>
+        <time datetime="2025-09-26">September 26, 2025</time>
+      </header>
+      
+      <!-- Section with thematic content -->
+      <section>
+        <p>Google semantics help <strong>search engines</strong> better understand the <em>structure</em> and meaning of your content.</p>
+        
+        <figure>
+          <img src="https://www.example.com/images/seo-diagram.png" alt="Diagram explaining SEO semantics" loading="lazy" />
+          <figcaption>Figure 1: SEO semantics overview</figcaption>
+        </figure>
+      </section>
+      
+      <!-- Aside with related information -->
+      <aside>
+        <h3>Quick Tips</h3>
+        <ul>
+          <li>Use semantic HTML tags like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;nav&gt;</code>.</li>
+          <li>Always include descriptive <code>alt</code> attributes on images.</li>
+          <li>Use structured data (Schema.org) to enhance search listings.</li>
+        </ul>
+      </aside>
+      
+      <footer>
+        <p>Written by John Doe.</p>
+      </footer>
+    </article>
+  </main>
+
+  <!-- Page Footer -->
+  <footer role="contentinfo">
+    <p>© 2025 My Website. All rights reserved.</p>
+    <!-- Breadcrumb navigation -->
+    <nav aria-label="breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li aria-current="page">Google Semantics</li>
+      </ol>
+    </nav>
+  </footer>
+
+</body>
+</html>
