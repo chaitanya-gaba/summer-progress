@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back User</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container" id="auth-container">
+
+        <!-- SIGN UP FORM -->
+    <form id="sign-up" style="display: none;">
+        <h2>Sign Up</h2>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" placeholder="Enter your email" required>
+
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Enter your password" required>
+
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="#" id="show-login">Log In</a></p>
+    </form>
+
+    <!-- LOGIN FORM -->
+    <form id="login-form">
+        <h2>Login</h2>
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="Enter your email" required>
+
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+        <p class="error" id="login-error"></p>
+        <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+    </form>
+
+    </div>
+
+    <div id="welcome-message" style="display: none; text-align: center;">
+        <h2 id="welcome-text">Welcome, User!</h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

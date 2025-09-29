@@ -1,0 +1,104 @@
+body {
+    height: 97vh;
+    background-color: rgb(151, 110, 110);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+  width: 35vw;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 2rem 0; /* add top/bottom padding */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #222;
+    font-weight: 700;
+    text-align: center;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #555;
+}
+
+input {
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 1.8px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgb(151, 110, 110);
+  box-shadow: 0 0 5px rgba(151, 110, 110, 0.6);
+}
+
+button {
+    height: 2rem;
+    width: 15rem;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    background-color: rgb(151, 110, 110);
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: background-color 0.3 ease;
+    margin: 1rem auto 0;
+    display: block;
+}
+
+button:hover {
+  background-color: rgb(120, 85, 85);
+}
+
+p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+p a {
+  color: rgb(151, 110, 110);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+#welcome-message {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
