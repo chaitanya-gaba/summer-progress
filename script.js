@@ -1,5 +1,5 @@
 const designs = [
-  "front_end/gemini_Test/clock",
+  "front_end/gemini_Test/Clock",
   "front_end/gemini_Test/digital-clock",
   "front_end/gemini_Test/loaders",
   "front_end/gemini_Test/login-form",
