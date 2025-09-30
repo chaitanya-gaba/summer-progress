@@ -1,0 +1,94 @@
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  font-size: 16px; /* root font size for rem */
+  background: #f8f9fa;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  border-style: dashed;
+}
+
+.unit-box {
+  margin: 20px auto;
+  padding: 20px;
+  color: #fff;
+  background-color: #3498db;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 2px solid #2980b9;
+}
+
+/* 1. em - relative to element's font size */
+.em {
+  font-size: 20px;
+  width: 20em;   /* 20 × 20px = 400px */
+  height: 5em;   /* 5 × 20px = 100px */
+}
+
+/* 2. ex - relative to x-height */
+.ex {
+  font-size: 30px;
+  width: 40ex;  /* usually about half of em, so 40ex ≈ 20em */
+  height: 8ex;
+}
+
+/* 3. ch - width of the '0' character */
+.ch {
+  font-size: 16px;
+  width: 30ch;   /* fits approx. 30 characters */
+  height: 6ch;
+}
+
+/* 4. rem - based on root (html) font size */
+.rem {
+  width: 25rem;  /* 25 × 16px = 400px */
+  height: 5rem;  /* 5 × 16px = 80px */
+}
+
+/* 5. vw - 1% of viewport width */
+.vw {
+  width: 50vw;   /* 50% of screen width */
+  height: 10vw;
+}
+
+/* 6. vh - 1% of viewport height */
+.vh {
+  width: 50vh;   /* 50% of screen height */
+  height: 10vh;
+}
+
+/* 7. vmin - 1% of smaller dimension (either width or height) */
+.vmin {
+  width: 40vmin;
+  height: 10vmin;
+}
+
+/* 8. vmax - 1% of larger dimension */
+.vmax {
+  width: 40vmax;
+  height: 10vmax;
+}
+
+/* 9. % - relative to parent */
+.parent {
+  width: 400px;
+  height: 200px;
+  border: 2px dashed #666;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+}
+
+.percent {
+  width: 50%;   /* 50% of 400px = 200px */
+  height: 50%;  /* 50% of 200px = 100px */
+  background-color: #2ecc71;
+  border-color: #27ae60;
+}

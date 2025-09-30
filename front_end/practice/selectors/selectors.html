@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <link rel="stylesheet" href="selectors.css">
+</head>
+<body>
+    <div class="main-content">
+        <h1 id="page-title">Welcome to the Test</h1>
+        <h2>About Selectors</h2>
+        <p>This paragraph is about simple selectors.</p>
+        <h3>Examples</h3>
+        <p>Another paragraph here.</p>
+    </div>
+
+    <!-- <a href="https://example.com" target="_blank">External Site</a>
+    <a href="/about-us">Internal Page</a>
+    <a href="document.pdf">Download PDF</a>
+
+    <input type="text" placeholder="Username">
+    <input type="submit" value="Log In">
+    <input type="text" placeholder="Read Only" disabled> -->
+
+    <nav>
+        <a href="https://example.com/home" class="nav-link">Home</a>
+        <a href="/about-us" class="nav-link">About</a>
+        <a href="https://example.com/images/icon.png">Logo</a>
+        <a href="/contact.php" class="nav-link social">Contact Us</a>
+    </nav>
+
+    <form>
+        <input type="text" name="username" placeholder="Your Name">
+        <input type="email" name="user_email" required>
+        <button type="submit" name="submit-btn">Submit</button>
+    </form>
+
+    <article class="blog-post">
+        <h1>Post Title</h1>
+        <p>This is the first paragraph, right after the title.</p>
+        <div>
+            <p>This paragraph is nested inside a div.</p>
+        </div>
+        <h2>A Subheading</h2>
+        <p>This is the second paragraph, after the subheading.</p>
+    </article>
+
+    <!-- pseudo-element selectors -->
+    <h2>Pseudo-elements Demo</h2>
+
+    <p>This is a paragraph to demonstrate pseudo-elements. Try selecting this text and notice how only the first line and letter have special styles. Also, notice the content added before and after.</p>
+
+    <hr>
+
+    <input type="text" placeholder="Type your name..." />
+
+    <br><br>
+
+    <ul>
+        <li>List item one</li>
+        <li>List item two</li>
+    </ul>
+
+    <br>
+
+    <input type="file" />
+
+    <h2>Pseudo-class Selectors Demo</h2>
+
+  <!-- Button Hover and Active -->
+  <p><strong>Buttons:</strong> Hover or click the first button. Second button is disabled.</p>
+  <button>Click Me</button>
+  <button disabled>Disabled</button>
+
+  <br><br>
+
+  <!-- Focus -->
+  <p><strong>Input Focus:</strong> Click inside the input field.</p>
+  <input type="text" placeholder="Click to focus me" />
+
+  <br><br>
+
+  <!-- Checked -->
+  <p><strong>Checkbox:</strong> Check the box to change the label style.</p>
+  <input type="checkbox" id="agree" />
+  <label for="agree">I agree to the terms</label>
+
+  <br><br>
+
+  <!-- nth-child, first-child, last-child -->
+  <p><strong>List Styling:</strong> Notice different styles for first, last, and odd items.</p>
+  <ul>
+    <li>First Item</li>
+    <li>Second Item</li>
+    <li>Third Item</li>
+    <li>Fourth Item</li>
+    <li>Last Item</li>
+  </ul>
+
+  <br>
+
+  <!-- :not -->
+  <p><strong>:not Selector:</strong> Only the second div will appear gray.</p>
+  <div class="highlight">I am highlighted!</div>
+  <div>I am NOT highlighted.</div>
+
+</body>
+</html>

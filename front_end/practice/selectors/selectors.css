@@ -1,0 +1,170 @@
+/* Simple Selectors */
+* {
+    border: 1px solid red;
+}
+
+p {
+    background-color: blue;
+}
+
+.main-content {
+    border: 2px solid grey;
+}
+
+#page-title {
+    font-size: 9rem;
+}
+
+h2, h3 {
+    font-style: italic;
+}
+
+/* Attribute Selectors */
+input[required] {
+    border: 2px solid red;
+}
+
+/* must contain = "" */
+button[type = "submit"] {
+    background-color: green;
+    color: white;
+}
+
+/* Start with = ^ */
+a[href^="https://"] {
+    text-decoration: dotted;
+}
+
+a[href$=".png"] {
+    border: 5px solid orange;
+}
+
+a[class*="social"] {
+    background-color: lightblue;
+}
+
+/* Combinator Selector */
+
+/* anywhere inside the article */
+article p {color: purple;}
+
+/* only direct child not nested */
+article>p {border: 10px;}
+
+/* the very immidiate p from h1 will be selected not any other, if others are also present */
+h1+p {font-weight: bold;}
+
+/* all the siblings not nested childs of any siblings */
+h1~p {text-decoration: dotted;}
+
+/* Pseudo-Element Selectors */
+    p::before {
+      content: "🔥 ";
+      color: orange;
+    }
+
+    p::after {
+      content: " ✅";
+      color: green;
+    }
+
+    /* ::first-letter */
+    p::first-letter {
+      font-size: 200%;
+      color: red;
+    }
+
+    /* ::first-line */
+    p::first-line {
+      color: blue;
+      font-weight: bold;
+    }
+
+    /* ::selection */
+    p::selection {
+      background: yellow;
+      color: black;
+    }
+
+    /* ::placeholder */
+    input::placeholder {
+      color: gray;
+      font-style: italic;
+    }
+
+    /* ::marker */
+    li::marker {
+      color: purple;
+      font-size: 1.2em;
+      content: "→ ";
+    }
+
+    /* ::file-selector-button */
+    input[type="file"]::file-selector-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 4px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+/* Pseudo-Class Selectors */
+    /* :hover */
+    button:hover {
+      background-color: lightblue;
+      cursor: pointer;
+    }
+
+    /* :active */
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* :focus */
+    input:focus {
+      border: 2px solid green;
+      outline: none;
+    }
+
+    /* :checked */
+    input[type="checkbox"]:checked + label {
+      color: green;
+      font-weight: bold;
+    }
+
+    /* :disabled */
+    button:disabled {
+      background-color: #ccc;
+      color: #666;
+    }
+
+    /* :nth-child */
+    li:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+
+    /* :first-child */
+    li:first-child {
+      font-style: italic;
+    }
+
+    /* :last-child */
+    li:last-child {
+      font-weight: bold;
+    }
+
+    /* :not */
+    div:not(.highlight) {
+      color: gray;
+    }
+
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }

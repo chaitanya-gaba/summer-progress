@@ -1,0 +1,19 @@
+.shape1 {
+    height: 50ex;
+    width: 70ex;
+    background-color: rgb(220, 74, 58);
+    color: rgb(221, 212, 222);
+    font-family: 'Times New Roman', Times, serif;
+    border-style: dotted;
+    
+    /* transform: rotate(12deg); */
+    /* transform: translate(390px); */
+    /* transform: scale(1.2, 1.9); */
+    /* transform: skew(23deg, 0.5rad); */
+
+    /* transform: matrix([scaleX], [skewY], [skewX], [scaley], [translateX], [translateY]); */
+    /* transform: matrix(1.2, 1, 8, 0.70, -100, 1); */
+    rotate: 45deg;
+    translate: 70px 190px;
+    scale: 1.2 0.8;
+}

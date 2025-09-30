@@ -1,0 +1,90 @@
+.box {
+    height: 40ex;
+    width: 20ex;
+    margin: 20px;
+    border-style: dotted;
+    color: brown;
+    background-color: chartreuse;
+    
+    transition-property: width, height, box-shadow, transform;
+    transition-duration: 3s;
+    transition-timing-function: ease;
+    transition-delay: 0.1s;
+
+    /* Start with no shadow and no transform */
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.box:hover {
+    width: 40ex; /* Double the original width */
+    height: 60ex;
+
+    /* Float effect: shadow + slight lift */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+}
+
+.circle {
+    height: 40ex;
+    width: 20ex;
+    margin: 30px;
+    padding: 5px;
+    border-style: dotted;
+    color: brown;
+    text-align: center;
+    background-color: chartreuse;
+
+    /* Animate width, height, and border-radius */
+    transition-property: width, height, border-radius;
+    transition-duration: 3s;
+    transition-timing-function: ease;
+    transition-delay: 0.1s;
+
+    border-radius: 30px; /* Start as a square/rectangle */
+}
+
+.circle:hover {
+    width: 40ex;  /* Double the width */
+    height: 40ex; /* Increase height */
+    border-radius: 50%; /* Makes the box an ellipse/circle */
+}
+
+.pirelli {
+    height: 250px;
+    width: 250px;
+    margin: 39px;
+    border-radius: 20px 30px 90px 50px;
+    background-color: black;
+    padding: 20px;
+    color: rgb(255, 255, 0);
+    font-size: 2em;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+    transition-duration: 2s;
+
+    /* animation-fill-mode: none; */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pirelli:hover {
+    animation: spin 4s linear infinite;
+}
+
+.neweffect {
+    margin: 3vw;
+    height: 39vh;
+    width: 48vw;
+    color: azure;
+    text-align: center;
+    /* border-style: dashed; */
+    background-color: rgb(113, 90, 135);
+}

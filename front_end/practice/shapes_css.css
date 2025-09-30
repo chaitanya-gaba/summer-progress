@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #352424;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.cell {
+  border: 2px dashed #888;   /* 🔲 cell border */
+  padding: 25px;
+  margin: 25px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  min-height: 140px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.shape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(134, 56, 56);
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+/* Row 1 */
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+}
+
+.rectangle {
+  width: 150px;
+  height: 80px;
+  background-color: #e67e22;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 100px solid #2ecc71;
+}
+
+/* Row 2 */
+.curved-square {
+  width: 100px;
+  height: 100px;
+  background-color: #9b59b6;
+  border-radius: 20px;
+}
+
+.parallelogram {
+  width: 120px;
+  height: 80px;
+  background-color: #f1c40f;
+  transform: skew(20deg);
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+}
