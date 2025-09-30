@@ -1,44 +1,75 @@
+/* Reset some defaults */
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    margin: 0;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
 }
 
 .container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    margin: 1rem;
+    background: linear-gradient(145deg, #ff7e5f, #feb47b, #ffefba);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 90%;
 }
 
+
 h1 {
+    font-size: 2.2rem;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 p {
+    font-size: 1.1rem;
     color: #555;
     margin-bottom: 30px;
 }
 
+/* Button style */
 button {
-    padding: 12px 25px;
+    padding: 14px 30px;
     font-size: 16px;
     background-color: #6C63FF;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 button:hover {
     background-color: #5750d4;
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Optional: design links as cards */
+.design-link {
+    display: block;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    border-radius: 12px;
+    margin: 15px 0;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.design-link:hover {
+    background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+    transform: translateY(-2px);
 }

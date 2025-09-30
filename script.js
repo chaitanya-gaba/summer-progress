@@ -28,4 +28,5 @@ designs.forEach(design => {
   link.style.display = "block";
   link.style.margin = "10px 0";
   container.appendChild(link);
+  link.classList.add('design-link');
 });
