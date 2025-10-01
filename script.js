@@ -15,7 +15,8 @@ const designs = [
   "front_end/gemini_Test/snake-progressBar",
   "front_end/gemini_Test/test1_variableShapes",
   "front_end/gemini_Test/water-jar",
-  "front_end/gemini_Test/welcome-user"
+  "front_end/gemini_Test/welcome-user",
+  "front_end/gemini_Test/solar-system"
   // ... add all 16 design folder names here
 ];
 
