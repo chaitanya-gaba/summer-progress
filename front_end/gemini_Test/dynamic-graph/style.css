@@ -1,0 +1,90 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(189, 189, 47);
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph-container {
+  height: 60vh;
+  background: white;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.graph-wrapper {
+  display: flex;
+  gap: 3rem;
+  height: 100%;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 3rem;
+  user-select: none;
+  color: #333;
+}
+
+.bars-and-labels {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.bars-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  height: 85%;
+}
+
+/* .bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3em;
+} */
+
+.bar {
+  width: 3em;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Bar heights and colors */
+.bar1 { height: 40%; background-color: red; }
+.bar2 { height: 70%; background-color: rgb(0, 30, 255); }
+.bar3 { height: 30%; background-color: rgb(255, 157, 0); }
+.bar4 { height: 55%; background-color: rgb(26, 255, 0); }
+.bar5 { height: 88%; background-color: rgb(212, 141, 60); }
+.bar6 { height: 18%; background-color: rgb(101, 91, 185); }
+
+.product-names {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  user-select: none;
+  font-size: 0.9rem;
+  color: #222;
+  padding-left: 0.15rem; /* slight left padding to align with bars */
+}
+
+.product-names > div {
+  min-width: 3em;
+  text-align: center;
+  white-space: nowrap;
+}
