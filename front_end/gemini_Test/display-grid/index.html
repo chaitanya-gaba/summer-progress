@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Grid Playground</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>CSS Grid Playground</h1>
+
+  <!-- 1. Basic Grid -->
+  <section class="grid-section">
+    <h2>1. Basic Grid (3 Columns)</h2>
+    <div class="grid-basic">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+    </div>
+  </section>
+
+  <!-- 2. Spanning Grid Items -->
+  <section class="grid-section">
+    <h2>2. Spanning Grid Items</h2>
+    <div class="grid-span">
+      <div class="box span2col">Span 2 Columns</div>
+      <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box span2row">Span 2 Rows</div>
+      <div class="box">C</div>
+      <div class="box">D</div>
+    </div>
+  </section>
+
+  <!-- 3. Named Areas (Simple) -->
+  <section class="grid-section">
+    <h2>3. Grid with Named Areas (Simple)</h2>
+    <div class="grid-areas">
+      <div class="header">Header</div>
+      <div class="sidebar">Sidebar</div>
+      <div class="main">Main</div>
+      <div class="footer">Footer</div>
+    </div>
+  </section>
+
+  <!-- 4. Responsive Grid -->
+  <section class="grid-section">
+    <h2>4. Responsive Grid (auto-fit)</h2>
+    <div class="grid-responsive">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+    </div>
+  </section>
+
+  <!-- 5. Nested Grid (Simple) -->
+  <section class="grid-section">
+    <h2>5. Nested Grid (Simple)</h2>
+    <div class="grid-nested">
+      <div class="outer-box">
+        Outer
+        <div class="inner-grid">
+          <div class="inner-box">1</div>
+          <div class="inner-box">2</div>
+        </div>
+      </div>
+      <div class="outer-box">Outer 2</div>
+    </div>
+  </section>
+
+  <!-- 6. Grid with Gaps -->
+  <section class="grid-section">
+    <h2>6. Grid with Gaps</h2>
+    <div class="grid grid-gap">
+      <div>A</div><div>B</div><div>C</div><div>D</div>
+    </div>
+  </section>
+
+  <!-- 7. Fraction Units -->
+  <section class="grid-section">
+    <h2>7. Fraction Units</h2>
+    <div class="grid grid-fr">
+      <div>One</div><div>Two</div><div>Three</div>
+    </div>
+  </section>
+
+  <!-- 8. Repeat Function -->
+  <section class="grid-section">
+    <h2>8. Repeat()</h2>
+    <div class="grid grid-repeat">
+      <div>1</div><div>2</div><div>3</div>
+      <div>4</div><div>5</div><div>6</div>
+    </div>
+  </section>
+
+  <!-- 9. Minmax -->
+  <section class="grid-section">
+    <h2>9. Minmax()</h2>
+    <div class="grid grid-minmax">
+      <div>Alpha</div><div>Beta</div><div>Gamma</div><div>Delta</div>
+    </div>
+  </section>
+
+  <!-- 10. Auto-fit / Auto-fill -->
+  <section class="grid-section">
+    <h2>10. Auto-fit / Auto-fill</h2>
+    <div class="grid grid-autofit">
+      <div>Item 1</div><div>Item 2</div><div>Item 3</div>
+      <div>Item 4</div><div>Item 5</div>
+    </div>
+  </section>
+
+  <!-- 11. Named Areas (Complex Layout) -->
+  <section class="grid-section">
+    <h2>11. Grid Template Areas (Complex Layout)</h2>
+    <div class="grid grid-areas-complex">
+      <header>Header</header>
+      <nav>Nav</nav>
+      <main>Main</main>
+      <aside>Sidebar</aside>
+      <footer>Footer</footer>
+    </div>
+  </section>
+
+  <!-- 12. Nested Grid (Complex) -->
+  <section class="grid-section">
+    <h2>12. Nested Grid (Complex)</h2>
+    <div class="grid grid-nested-complex">
+      <div>Outer 1</div>
+      <div class="grid inner-grid">
+        <div>Inner A</div><div>Inner B</div><div>Inner C</div>
+      </div>
+      <div>Outer 3</div>
+    </div>
+  </section>
+
+  <!-- 13. Alignment -->
+  <section class="grid-section">
+    <h2>13. Alignment (justify / align)</h2>
+    <div class="grid grid-align">
+      <div>X</div><div>Y</div><div>Z</div>
+    </div>
+  </section>
+
+  <!-- 14. Explicit vs Implicit Grid -->
+  <section class="grid-section">
+    <h2>14. Explicit vs Implicit Grid</h2>
+    <div class="grid grid-explicit">
+      <div>1</div><div>2</div><div>3</div>
+      <div>4</div><div>5</div><div>6</div>
+      <!-- More items than defined grid to show implicit rows -->
+      <div>7</div><div>8</div><div>9</div>
+    </div>
+  </section>
+
+</body>
+</html>
