@@ -1,0 +1,91 @@
+html, body {
+    font-family: sans-serif;
+    /* display: flex;
+    flex-direction: column; */
+    padding: 2rem;
+    background-color: #e3e7be;
+}
+
+h1 {
+    text-align: center;
+}
+
+.display {
+    border-radius: 2rem;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    margin: 1rem;
+    border: 2px solid #707070;
+    background-color: #fff;
+}
+
+.box {
+    border-radius: 0.3rem;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.block .box {
+    display: block;
+    background-color: rgb(8, 0, 255);
+}
+
+.inline .box {
+    display: inline;
+    background-color: rgb(255, 0, 0);
+}
+
+.inlineBlock .box {
+    display: inline-block;
+    background-color: #00ff2a;
+    width: 200px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 3rem;
+}
+
+.flex .box {
+    background-color: #ff00cc;
+    flex: 1;
+}
+
+.flexCol {
+    display: flex;
+    flex-direction: column-reverse;
+    /* gap: 3rem; */
+}
+
+.flexCol .box {
+    background-color: #410f29;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.grid .box {
+    background-color: #e5ff00;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.grid2 .box {
+    background-color: #d89850;
+}
+
+.none .box{
+    display: none;
+}

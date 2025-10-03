@@ -64,14 +64,6 @@ body {
   border-radius: 6px 6px 0 0;
 }
 
-/* Bar heights and colors */
-.bar1 { height: 40%; background-color: red; }
-.bar2 { height: 70%; background-color: rgb(0, 30, 255); }
-.bar3 { height: 30%; background-color: rgb(255, 157, 0); }
-.bar4 { height: 55%; background-color: rgb(26, 255, 0); }
-.bar5 { height: 88%; background-color: rgb(212, 141, 60); }
-.bar6 { height: 18%; background-color: rgb(101, 91, 185); }
-
 .product-names {
   display: flex;
   justify-content: flex-start;
@@ -80,7 +72,6 @@ body {
   user-select: none;
   font-size: 0.9rem;
   color: #222;
-  padding-left: 0.15rem; /* slight left padding to align with bars */
 }
 
 .product-names > div {
