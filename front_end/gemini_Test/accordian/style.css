@@ -34,6 +34,7 @@ h1 {
 
 .accordion-title:hover {
     background-color: rgb(161, 159, 159);
+    border-radius: 2rem;
 }
 
 .accordion-section input[type="checkbox"] {
