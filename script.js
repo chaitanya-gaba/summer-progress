@@ -1,6 +1,7 @@
 const designs = [
   "front_end/gemini_Test/display-design",
   "front_end/gemini_Test/display-grid",
+  "front_end/gemini_Test/accordian",
   "front_end/gemini_Test/graph",
   "front_end/gemini_Test/dynamic-graph",
   "front_end/gemini_Test/Clock",
