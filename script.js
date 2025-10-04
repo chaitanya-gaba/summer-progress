@@ -1,4 +1,8 @@
 const designs = [
+  "front_end/gemini_Test/display-design",
+  "front_end/gemini_Test/display-grid",
+  "front_end/gemini_Test/graph",
+  "front_end/gemini_Test/dynamic-graph",
   "front_end/gemini_Test/Clock",
   "front_end/gemini_Test/digital-clock",
   "front_end/gemini_Test/loaders",
@@ -17,7 +21,7 @@ const designs = [
   "front_end/gemini_Test/water-jar",
   "front_end/gemini_Test/welcome-user",
   "front_end/gemini_Test/solar-system"
-  // ... add all 16 design folder names here
+  // ... add all design folder names here
 ];
 
 const container = document.getElementById('designLinks');
