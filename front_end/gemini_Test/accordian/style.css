@@ -22,14 +22,15 @@ h1 {
 }
 
 .accordion-title {
-    display: block;
-    padding: 15px;
-    background: #f0f0f0;
-    cursor: pointer;
-    font-weight: bold;
-    /* transition: background 0.3s; */
-    /* border: 2px solid #000; */
-    border-radius: 0.2rem;
+  display: flex;                     /* Activate flex layout */
+  justify-content: space-between;   /* Push arrow to the right */
+  align-items: center;              /* Vertically align arrow */
+  padding: 15px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0.2rem;
+  transition: background 0.3s ease;
 }
 
 .accordion-title:hover {
@@ -39,6 +40,27 @@ h1 {
 
 .accordion-section input[type="checkbox"] {
     display: none;
+}
+
+/* Arrow icon */
+.accordion-section .arrow {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transform: rotate(-45deg);
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.accordion input[type="radio"]:checked + .accordion-header + .accordion-content {
+  max-height: 200px;
+  padding: 20px;
+}
+
+.accordion-section input[type="checkbox"]:checked + .accordion-title .arrow {
+  transform: rotate(45deg);
 }
 
 .content {
