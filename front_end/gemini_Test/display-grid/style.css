@@ -93,12 +93,28 @@ h2 {
   grid-template-columns: 100px 100px;
   gap: 20px;
 }
+.grid-gap > div {
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 
 /* 7. Fraction Units */
 .grid-fr {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 1rem;
+}
+.grid-fr > div {
+  background-color: #2ecc71;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 /* 8. Repeat() */
@@ -107,6 +123,14 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
+.grid-repeat > div {
+  background-color: #f39c12;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 
 /* 9. Minmax */
 .grid-minmax {
@@ -114,12 +138,28 @@ h2 {
   grid-template-columns: repeat(2, minmax(150px, 1fr));
   gap: 1rem;
 }
+.grid-minmax > div {
+  background-color: #9b59b6;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 
 /* 10. Auto-fit / Auto-fill */
 .grid-autofit {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 10px;
+}
+.grid-autofit > div {
+  background-color: #16a085;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 /* 11. Named Areas (Complex Layout) */
@@ -133,11 +173,21 @@ h2 {
   grid-template-columns: 1fr 2fr;
   gap: 10px;
 }
-.grid-areas-complex header { grid-area: header; background: lightcoral; }
-.grid-areas-complex nav    { grid-area: nav; background: lightgreen; }
-.grid-areas-complex main   { grid-area: main; background: lightblue; }
-.grid-areas-complex aside  { grid-area: sidebar; background: orange; }
-.grid-areas-complex footer { grid-area: footer; background: gray; }
+
+.grid-areas-complex > * {
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+
+.grid-areas-complex header { grid-area: header; background: #e74c3c; }
+.grid-areas-complex nav    { grid-area: nav; background: #27ae60; }
+.grid-areas-complex main   { grid-area: main; background: #2980b9; }
+.grid-areas-complex aside  { grid-area: sidebar; background: #f39c12; }
+.grid-areas-complex footer { grid-area: footer; background: #7f8c8d; }
 
 /* 12. Nested Grid (Complex) */
 .grid-nested-complex {
@@ -145,10 +195,25 @@ h2 {
   grid-template-columns: 1fr 2fr 1fr;
   gap: 10px;
 }
+.grid-nested-complex > div {
+  background-color: #e67e22;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 .grid-nested-complex .inner-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
+  margin-top: 0.5rem;
+}
+.grid-nested-complex .inner-grid > div {
+  background-color: #34495e;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  color: white;
 }
 
 /* 13. Alignment */
@@ -159,6 +224,14 @@ h2 {
   justify-content: space-around;
   align-items: center;
 }
+.grid-align > div {
+  background-color: #c0392b;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 
 /* 14. Explicit vs Implicit Grid */
 .grid-explicit {
@@ -167,11 +240,14 @@ h2 {
   grid-template-rows: 100px 100px;
   gap: 10px;
 }
-/* Extra items will automatically create implicit rows */
+
 .grid-explicit > div {
   background-color: #8e44ad;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  font-weight: bold;
 }
