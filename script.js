@@ -1,10 +1,12 @@
 const designs = [
+  "front_end/gemini_Test/count-down",
   "front_end/gemini_Test/display-design",
   "front_end/gemini_Test/display-grid",
   "front_end/gemini_Test/accordian",
   "front_end/gemini_Test/graph",
   "front_end/gemini_Test/dynamic-graph",
   "front_end/gemini_Test/Clock",
+  "front_end/gemini_Test/timeline",
   "front_end/gemini_Test/digital-clock",
   "front_end/gemini_Test/loaders",
   "front_end/gemini_Test/login-form",
