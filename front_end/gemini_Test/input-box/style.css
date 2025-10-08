@@ -1,0 +1,37 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #121212;
+    color: #7fff7f;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    background-color: transparent;
+    border-color: #00fff0;
+    color: #00fff0;
+    font-family: 'Courier New', Courier, monospace;
+    height: 3rem;
+    width: 28rem;
+    outline: none;
+    animation: glow 1.8s infinite alternate;
+}
+
+input::placeholder {
+    color: #00fff0;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px #00ffee;
+    }
+
+    to {
+        box-shadow: 0 0 20px #00ffee;
+    }
+}
