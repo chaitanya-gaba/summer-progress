@@ -24,7 +24,9 @@ const designs = [
   "front_end/gemini_Test/water-jar",
   "front_end/gemini_Test/welcome-user",
   "front_end/gemini_Test/solar-system",
-  "front_end/gemini_Test/404-notFound"
+  "front_end/gemini_Test/404-notFound",
+  "front_end/gemini_Test/shadow-box",
+  "front_end/gemini_Test/input-box"
   // ... add all design folder names here
 ];
 
