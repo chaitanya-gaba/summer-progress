@@ -29,12 +29,12 @@ h1 {
 
 /* Example 2 */
 .example2 {
-  box-shadow: 10px 10px 0px black;
+  box-shadow: 10px 10px 0px 0px black;
 }
 
 /* Example 3 */
 .example3 {
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Example 4 */
