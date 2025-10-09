@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="head">📻 Now Playing</div>
+        <div class="song-name">Ajab Si 🎶</div>
+        <div class="artist">KK 🎤</div>
+
+        <div class="button-container">
+            <button id="prev">⏮️</button>
+            <button id="play">▶️</button>
+            <button id="pause">⏸️</button>
+            <button id="next">⏭️</button>
+        </div>
+
+        <div class="progress-bar" id="progress-container">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="timer" id="timer">00:00 / 00:00</div>
+    </div>
+
+    <audio id="audio" src="ajab-si.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
