@@ -27,7 +27,8 @@ const designs = [
   "front_end/gemini_Test/404-notFound",
   "front_end/gemini_Test/shadow-box",
   "front_end/gemini_Test/input-box",
-  "front_end/gemini_Test/music-player"
+  "front_end/gemini_Test/music-player",
+  "front_end/gemini_Test/menu"
   // ... add all design folder names here
 ];
 
