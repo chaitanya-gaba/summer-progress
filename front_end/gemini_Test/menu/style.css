@@ -1,0 +1,84 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fffdf9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 2rem;
+  background: #ffefd5;
+  border-bottom: 2px solid #f4a261;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Menu Grid */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Menu Item Card */
+.menu-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.03);
+}
+
+/* Image Zoom on Hover */
+.menu-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.menu-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Text Styling */
+.menu-item h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+  color: #e76f51;
+}
+
+.menu-item p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #ffefd5;
+  border-top: 2px solid #f4a261;
+}
