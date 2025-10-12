@@ -127,14 +127,8 @@ body {
   color: #555;
 }
 
-
-
 .hug-emoji {
-  animation: hugpop 2s ease-in-out forwards;
-}
-
-.hug-emoji {
-  animation: hugpop 2s ease-in-out;
+  animation: hugpop 1s ease-in-out;
 }
 
 @keyframes hugpop {
