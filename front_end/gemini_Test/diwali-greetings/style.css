@@ -1,0 +1,93 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(#0b0c1a, #000);
+  color: #fff;
+  overflow: hidden;
+}
+
+.sky {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.greeting {
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.diyas {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.diya {
+  width: 40px;
+  height: 60px;
+  background: #c96;
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.diya::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  width: 20px;
+  height: 40px;
+  background: radial-gradient(circle, #ff0, #f00);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.diya:hover {
+  box-shadow: 0 0 20px 5px #ff6;
+}
+
+.diya:hover::before {
+  opacity: 1;
+}
+
+/* Fireworks animation (simple) */
+.firework, .firework.delay {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  box-shadow: 0 0 10px #f0f, 10px 10px 10px #0ff, -10px -10px 10px #ff0;
+  border-radius: 50%;
+  animation: fireworks 2s infinite ease-out;
+}
+
+.firework.delay {
+  animation-delay: 1s;
+}
+
+@keyframes fireworks {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
