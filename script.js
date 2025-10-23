@@ -33,7 +33,8 @@ const designs = [
   "front_end/gemini_Test/cheer-up",
   "front_end/gemini_Test/landing-page",
   "front_end/gemini_Test/profile-card",
-  "front_end/gemini_Test/diwali-greetings"
+  "front_end/gemini_Test/diwali-greetings",
+  "front_end/gemini_Test/letter-L"
   // ... add all design folder names here
 ];
 
