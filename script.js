@@ -34,7 +34,6 @@ const designs = [
   "front_end/gemini_Test/landing-page",
   "front_end/gemini_Test/profile-card",
   "front_end/gemini_Test/diwali-greetings"
-  /* new0design upload */
   // ... add all design folder names here
 ];
 
