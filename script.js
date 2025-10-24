@@ -35,6 +35,7 @@ const designs = [
   "front_end/gemini_Test/profile-card",
   "front_end/gemini_Test/diwali-greetings",
   "front_end/gemini_Test/letter-L"
+  /* no-cap */
   // ... add all design folder names here
 ];
 
