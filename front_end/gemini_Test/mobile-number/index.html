@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Number Validation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form id="mobileForm">
+    <label for="mobile">Mobile Number:</label>
+    <input 
+      type="text" 
+      id="mobile" 
+      name="mobile"
+      maxlength="10"
+      placeholder="Enter 10-digit number"
+      required
+      oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
