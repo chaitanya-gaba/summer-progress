@@ -41,7 +41,8 @@ const designs = [
   "front_end/gemini_Test/3d-object",
   "front_end/gemini_Test/mobile-number",
   "front_end/gemini_Test/busy",
-  "front_end/gemini_Test/diary"
+  "front_end/gemini_Test/diary",
+  "front_end/gemini_Test/focus"
   // ... add all design folder names here
 ];
 
