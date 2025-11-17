@@ -43,6 +43,7 @@ const designs = [
   "front_end/gemini_Test/busy",
   "front_end/gemini_Test/diary",
   "front_end/gemini_Test/focus",
+  "front_end/gemini_Test/miss",
   "front_end/gemini_Test/1stday"
   // ... add all design folder names here
 ];
