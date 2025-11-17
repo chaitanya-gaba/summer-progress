@@ -1,3 +1,10 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,10 +12,10 @@ body {
     background: radial-gradient(circle at top, #3b1a3f 0%, #0a0a0a 80%);
     color: #fff;
     height: 100vh;
-    overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding: 40px 0;
 }
 
 /* Floating particles */
