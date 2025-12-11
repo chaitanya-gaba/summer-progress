@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punch In / Punch Out System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🕒 Punch In / Punch Out</h1>
+        <p class="subtitle">Track your working time with accuracy and discipline.</p>
+
+        <div class="status-box" id="statusBox">
+            Status: <span id="status">Not Punched In</span>
+        </div>
+
+        <div class="buttons">
+            <button id="punchInBtn" class="btn punch-in">Punch In</button>
+            <button id="punchOutBtn" class="btn punch-out">Punch Out</button>
+        </div>
+
+        <div class="record">
+            <h2>Today's Record</h2>
+            <p><strong>Punch In:</strong> <span id="punchInTime">—</span></p>
+            <p><strong>Punch Out:</strong> <span id="punchOutTime">—</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
