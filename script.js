@@ -32,7 +32,6 @@ const designs = [
   "front_end/gemini_Test/music-player",
   "front_end/gemini_Test/menu",
   "front_end/gemini_Test/indian-post",
-  "front_end/gemini_Test/cheer-up",
   "front_end/gemini_Test/landing-page",
   "front_end/gemini_Test/profile-card",
   "front_end/gemini_Test/diwali-greetings",
