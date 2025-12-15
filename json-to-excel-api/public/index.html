@@ -2,31 +2,38 @@
 <html>
 <head>
   <title>JSON to Excel Export</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Paste JSON → Export to Excel</h2>
 
-  <p>
-    Paste a valid <b>JSON array</b> below and click Convert.
-  </p>
+  <div class="container">
+    <div class="card">
+        <h2>Paste JSON</h2>
+        <p>Paste any valid JSON array and export it as Excel.</p>
 
-  <textarea
-    id="jsonInput"
-    rows="15"
-    cols="90"
-    placeholder="Paste your JSON array here..."
-  ></textarea>
+        <textarea id="jsonInput" placeholder="Paste your JSON array here..."></textarea>
 
-  <br><br>
+        <button class="button primary" onclick="convert()">Convert to Excel</button>
+    </div>
 
-  <button onclick="convert()">Convert to Excel</button>
+    <div class="card">
+        <h2>Upload JSON File</h2>
+        <p>Upload a .json file to export it as Excel.</p>
 
-  <hr><br>
+        <div class="upload-box">
+        <label class="upload-label">
+            Click to select JSON file
+            <input type="file" id="fileInput" accept=".json">
+        </label>
+        </div>
 
-  <h2>Upload JSON File → Export to Excel</h2>
+        <button class="button secondary" onclick="upload()">Upload & Convert</button>
+    </div>
 
-  <input type="file" id="fileInput" accept=".json">
-  <button onclick="upload()">Upload & Convert</button>
+    <div class="footer">
+        JSON to Excel Export Utility
+    </div>
+</div>
 
   <script>
     async function convert() {
@@ -40,7 +47,7 @@
       let data;
       try {
         data = JSON.parse(input);
-      } catch (err) {
+      } catch {
         alert('Invalid JSON format');
         return;
       }
@@ -97,5 +104,6 @@
       URL.revokeObjectURL(url);
     }
   </script>
+
 </body>
 </html>
