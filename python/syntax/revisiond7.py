@@ -69,3 +69,60 @@ def my_function(a, b, /, *, c, d):
 
 result = my_function(5, 10, c = 15, d = 20)
 print(result)
+
+def print_sum(*num):
+   total = 0
+   for n in num:
+     total += n
+   return total
+
+print(print_sum(9))
+print(print_sum(10))
+print(print_sum(103, 342, 324))
+
+def find_max(*args):
+    max_num = args[0]
+    for num in args:
+        if num > max_num:
+            max_num = num
+    return max_num
+
+print(find_max(234))                     # 234
+print(find_max(2345, 23525, 1, 3242354)) # 3242354
+print(find_max(-5, -10, -2))             # -2
+
+def average_marks(name, *marks):
+  total = 0
+  itr = 0
+  for i in marks:
+    total += i
+    itr += 1
+  avg = total / itr
+  return f"{name} scored: {total} with average of {avg}"
+
+print(average_marks("Sup'", 12, 456, 78, 23))
+
+# *args positional-elements into tuple
+# **kwargs positional-elements into dictionay, key:value binded
+
+def student_info(**data):
+   return f"{data["name"]} has scored {data["math"]} in Mathematics and {data["sci"]} in Science. He resides in {data["loc"]} with his family."
+
+print(student_info(name = "Ojas", math = 90, sci = 85, loc = "Hisar"))
+
+def create_profile(**data):
+   return_data = dict(data)
+   return return_data
+
+return_data = create_profile(username = "Ojas", email = "ojas.gaba@gmail.com", console = "PS5", city = "Hisar")
+print(return_data)
+
+def order_summary(*items, **info):
+    # Print all items
+    print("Items:", ", ".join(items))
+    
+    # Print extra info
+    for key, value in info.items():
+        print(f"{key}: {value}")
+
+print(order_summary("Burger", "Fries", "Gulabo", name = "Ojas", add = "Arcity Villas"))
