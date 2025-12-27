@@ -43,10 +43,11 @@ def factorial(num, n):
     
 print(factorial(1, 5))
 
-# fibonacci sequnce
-def fibo(n, initial = 0):
-    
-    pass
+# generators
+def count_upto(n):
+    count = 1
+    while count <= n:
+        yield count
+        count += 1
 
-print(fibo(5))
-# incomplete
+print(count_upto(5))
