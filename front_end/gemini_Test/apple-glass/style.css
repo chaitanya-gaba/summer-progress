@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #020617;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Soft background light */
+.bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 30% 20%, #7dd3fc, transparent 40%),
+    radial-gradient(circle at 70% 80%, #bae6fd, transparent 45%);
+  filter: blur(90px);
+}
+
+/* Moisture haze */
+.mist {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.01),
+    rgba(255,255,255,0.04)
+  );
+  pointer-events: none;
+}
+
+/* Crystal glass card */
+.crystal-card {
+  position: relative;
+  width: 420px;
+  padding: 50px;
+  border-radius: 32px;
+
+  /* Clear glass */
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.35)
+  );
+
+  backdrop-filter: blur(14px) saturate(220%);
+  -webkit-backdrop-filter: blur(14px) saturate(220%);
+
+  border: 1px solid rgba(255,255,255,0.45);
+
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.6),
+    inset 0 1px 2px rgba(255,255,255,0.6);
+
+  color: white;
+  overflow: hidden;
+}
+
+/* Hard light edges (crystal refraction) */
+.crystal-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,255,255,0.6),
+    transparent 35%,
+    transparent 65%,
+    rgba(255,255,255,0.4)
+  );
+  pointer-events: none;
+}
+
+/* Static water droplets */
+.crystal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255,255,255,0.9), transparent 8%),
+    radial-gradient(circle at 60% 18%, rgba(255,255,255,0.8), transparent 6%),
+    radial-gradient(circle at 75% 45%, rgba(255,255,255,0.85), transparent 7%),
+    radial-gradient(circle at 35% 70%, rgba(255,255,255,0.7), transparent 6%),
+    radial-gradient(circle at 55% 80%, rgba(255,255,255,0.8), transparent 7%);
+  filter: blur(0.4px);
+  pointer-events: none;
+}
+
+/* Text */
+h1 {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+p {
+  font-size: 16px;
+  opacity: 0.85;
+  line-height: 1.6;
+}
