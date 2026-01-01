@@ -84,3 +84,34 @@ print("Python Dict: ", data_back)
 with open("data.json", "w") as f:
     json.dump(data, f, indent=4)
 
+# try - except - else - finally
+try:
+    num = int(input("Enter any number: "))
+    print("You've entered: ", num)
+except ValueError:
+    print("Please enter integer!")
+
+try:
+    a = int(input("Enter any number: "))
+    b = int(input("Enter another number: "))
+    dev = a / b
+except ValueError:
+    print("Please enter correct value in integer!")
+except ZeroDivisionError:
+    print("Can't devide anything from 0.")
+else:
+    print("Result: ", dev)
+finally:
+    print("Closing the program!")
+
+# try: - risky code, where error could happen
+# except: - handles errors
+# else: - runs only if there is no error
+# finally: - will always runs doesn't matter if there was error or not
+
+def myfunc():
+    x = 5
+    # return x
+
+x = myfunc()
+print(x)
