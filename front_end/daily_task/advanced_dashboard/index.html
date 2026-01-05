@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="logo">NEXUS</h2>
+    <nav>
+      <a class="active">Overview</a>
+      <a>Analytics</a>
+      <a>Reports</a>
+      <a>Messages</a>
+      <a>Settings</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <!-- HEADER -->
+    <header class="topbar">
+      <h1>Dashboard</h1>
+      <div class="profile">
+        <span>Admin</span>
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="stat">
+        <p>Total Users</p>
+        <h2>12,480</h2>
+        <span class="up">▲ 12%</span>
+      </div>
+      <div class="stat">
+        <p>Revenue</p>
+        <h2>$92,310</h2>
+        <span class="up">▲ 8%</span>
+      </div>
+      <div class="stat">
+        <p>Errors</p>
+        <h2>21</h2>
+        <span class="down">▼ 3%</span>
+      </div>
+      <div class="stat">
+        <p>Uptime</p>
+        <h2>99.9%</h2>
+        <span class="up">▲ Stable</span>
+      </div>
+    </section>
+
+    <!-- CONTENT GRID -->
+    <section class="grid">
+      <div class="card chart">
+        <h3>Performance</h3>
+        <div class="bars">
+          <span style="--h:70%"></span>
+          <span style="--h:45%"></span>
+          <span style="--h:90%"></span>
+          <span style="--h:60%"></span>
+          <span style="--h:80%"></span>
+        </div>
+      </div>
+
+      <div class="card activity">
+        <h3>Recent Activity</h3>
+        <ul>
+          <li>User signed up</li>
+          <li>Payment processed</li>
+          <li>New report created</li>
+          <li>Server restarted</li>
+        </ul>
+      </div>
+
+      <div class="card wide">
+        <h3>System Status</h3>
+        <p>All services operational. No incidents detected.</p>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+</body>
+</html>
