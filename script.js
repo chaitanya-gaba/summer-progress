@@ -53,7 +53,8 @@ const designs = [
   "front_end/gemini_Test/glassmorphism",
   "front_end/gemini_Test/apple-glass",
   "front_end/daily_task/dashboard",
-  "front_end/daily_task/advanced_dashboard"
+  "front_end/daily_task/advanced_dashboard",
+  "front_end/daily_task/portfolio-ui"
   // ... add all design folder names here
 ];
 
