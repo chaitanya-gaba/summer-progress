@@ -7,3 +7,10 @@ with open("D:\summer-progress\python\syntax\emp.txt") as f:
 
 read.close()
 f.close()
+
+with open("demofile.txt", "a") as f:
+  f.write("Now the file has more content!")
+
+#open and read the file after the appending:
+with open("demofile.txt") as f:
+  print(f.read())
