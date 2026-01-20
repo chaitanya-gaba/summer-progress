@@ -12,10 +12,9 @@ document.addEventListener("DOMContentLoaded", function(){
     const subtitles = [
         "Are you ready, my heroine? Let me steal your smile one message at a time 😉",
         "This one’s just for your giggle 😏",
-        "Warning: Heart-melting words ahead 💖",
         "Do you feel the SRK vibes yet? 🥰",
         "Almost at the final scene… hold my love tight 🌷",
-        "I'm Missing You Too..."
+        "Today isn't about strength — it's about being held."
     ];
 
     function showLayer(index){
