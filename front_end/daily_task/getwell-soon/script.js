@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
         } else {
             // Last slide clicked: heading, footer, flying kiss every click
-            subtitleEl.textContent = "Kuch chupaya hai aapse, batana chahta hoon";
-            heading.textContent = "I'm Missing You Too...बहुत ज्यादा";
+            subtitleEl.textContent = "Or kina chahte ho...itne mein bohot mehnat lagi hai";
+            heading.textContent = "I'm Missing You Too...बहुत ज्यादा🤗";
             footer.style.display = "block";
 
             // Create a new flying kiss for each click

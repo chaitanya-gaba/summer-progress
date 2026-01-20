@@ -66,6 +66,7 @@ h1, .footer {
 }
 
 .footer {
+    display: none;
     font-size: 14px;
     color: #ff5c8a;
     font-style: italic;
