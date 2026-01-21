@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>CipherGate</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="lockScreen" class="card">
+  <h1>🔒 CipherGate</h1>
+  <p>Solve the puzzle to unlock</p>
+  <button onclick="startPuzzle()">Begin</button>
+</div>
+
+<div id="puzzleScreen" class="card hidden">
+  <h2>Puzzle</h2>
+  <p>What comes next? 2, 6, 12, 20, ?</p>
+  <input id="puzzleAnswer" type="number" />
+  <button onclick="checkPuzzle()">Submit</button>
+</div>
+
+<div id="passcodeScreen" class="card hidden">
+  <h2>Passcode</h2>
+  <input id="passcode" type="password" placeholder="Enter passcode" />
+  <button onclick="unlock()">Unlock</button>
+</div>
+
+<div id="cryptoScreen" class="card hidden">
+  <h2>Encryptor</h2>
+  <textarea id="plainText" placeholder="Text"></textarea>
+  <input id="cryptoKey" type="password" placeholder="Secret Key" />
+  <button onclick="encrypt()">Encrypt</button>
+  <button onclick="decrypt()">Decrypt</button>
+  <textarea id="result"></textarea>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
