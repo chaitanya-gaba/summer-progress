@@ -1,9 +1,10 @@
 :root {
-  --bg: #f6f4ef;
-  --card: #fbfbf9;
+  /* Light Mode Colors (Warm & Soft) */
+  --bg: #f5f3ef;
+  --card: #fbfaf8;
 
-  --text-primary: #1b1b1f;
-  --text-muted: #6c6d74;
+  --text-primary: #1f1f23;
+  --text-muted: #6f7076;
 
   --accent: #2563eb;
 
@@ -14,33 +15,23 @@
   --space-lg: 32px;
 
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --bg-grad: linear-gradient(135deg, var(--bg), #f5f7ff);
+  --bg-grad: linear-gradient(135deg, var(--bg), #f7f5f2);
 
   --border: rgba(0, 0, 0, 0.08);
 }
 
+/* Dark Mode (Greyish, not blue) */
 [data-theme="dark"] {
-  --bg: #12131a;
-  --card: #1b1f28;
+  --bg: #14161b;
+  --card: #1c1f27;
 
-  --text-primary: #f2f4f8;
-  --text-muted: #9aa6c0;
+  --text-primary: #e9eaee;
+  --text-muted: #9aa0b0;
 
   --accent: #8aa6ff;
 
-  --bg-grad: linear-gradient(135deg, var(--bg), #141622);
+  --bg-grad: linear-gradient(135deg, var(--bg), #181b22);
   --border: rgba(255, 255, 255, 0.12);
-}
-
-/* Respect system preference (only if no theme is set) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg: #0b0f19;
-    --card: #111827;
-    --text-primary: #f5f7ff;
-    --text-muted: #9aa6c0;
-    --accent: #60a5fa;
-  }
 }
 
 * {
@@ -53,28 +44,12 @@ body {
   height: 100%;
 }
 
-html {
-  background: var(--bg);
-  color: var(--text-primary);
-}
-
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-grad);
   color: var(--text-primary);
   transition: background 300ms var(--ease), color 300ms var(--ease);
-}
-
-/* Theme-aware text */
-body,
-h1, h2, h3, p, span, td, th {
-  color: var(--text-primary);
-}
-
-/* Muted text */
-.muted, .text-muted {
-  color: var(--text-muted);
 }
 
 button {

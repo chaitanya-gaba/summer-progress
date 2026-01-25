@@ -1,36 +1,29 @@
-// ---------------------------
-// SELECTORS
-// ---------------------------
-const liveGrid = document.getElementById("liveGrid");
-const upcomingList = document.getElementById("upcomingList");
-const completedList = document.getElementById("completedList");
+const liveGrid = document.querySelector(".matches-grid");
+const upcomingList = document.querySelector(".upcoming-list");
+const completedList = document.querySelector(".completed-list");
 
 const filters = {
   status: "ALL",
   format: "ALL"
 };
 
-
-// ---------------------------
-// RENDER DASHBOARD
-// ---------------------------
 function renderDashboard(matches) {
   clearUI();
 
-  const filtered = applyFilters(matches);
-
-  filtered.forEach(match => {
+  matches.forEach(match => {
     if (match.status === "LIVE") renderLiveMatch(match);
     if (match.status === "UPCOMING") renderUpcomingMatch(match);
     if (match.status === "COMPLETED") renderCompletedMatch(match);
   });
 
-  // ensure minimum 3 cards in live grid
+  // Ensure at least 3 cards show in LIVE section
   if (liveGrid.children.length < 3) {
     const needed = 3 - liveGrid.children.length;
-    for (let i = 0; i < needed; i++) {
-      liveGrid.appendChild(createPlaceholderCard());
-    }
+    const fallback = matches
+      .filter(m => m.status !== "LIVE")
+      .slice(0, needed);
+
+    fallback.forEach(m => renderLiveMatch(m));
   }
 }
 
@@ -40,10 +33,6 @@ function clearUI() {
   completedList.innerHTML = "";
 }
 
-
-// ---------------------------
-// RENDER CARDS
-// ---------------------------
 function renderLiveMatch(match) {
   const card = document.createElement("article");
   card.classList.add("match-card", "live", "visible");
@@ -62,7 +51,7 @@ function renderLiveMatch(match) {
       </div>
 
       <div class="team muted">
-        <span class="team-code">${match.teams.away.code ?? "AUS"}</span>
+        <span class="team-code">${match.teams.away.code}</span>
         <span class="yet">${match.teams.away.score ? match.teams.away.score : "Yet to bat"}</span>
       </div>
     </div>
@@ -100,43 +89,6 @@ function renderCompletedMatch(match) {
   completedList.appendChild(item);
 }
 
-
-// ---------------------------
-// PLACEHOLDER CARD
-// ---------------------------
-function createPlaceholderCard() {
-  const card = document.createElement("article");
-  card.classList.add("match-card", "placeholder");
-
-  card.innerHTML = `
-    <header class="card-header">
-      <span class="format">—</span>
-      <span class="status">—</span>
-    </header>
-    <div class="teams">
-      <div class="team">
-        <span class="team-code">—</span>
-        <strong class="score">—</strong>
-        <span class="overs">(—)</span>
-      </div>
-      <div class="team muted">
-        <span class="team-code">—</span>
-        <span class="yet">No match</span>
-      </div>
-    </div>
-    <footer class="card-footer">
-      <span>RR —</span>
-      <a href="#" class="link disabled">View match →</a>
-    </footer>
-  `;
-
-  return card;
-}
-
-
-// ---------------------------
-// FILTERS
-// ---------------------------
 function applyFilters(data) {
   return data.filter(match => {
     const statusMatch =
@@ -163,10 +115,9 @@ function rerenderWithFade() {
   }, 200);
 }
 
-
-// ---------------------------
-// THEME TOGGLE
-// ---------------------------
+/* ---------------------------------
+   Theme Toggle
+--------------------------------- */
 const themeToggle = document.getElementById("themeToggle");
 
 function setTheme(theme) {
@@ -185,27 +136,31 @@ if (themeToggle) {
   });
 }
 
-
-// ---------------------------
-// INIT
-// ---------------------------
 document.addEventListener("DOMContentLoaded", () => {
   renderDashboard(matches);
 
   document.querySelectorAll(".nav-link").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
+      document
+        .querySelectorAll(".nav-link")
+        .forEach(b => b.classList.remove("active"));
+
       btn.classList.add("active");
       filters.status = btn.dataset.status;
+
       rerenderWithFade();
     });
   });
 
   document.querySelectorAll(".pill").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".pill").forEach(b => b.classList.remove("active"));
+      document
+        .querySelectorAll(".pill")
+        .forEach(b => b.classList.remove("active"));
+
       btn.classList.add("active");
       filters.format = btn.dataset.format;
+
       rerenderWithFade();
     });
   });

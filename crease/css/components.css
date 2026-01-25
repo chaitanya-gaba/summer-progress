@@ -1,6 +1,4 @@
-/* ---------------------------
-   Navigation
---------------------------- */
+/* Navigation */
 .logo {
   font-weight: 600;
   font-size: 1.1rem;
@@ -23,9 +21,7 @@
   border-bottom: 2px solid var(--accent);
 }
 
-/* ---------------------------
-   Pills
---------------------------- */
+/* Pills */
 .pill {
   padding: 6px 14px;
   border-radius: 999px;
@@ -39,15 +35,13 @@
   border-color: var(--accent);
 }
 
-/* ---------------------------
-   Match Card
---------------------------- */
+/* Match Card */
 .match-card {
   background: var(--card);
   border-radius: var(--radius);
   padding: var(--space-md);
   box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), background 300ms var(--ease);
 }
 
 [data-theme="dark"] .match-card {
@@ -60,9 +54,7 @@
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* ---------------------------
-   Live indicator
---------------------------- */
+/* Live indicator */
 .live-indicator {
   width: 8px;
   height: 8px;
@@ -91,9 +83,7 @@
   }
 }
 
-/* ---------------------------
-   Card header / teams / footer
---------------------------- */
+/* Card header / teams / footer */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -122,9 +112,7 @@
   color: var(--text-muted);
 }
 
-/* ---------------------------
-   Match Page
---------------------------- */
+/* Match Page */
 .match-page {
   padding: var(--space-lg) 0;
 }
@@ -167,9 +155,7 @@
   color: var(--text-muted);
 }
 
-/* ---------------------------
-   Tabs
---------------------------- */
+/* Tabs */
 .tabs {
   display: flex;
   gap: var(--space-sm);
@@ -190,9 +176,7 @@
   color: var(--accent);
 }
 
-/* ---------------------------
-   Tab panels
---------------------------- */
+/* Tab panels */
 .tab-content {
   background: var(--card);
   border-radius: var(--radius);
@@ -213,9 +197,7 @@
   display: block;
 }
 
-/* ---------------------------
-   Scorecard
---------------------------- */
+/* Scorecard */
 .scorecard {
   display: grid;
   gap: var(--space-lg);
@@ -286,9 +268,7 @@ table {
   background: rgba(255,255,255,0.06);
 }
 
-/* ---------------------------
-   Timeline
---------------------------- */
+/* Timeline */
 .timeline {
   display: grid;
   gap: var(--space-lg);
@@ -351,9 +331,7 @@ table {
   font-size: 0.9rem;
 }
 
-/* ---------------------------
-   Stats
---------------------------- */
+/* Stats */
 .stats-section {
   display: grid;
   gap: var(--space-lg);

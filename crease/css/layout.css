@@ -1,37 +1,3 @@
-:root {
-  --bg: #fafafa;
-  --card: #ffffff;
-
-  --text-primary: #111;
-  --text-muted: #6b6b6b;
-
-  --accent: #2563eb;
-
-  --radius: 14px;
-  --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 32px;
-
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --bg-grad: linear-gradient(135deg, var(--bg), #f5f7ff);
-
-  --border: rgba(0, 0, 0, 0.08);
-}
-
-[data-theme="dark"] {
-  --bg: #0b0f19;
-  --card: #111827;
-
-  --text-primary: #f5f7ff;
-  --text-muted: #9aa6c0;
-
-  --accent: #60a5fa;
-
-  --bg-grad: linear-gradient(135deg, var(--bg), #0b1020);
-  --border: rgba(255,255,255,0.12);
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -80,13 +46,15 @@
   margin-bottom: var(--space-md);
 }
 
-/* Grid - HORIZONTAL SCROLL */
+/* Grid */
 .matches-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--space-md);
+
   overflow-x: auto;
-  padding-bottom: 12px;
   scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
 }
 
 .matches-grid::-webkit-scrollbar {
@@ -100,82 +68,4 @@
 
 [data-theme="dark"] .matches-grid::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.18);
-}
-
-/* Navigation */
-.logo {
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.main-nav {
-  display: flex;
-  gap: var(--space-md);
-}
-
-.nav-link.active {
-  border-bottom: 2px solid var(--accent);
-}
-
-/* Pills */
-.pill {
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--card);
-}
-
-.pill.active {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-/* Match Card */
-.match-card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: var(--space-md);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), background 300ms var(--ease);
-  scroll-snap-align: start;
-  min-width: 320px;
-  flex: 0 0 auto;
-}
-
-[data-theme="dark"] .match-card {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.match-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.teams {
-  margin: var(--space-md) 0;
-}
-
-.team {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-sm);
-}
-
-.team.muted {
-  color: var(--text-muted);
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--text-muted);
 }
