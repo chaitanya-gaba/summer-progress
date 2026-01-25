@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crease — Cricket Dashboard</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+
+<body>
+  <!-- Global Header -->
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="logo">Crease</div>
+
+      <nav class="main-nav" aria-label="Match filters">
+        <button class="nav-link active" data-status="ALL" aria-pressed="true">All</button>
+        <button class="nav-link" data-status="LIVE" aria-pressed="false">Live</button>
+        <button class="nav-link" data-status="UPCOMING" aria-pressed="false">Upcoming</button>
+        <button class="nav-link" data-status="COMPLETED" aria-pressed="false">Completed</button>
+      </nav>
+
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+
+  <!-- Main Dashboard -->
+  <main class="dashboard container">
+    <!-- Controls -->
+    <section class="dashboard-controls" aria-label="Dashboard controls">
+      <div class="format-filters" role="group" aria-label="Format filters">
+        <button class="pill active" data-format="ALL" aria-pressed="true">All</button>
+        <button class="pill" data-format="T20" aria-pressed="false">T20</button>
+        <button class="pill" data-format="ODI" aria-pressed="false">ODI</button>
+        <button class="pill" data-format="TEST" aria-pressed="false">Test</button>
+      </div>
+
+      <div class="view-toggle" role="group" aria-label="View toggle">
+        <button class="icon-btn active" aria-pressed="true">▢</button>
+        <button class="icon-btn" aria-pressed="false">≡</button>
+      </div>
+    </section>
+
+    <!-- Live Matches -->
+    <section class="matches-section live" aria-label="Live matches">
+      <header class="section-header">
+        <span class="live-indicator" aria-hidden="true"></span>
+        <h2>Live Matches</h2>
+      </header>
+
+      <!-- THIS WILL BE FILLED BY JS -->
+      <div class="matches-grid" id="liveGrid"></div>
+    </section>
+
+    <!-- Upcoming Matches -->
+    <section class="matches-section upcoming" aria-label="Upcoming matches">
+      <header class="section-header">
+        <h2>Upcoming</h2>
+      </header>
+
+      <ul class="upcoming-list" id="upcomingList"></ul>
+    </section>
+
+    <!-- Completed Matches -->
+    <section class="matches-section completed" aria-label="Completed matches">
+      <header class="section-header">
+        <h2>Completed</h2>
+      </header>
+
+      <ul class="completed-list" id="completedList"></ul>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script src="js/data.js"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

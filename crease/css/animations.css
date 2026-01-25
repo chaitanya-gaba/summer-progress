@@ -1,0 +1,98 @@
+/* ---------------------------
+   Fade-up animation
+--------------------------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Match card animation */
+.match-card {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 500ms var(--ease) both;
+  will-change: transform, opacity;
+}
+
+/* Match card visible */
+.match-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover effect */
+.match-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  transition: transform 200ms var(--ease);
+}
+
+/* ---------------------------
+   Live indicator
+--------------------------- */
+.live-indicator {
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  position: relative;
+}
+
+.live-indicator::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.4);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* ---------------------------
+   Navigation underline animation
+--------------------------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 250ms var(--ease);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ---------------------------
+   Section fade animation
+--------------------------- */
+.matches-section {
+  transition: opacity 200ms var(--ease);
+}
+
+.matches-section.fade {
+  opacity: 0;
+}

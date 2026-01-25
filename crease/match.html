@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Match Detail — Crease</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <!-- Global Header -->
+  <header class="app-header">
+    <div class="container header-inner">
+      <div class="logo">Crease</div>
+
+      <!-- Back button -->
+      <a href="index.html" class="icon-btn" aria-label="Back to dashboard">←</a>
+    </div>
+  </header>
+
+  <!-- Match Page -->
+  <main class="container match-page">
+
+    <!-- Match Header -->
+    <section class="match-header">
+      <div class="match-title">
+        <h1 id="matchTitle">IND vs AUS</h1>
+        <p class="sub" id="matchSub">T20 • Live • Wankhede Stadium</p>
+      </div>
+
+      <div class="match-score">
+        <div class="team-score">
+          <span class="team-code" id="homeCode">IND</span>
+          <strong class="score" id="homeScore">187/3</strong>
+          <span class="overs" id="homeOvers">(18.2)</span>
+        </div>
+        <div class="team-score muted">
+          <span class="team-code" id="awayCode">AUS</span>
+          <span class="yet" id="awayStatus">Yet to bat</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="tabs" role="tablist" aria-label="Match tabs">
+      <button class="tab active" data-tab="overview" aria-selected="true" role="tab">Overview</button>
+      <button class="tab" data-tab="scorecard" aria-selected="false" role="tab">Scorecard</button>
+      <button class="tab" data-tab="timeline" aria-selected="false" role="tab">Timeline</button>
+      <button class="tab" data-tab="stats" aria-selected="false" role="tab">Stats</button>
+    </section>
+
+    <!-- Tab content -->
+    <section class="tab-content">
+      <div class="tab-panel active" data-panel="overview" role="tabpanel">
+        <p class="panel-text">Match overview goes here.</p>
+      </div>
+
+      <div class="tab-panel" data-panel="scorecard" role="tabpanel">
+        <section class="scorecard">
+          <div class="scorecard-header">
+            <h3 id="inningsTitle">India Innings</h3>
+            <span class="scorecard-sub" id="inningsSub">187/3 (18.2 ov)</span>
+          </div>
+
+          <table class="batting-table">
+            <thead>
+              <tr>
+                <th>BATSMEN</th>
+                <th>R</th>
+                <th>B</th>
+                <th>4s</th>
+                <th>6s</th>
+                <th>SR</th>
+              </tr>
+            </thead>
+            <tbody id="battingBody">
+              <!-- JS will render batsmen -->
+            </tbody>
+
+            <tfoot>
+              <tr class="extras">
+                <td>Extras</td>
+                <td colspan="5" id="extras">12 (b 2, lb 1, w 9)</td>
+              </tr>
+              <tr class="total">
+                <td>Total</td>
+                <td colspan="5" id="total">187/3 (18.2 ov)</td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <div class="bowling">
+            <div class="scorecard-header">
+              <h3>Australia Bowling</h3>
+            </div>
+
+            <table class="bowling-table">
+              <thead>
+                <tr>
+                  <th>BOWLER</th>
+                  <th>O</th>
+                  <th>M</th>
+                  <th>R</th>
+                  <th>W</th>
+                  <th>Econ</th>
+                </tr>
+              </thead>
+              <tbody id="bowlingBody">
+                <!-- JS will render bowlers -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <div class="tab-panel" data-panel="timeline" role="tabpanel">
+        <section class="timeline">
+          <header class="timeline-header">
+            <h3>Match Timeline</h3>
+            <p class="timeline-sub">Runs per over + key moments</p>
+          </header>
+
+          <div class="timeline-grid" id="timelineGrid">
+            <!-- Timeline items rendered here -->
+          </div>
+        </section>
+      </div>
+
+      <div class="tab-panel" data-panel="stats" role="tabpanel">
+        <section class="stats-section">
+          <header class="stats-header">
+            <h3>Player Stats</h3>
+            <p class="stats-sub">Top performers in the match</p>
+          </header>
+
+          <div class="stats-grid" id="statsGrid">
+            <!-- Player cards rendered here -->
+          </div>
+        </section>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/match.js"></script>
+</body>
+</html>
