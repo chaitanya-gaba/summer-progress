@@ -1,0 +1,111 @@
+:root {
+  --bg: #0b0b0c;
+  --text: #f5f5f5;
+  --muted: #8a8a8a;
+  --line: #1e1e1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 80vh;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.hero-name {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.hero-role {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.hint {
+  margin-top: 4rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* WORK */
+
+.work {
+  border-top: 1px solid var(--line);
+  margin-top: 6rem;
+}
+
+.work-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-item h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.index {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ABOUT */
+
+.about {
+  margin-top: 6rem;
+  max-width: 520px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* MOTION */
+
+.magnetic {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* EASTER EGG */
+
+.reveal .magnetic {
+  outline: 1px dashed rgba(79, 140, 255, 0.25);
+}
+
+.reveal::after {
+  content: "motion is a system";
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  color: rgba(79, 140, 255, 0.6);
+  pointer-events: none;
+}
