@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pencil Sketch Fox</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdf9f3;
+  height: 100vh;
+}
+
+.fox {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+/* Body with pencil stroke effect */
+.fox .body {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  width: 100px;
+  height: 120px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f2b07d 0px,
+    #f2b07d 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  border-radius: 60% 60% 50% 50%;
+  border: 1px solid #b35c4a;
+  box-shadow:
+    inset 1px 1px 0 rgba(0,0,0,0.05),
+    inset -1px -1px 0 rgba(0,0,0,0.05);
+}
+
+/* Head with pencil hatch */
+.fox .head {
+  position: absolute;
+  top: 0;
+  left: 75px;
+  width: 60px;
+  height: 60px;
+  background: repeating-linear-gradient(
+    135deg,
+    #f2b07d 0px,
+    #f2b07d 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  border-radius: 50%;
+  border: 1px solid #b35c4a;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* Ears with pencil texture */
+.fox .ear {
+  position: absolute;
+  top: -15px;
+  width: 25px;
+  height: 35px;
+  background: repeating-linear-gradient(
+    25deg,
+    #f2b07d 0px,
+    #f2b07d 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  border-radius: 50% 50% 0 0;
+  border: 1px solid #b35c4a;
+}
+.fox .ear.left { left: 65px; transform: rotate(30deg); }
+.fox .ear.right { left: 110px; transform: rotate(-30deg); }
+
+/* Eyes */
+.fox .eye {
+  position: absolute;
+  top: 25px;
+  width: 8px;
+  height: 8px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+}
+.fox .eye.left { left: 85px; }
+.fox .eye.right { left: 105px; }
+
+/* Nose */
+.fox .nose {
+  position: absolute;
+  width: 8px;
+  height: 6px;
+  background: rgba(0,0,0,0.8);
+  border-radius: 50%;
+  top: 45px;
+  left: 96px;
+}
+
+/* Tail with sketch texture */
+.fox .tail {
+  position: absolute;
+  bottom: 0;
+  left: -30px;
+  width: 120px;
+  height: 30px;
+  background: repeating-linear-gradient(
+    120deg,
+    #f2b07d 0px,
+    #f2b07d 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  border-radius: 50%;
+  border: 1px solid #b35c4a;
+  transform: rotate(-40deg);
+}
+</style>
+</head>
+<body>
+<div class="fox">
+  <div class="body"></div>
+  <div class="head"></div>
+  <div class="ear left"></div>
+  <div class="ear right"></div>
+  <div class="eye left"></div>
+  <div class="eye right"></div>
+  <div class="nose"></div>
+  <div class="tail"></div>
+</div>
+</body>
+</html>
