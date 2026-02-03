@@ -15,7 +15,6 @@ html, body {
         linear-gradient(#0a0f1a, #141c2b 55%, #1c2a1c 75%);
 }
 
-/* film grain */
 .scene::after {
     content: "";
     position: absolute;
