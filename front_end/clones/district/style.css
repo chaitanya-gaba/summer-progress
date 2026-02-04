@@ -36,28 +36,39 @@ body {
 }
 
 .nav-container {
-  max-width: 1200px;
-  height: 64px;
-  margin: auto;
-  padding: 0 24px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+  height: 64px;
 }
 
-/* Left Section */
-.nav-left {
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;           /* takes all space between left and right */
+  gap: 36px;              /* spacing between links */
+  list-style: none;
+  font-size: 16px;        /* larger text */
+  font-weight: 500;
+  color: #475569;
+}
+
+.nav-links li {
+  cursor: pointer;
+}
+
+.nav-links li:hover {
+  color: var(--purple-700);
+}
+
+/* Left and right sections */
+.nav-left, .nav-right {
   display: flex;
   align-items: center;
   gap: 28px;
-}
-
-/* Right Section */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 /* Logo */
