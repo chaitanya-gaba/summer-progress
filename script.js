@@ -1,5 +1,6 @@
 const designs = [
   "front_end/gemini_Test/start-new",
+  "front_end/clones/district",
   "front_end/gemini_Test/punch-in_and_punch-out",
   "front_end/gemini_Test/count-down",
   "front_end/gemini_Test/display-design",
