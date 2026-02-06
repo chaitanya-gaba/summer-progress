@@ -61,7 +61,9 @@ const designs = [
   "front_end/daily_task/advanced-dynamic-tile",
   "front_end/daily_task/envelop",
   "front_end/daily_task/typewriter",
-  "front_end/daily_task/getwell-soon"
+  "front_end/daily_task/getwell-soon",
+  "front_end/clones/district",
+  "front_end/daily_task/sell-car"
   // ... add all design folder names here
 ];
 
