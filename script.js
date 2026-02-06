@@ -63,7 +63,11 @@ const designs = [
   "front_end/daily_task/typewriter",
   "front_end/daily_task/getwell-soon",
   "front_end/clones/district",
-  "front_end/daily_task/sell-car"
+  "front_end/daily_task/sell-car",
+  "front_end/daily_task/nova-ai",
+  "front_end/daily_task/chaos",
+  "front_end/daily_task/calm-chaos",
+  "front_end/daily_task/gravity"
   // ... add all design folder names here
 ];
 
