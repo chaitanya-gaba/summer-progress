@@ -5,13 +5,13 @@ window.TIMELINE_DATA = [
     emoji: "📍"
   },
   {
-    date: "14 Feb 2026",
-    text: "A day that felt infinite.",
+    date: "12 Feb 2026",
+    text: "A day",
     emoji: "📍"
   },
   {
     date: "01 Mar 2026",
-    text: "Learning to grow together.",
+    text: "Learning to grow.",
     emoji: "📍"
   },
   {
