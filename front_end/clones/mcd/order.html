@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McD Redesign - Order</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">McD</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html" class="active">Order</a></li>
+                <li><a href="locations.html">Locations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="order-section">
+            <h2>Your Order</h2>
+            <ul id="order-items"></ul>
+            <p>Total: $<span id="order-total">0</span></p>
+
+            <form id="order-form">
+                <h3>Customer Info</h3>
+                <input type="text" placeholder="Name" required>
+                <input type="text" placeholder="Address" required>
+                <input type="text" placeholder="City" required>
+                <input type="text" placeholder="ZIP Code" required>
+                <button type="submit" class="btn">Submit Order</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 McD. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

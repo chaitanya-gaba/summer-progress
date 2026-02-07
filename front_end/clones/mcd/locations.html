@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McD Redesign - Locations</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">McD</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="locations.html" class="active">Locations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="location-filter">
+            <input type="text" id="location-search" placeholder="Enter city or ZIP">
+        </section>
+
+        <section class="map-section">
+            <div id="map" style="width:100%;height:400px;"></div>
+        </section>
+
+        <section class="location-list" id="location-list">
+            <!-- JS will populate locations here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 McD. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>

@@ -67,7 +67,9 @@ const designs = [
   "front_end/daily_task/nova-ai",
   "front_end/daily_task/chaos",
   "front_end/daily_task/calm-chaos",
-  "front_end/daily_task/gravity"
+  "front_end/daily_task/gravity",
+  "front_end/daily_task/dev-timeline",
+  "front_end/clones/mcd"
   // ... add all design folder names here
 ];
 
