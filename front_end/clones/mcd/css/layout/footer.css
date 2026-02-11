@@ -1,0 +1,47 @@
+/* ===============================
+   SITE FOOTER
+   =============================== */
+
+.site-footer {
+  background: var(--bg-footer);
+  padding: 48px 24px;
+  margin-top: 64px;
+}
+
+/* ===============================
+   FOOTER INNER
+   =============================== */
+
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+/* ===============================
+   FOOTER COLUMNS
+   =============================== */
+
+.footer-col h4 {
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.footer-col a {
+  display: block;
+  margin-bottom: 8px;
+
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-decoration: none;
+
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--color-primary);
+}

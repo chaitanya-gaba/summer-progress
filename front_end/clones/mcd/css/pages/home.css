@@ -1,0 +1,114 @@
+/* ==========================================================
+   HOME PAGE - CATEGORY SLIDER
+   ========================================================== */
+
+/* Wrapper for buttons + scrollable track */
+.home-categories {
+  position: relative;
+  margin: 16px 20px 0;
+}
+
+.category-row-wrapper {
+  display: flex;
+  align-items: center; /* vertical center */
+  gap: 12px;           /* space between buttons and track */
+  position: relative;
+}
+
+/* ===============================
+   SLIDER BUTTONS
+   =============================== */
+.prev-btn,
+.next-btn {
+  color: #fff;                     /* white arrows */
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.3s;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* ===============================
+   CATEGORY ROW & TRACK
+   =============================== */
+.category-row {
+  display: flex;
+  overflow-x: auto;                /* horizontal scroll */
+  gap: 12px;
+  flex: 1;                          /* takes space between buttons */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+}
+
+/* ===============================
+   FULL MENU BUTTON
+   =============================== */
+.full-menu-wrapper {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.full-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.full-menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 1024px) {
+  .category-card {
+    min-width: 150px; /* keep cards responsive */
+  }
+}
+
+@media (max-width: 768px) {
+  .category-card {
+    min-width: 120px;
+    height: 120px;
+  }
+
+  .full-menu-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .category-row-wrapper {
+    gap: 8px;
+  }
+}

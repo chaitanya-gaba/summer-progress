@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Clone | Menu</title>
+
+  <!-- Base -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- Components -->
+   <!-- <link rel="stylesheet" href="css/components/banner.css"> -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/category-card.css">
+  <link rel="stylesheet" href="css/components/product-card.css">
+
+  <!-- Page -->
+  <link rel="stylesheet" href="css/pages/home.css"> <!-- Reuse home.css for slider layout -->
+  <link rel="stylesheet" href="css/pages/menu.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
+
+      <div class="nav-center">
+        <button class="location-btn">
+          📍 <span>Select Store</span>
+        </button>
+        <div class="search-wrapper">
+          <input type="text" id="menu-search" placeholder="Search menu">
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <button class="icon-btn cart-btn">
+          🛒 <span class="cart-count">0</span>
+        </button>
+        <button class="login-btn">Login</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="menu-page">
+
+    <!-- CATEGORY SLIDER -->
+    <section class="home-categories">
+
+      <div class="category-row-wrapper">
+        <button class="prev-btn">←</button>
+
+        <div class="category-row">
+          <div class="category-track">
+            <a href="menu.html?category=whopper" class="category-card">
+              <img src="assets/images/categories/burger.png" alt="category-card">
+              <span>Whopper Central</span>
+            </a>
+
+            <a href="menu.html?category=meals" class="category-card">
+              <img src="assets/images/categories/meal.png" alt="category-card">
+              <span>King Meals</span>
+            </a>
+
+            <a href="menu.html?category=crispy-sides" class="category-card">
+              <img src="assets/images/categories/fries.png" alt="category-card">
+              <span>Crispy Sides</span>
+            </a>
+
+            <a href="menu.html?category=beverages" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="category-card">
+              <span>Beverages</span>
+            </a>
+
+            <a href="menu.html?category=desserts" class="category-card">
+              <img src="assets/images/categories/ice-cream.png" alt="category-card">
+              <span>Desserts</span>
+            </a>
+
+            <a href="menu.html?category=bk-cafe" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="category-card">
+              <span>BK Café</span>
+            </a>
+
+            <a href="menu.html?category=kids-menu" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="category-card">
+              <span>Kids’ Menu</span>
+            </a>
+          </div>
+        </div>
+
+        <button class="next-btn">→</button>
+      </div>
+
+      <div class="full-menu-wrapper">
+        <a href="menu.html" class="btn-primary full-menu-btn">Explore Full Menu</a>
+      </div>
+
+    </section>
+
+    <!-- GRID LAYOUT -->
+    <section class="menu-layout">
+
+      <!-- LEFT SPACER (7%) -->
+      <div class="spacer"></div>
+
+      <!-- SCROLLABLE MENU ITEMS (56%) -->
+      <div class="menu-items" id="menu-items">
+        <!-- Menu sections rendered dynamically via menu.js -->
+      </div>
+
+      <!-- STICKY CART (30%) -->
+      <aside class="cart">
+        <h3>Your Order</h3>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-summary-row">
+            <span>Subtotal</span>
+            <span class="subtotal-value">₹0</span>
+          </div>
+
+          <div class="cart-summary-row">
+            <span>GST 18%</span>
+            <span class="gst-value">₹0</span>
+          </div>
+
+          <div class="cart-summary-row total-row">
+            <span>Total</span>
+            <span class="total-value">₹0</span>
+          </div>
+
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </aside>
+
+      <!-- RIGHT SPACER (7%) -->
+      <div class="spacer"></div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About BK</a>
+        <a href="#">Careers</a>
+        <a href="#">Nutrition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="#">Support</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script type="module">
+    import { loadTheme } from './js/core/utils.js';
+    loadTheme();
+  </script>
+
+  <script type="module" src="./js/pages/menu.js"></script>
+
+</body>
+</html>

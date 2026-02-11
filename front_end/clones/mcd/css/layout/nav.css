@@ -1,0 +1,152 @@
+/* ===============================
+   SITE HEADER
+   =============================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: var(--bg-nav);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===============================
+   NAV CONTAINER
+   =============================== */
+
+.nav {
+  height: 72px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===============================
+   NAV SECTIONS
+   =============================== */
+
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Center stays visually centered */
+.nav-center {
+  flex: 1;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* ===============================
+   LOGO
+   =============================== */
+
+.logo img {
+  height: 40px;
+  cursor: pointer;
+}
+
+/* ===============================
+   LOCATION BUTTON
+   =============================== */
+
+.location-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+
+  background: var(--bg-section);
+  border: 1px solid var(--border-subtle);
+
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: background var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.location-btn:hover {
+  background: var(--bg-card);
+}
+
+/* ===============================
+   SEARCH
+   =============================== */
+
+.search-wrapper input {
+  width: 240px;
+  padding: 8px 12px;
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-primary);
+
+  transition: border-color var(--transition-fast);
+}
+
+.search-wrapper input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* ===============================
+   ICON BUTTONS
+   =============================== */
+
+.icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Cart count badge */
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+
+  background: var(--color-primary);
+  color: var(--text-inverse);
+
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+/* ===============================
+   LOGIN BUTTON
+   =============================== */
+
+.login-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  border: none;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.login-btn:hover {
+  transform: translateY(-1px);
+}

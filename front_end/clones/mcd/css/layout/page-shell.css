@@ -1,0 +1,34 @@
+/* ===============================
+   PAGE SHELL
+   =============================== */
+
+body {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-nav);
+}
+
+/* Main content wrapper */
+main {
+  display: block;
+  width: 100%;
+}
+
+/* Home page spacing */
+main.home {
+  padding-top: 24px;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--bg-footer);
+  color: var(--text-secondary);
+}

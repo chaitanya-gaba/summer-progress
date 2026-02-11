@@ -1,0 +1,115 @@
+/* ==========================================================
+   SYSTEM TOKENS (NEVER THEMED)
+   ========================================================== */
+
+:root {
+  /* Typography */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-display: 'Flame', 'Inter', sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms var(--ease-standard);
+  --transition-medium: 300ms var(--ease-standard);
+
+  /* Shadows */
+  --shadow-soft: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-medium: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+/* ==========================================================
+   SEMANTIC TOKENS (USED BY COMPONENTS)
+   ========================================================== */
+
+:root {
+  --color-primary: #000;
+  --color-secondary: #000;
+  --color-accent: #000;
+
+  --bg-page: #fff;
+  --bg-section: #fff;
+  --bg-card: #fff;
+  --bg-nav: #fff;
+  --bg-footer: #fff;
+
+  --text-primary: #000;
+  --text-secondary: #000;
+  --text-inverse: #fff;
+
+  --border-subtle: rgba(0,0,0,0.1);
+}
+
+/* ==========================================================
+   CLASSIC BK MODE (DEFAULT)
+   ========================================================== */
+
+/* ==========================================================
+   CLASSIC BK CLONE MODE (DEFAULT)
+   ========================================================== */
+
+[data-theme="classic"] {
+  --color-primary: #e2231a;      /* BK red */
+  --color-secondary: #ffcc00;    /* BK yellow */
+  --color-accent: #502314;       /* Dark brown accent */
+
+  --bg-page: #f9f1e7;            /* Light beige */
+  --bg-section: #fff3e0;         /* Slightly darker beige for sections */
+  --bg-card: #ffffff;            /* White card for product contrast */
+  --bg-nav: #e2f18d;             /* Red nav */
+  --bg-footer: #f0d6cc;          /* Dark footer */
+
+  --text-primary: #1f1f1f;       /* Dark text */
+  --text-secondary: #5f5f5f;     /* Secondary gray text */
+  --text-inverse: #ffffff;       /* White text on colored bg */
+
+  --border-subtle: rgba(0,0,0,0.08);
+}
+
+/* ==========================================================
+   LATE NIGHT MODE
+   ========================================================== */
+
+[data-theme="latenight"] {
+  --color-primary: #b71c1c;
+  --color-secondary: #2b1d14;
+  --color-accent: #ff9800;
+
+  --bg-page: #1b120c;
+  --bg-section: #23170f;
+  --bg-card: #2d1d14;
+  --bg-nav: #23170f;
+  --bg-footer: #2b1d14;
+
+  --text-primary: #f5f1ee;
+  --text-secondary: #c7bdb5;
+  --text-inverse: #ffffff;
+
+  --border-subtle: rgba(255,255,255,0.12);
+}
+
+/* ==========================================================
+   BK CAFÉ MODE
+   ========================================================== */
+
+[data-theme="cafe"] {
+  --color-primary: #6f4e37;
+  --color-secondary: #f3e7d8;
+  --color-accent: #c69c6d;
+
+  --bg-page: #faf6f2;
+  --bg-section: #f1e9df;
+  --bg-card: #ffffff;
+  --bg-nav: #ffffff;
+  --bg-footer: #f3e7d8;
+
+  --text-primary: #3a2a1f;
+  --text-secondary: #7a6656;
+  --text-inverse: #ffffff;
+
+  --border-subtle: rgba(0,0,0,0.1);
+}

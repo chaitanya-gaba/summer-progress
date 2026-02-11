@@ -1,0 +1,146 @@
+/* ==========================================================
+   BUTTONS.CSS
+   ========================================================== */
+
+/* Base button reset */
+button {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* ==========================================================
+   PRIMARY BUTTONS
+   Used for Add, Checkout, Login
+   ========================================================== */
+.btn-primary,
+.login-btn,
+.add-btn,
+.checkout-btn {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover,
+.login-btn:hover,
+.add-btn:hover,
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active,
+.login-btn:active,
+.add-btn:active,
+.checkout-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================
+   SECONDARY BUTTONS
+   Used for Location, Category chips
+   ========================================================== */
+.btn-secondary,
+.location-btn,
+.category-chip {
+  background-color: var(--bg-section);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 12px;
+  font-weight: 500;
+}
+
+.btn-secondary:hover,
+.location-btn:hover,
+.category-chip:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-1px);
+}
+
+.category-chip.active {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================
+   ICON BUTTONS
+   Small circular buttons (cart, plus/minus)
+   ========================================================== */
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+  padding: 6px;
+}
+
+.icon-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ==========================================================
+   DISABLED STATE
+   ========================================================== */
+button:disabled,
+button.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  button {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .category-chip {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+}
+
+.full-menu-wrapper {
+  text-align: center; /* center the button */
+  margin-top: 24px;   /* spacing above */
+}
+
+.full-menu-btn {
+  display: inline-flex;        /* same as buttons */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.full-menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}

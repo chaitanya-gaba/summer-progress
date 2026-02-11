@@ -1,54 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="classic">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McD Redesign - Menu</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Clone | Home</title>
+
+  <!-- Base -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- Components -->
+   <link rel="stylesheet" href="css/components/banner.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/category-card.css">
+
+  <!-- Page -->
+  <link rel="stylesheet" href="css/pages/home.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo">McD</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <!-- <li><a href="menu.html" class="active">Menu</a></li> -->
-                <li><a href="order.html">Order</a></li>
-                <li><a href="locations.html">Locations</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="menu-filter">
-            <button data-category="all" class="active">All</button>
-            <button data-category="burger">Burgers</button>
-            <button data-category="drink">Drinks</button>
-            <button data-category="dessert">Desserts</button>
-        </section>
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
 
-        <section class="menu-grid" id="menu-grid">
-            <div class="menu-carousel" id="featured-carousel">
-    <button class="carousel-btn prev" onclick="prevSlide()">❮</button>
-    <div class="carousel-track" id="carousel-track">
-        <!-- JS will populate featured items here -->
+      <div class="nav-center">
+        <button class="location-btn">
+          <span><img src="assets/icons/locations.svg" alt=""></span>
+          <span>Select Store</span>
+        </button>
+
+        <div class="search-wrapper">
+          <!-- <label for="search-input" class="sr-only"><img src="assets/icons/icons8-magnifying-glass.svg" alt=""></label> -->
+          <input type="text" id="menu-search" placeholder="Search menu">
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <button class="icon-btn cart-btn">
+          🛒 <span class="cart-count" data-cart-count>0</span>
+        </button>
+        <button class="login-btn">Login</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="home">
+
+    <!-- HERO BANNER (STRUCTURE ONLY, NO JS YET) -->
+    <section class="hero-banner">
+      <div class="banner-track">
+        <img src="assets/images/banners/1.png" alt="banner">
+        <img src="assets/images/banners/2.png" alt="banner">
+        <img src="assets/images/banners/3.png" alt="banner">
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="home-categories">
+
+      <div class="category-row-wrapper">
+        <!-- <button class="prev-btn">←</button> -->
+
+        <div class="category-row">
+          <div class="category-track">
+            <a href="menu.html?category=whopper" class="category-card">
+              <img src="assets/images/categories/burger.png" alt="category-card">
+              <span>Whopper Central</span>
+            </a>
+
+            <a href="menu.html?category=meals" class="category-card">
+              <img src="assets/images/categories/meal.png" alt="category-card">
+              <span>Meals</span>
+            </a>
+
+            <a href="menu.html?category=crispy-sides" class="category-card">
+              <img src="assets/images/categories/fries.png" alt="category-card">
+              <span>Crispy Sides</span>
+            </a>
+
+            <a href="menu.html?category=beverages" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="category-card">
+              <span>Beverages</span>
+            </a>
+
+            <a href="menu.html?category=desserts" class="category-card">
+              <img src="assets/images/categories/ice-cream.png" alt="category-card">
+              <span>Desserts</span>
+            </a>
+
+            <a href="menu.html?category=bk-cafe" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="category-card">
+              <span>BK Café</span>
+            </a>
+
+            <a href="menu.html?category=kids-menu" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="category-card">
+              <span>Kid's Menu</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- <button class="next-btn">→</button> -->
+      </div>
+      <div class="full-menu-wrapper">
+        <a href="menu.html" class="btn-primary full-menu-btn">Explore Full Menu</a>
+      </div>  
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About BK</a>
+        <a href="#">Careers</a>
+        <a href="#">Nutrition</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="#">Support</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
     </div>
-    <button class="carousel-btn next" onclick="nextSlide()">❯</button>
-</div>
-        </section>
+  </footer>
 
-        <aside class="cart">
-            <h3>Cart</h3>
-            <ul id="cart-items"></ul>
-            <p>Total: $<span id="cart-total">0</span></p>
-            <a href="order.html" class="btn">Go to Order</a>
-        </aside>
-    </main>
+  <!-- THEME INIT -->
+  <script type="module">
+    import { loadTheme } from './js/core/utils.js';
+    loadTheme();
+  </script>
 
-    <footer>
-        <p>&copy; 2026 McD. All rights reserved.</p>
-    </footer>
+  <!-- HERO BANNER SLIDE LOGIC -->
+  <script type="module" src="js/pages/home.js"></script>
 
-    <script src="js/script.js"></script>
 </body>
 </html>
