@@ -1,12 +1,10 @@
 /* ===============================
    SITE HEADER
    =============================== */
-
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   background: var(--bg-nav);
   box-shadow: var(--shadow-soft);
 }
@@ -14,41 +12,52 @@
 /* ===============================
    NAV CONTAINER
    =============================== */
-
 .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 72px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
 }
 
 /* ===============================
    NAV SECTIONS
    =============================== */
-
 .nav-left,
 .nav-center,
 .nav-right {
   display: flex;
   align-items: center;
   gap: 16px;
+  min-width: 0;
 }
 
-/* Center stays visually centered */
+.nav-left {
+  flex: 0 0 auto; /* logo fixed size */
+}
+
 .nav-center {
-  flex: 1;
-  justify-content: center;
-  gap: 24px;
+  flex: 1 1 auto; /* grows to fill space */
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 /* ===============================
    LOGO
    =============================== */
-
 .logo img {
   height: 40px;
   cursor: pointer;
@@ -57,21 +66,16 @@
 /* ===============================
    LOCATION BUTTON
    =============================== */
-
 .location-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-
   padding: 8px 12px;
   border-radius: var(--radius-md);
-
   background: var(--bg-section);
   border: 1px solid var(--border-subtle);
-
   font-weight: 500;
   cursor: pointer;
-
   transition: background var(--transition-fast),
               border-color var(--transition-fast);
 }
@@ -81,48 +85,51 @@
 }
 
 /* ===============================
-   SEARCH
+   SEARCH WRAPPER
    =============================== */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 8px;
+}
 
 .search-wrapper input {
-  width: 240px;
+  width: 40px; /* collapsed default */
   padding: 8px 12px;
-
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   background: var(--bg-card);
   color: var(--text-primary);
-
-  transition: border-color var(--transition-fast);
+  transition: width 0.3s ease, opacity 0.2s ease;
+  opacity: 0.7;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-.search-wrapper input:focus {
-  outline: none;
-  border-color: var(--color-primary);
+.search-wrapper.active input {
+  width: 220px; /* expanded width */
+  opacity: 1;
 }
 
 /* ===============================
    ICON BUTTONS
    =============================== */
-
 .icon-btn {
   position: relative;
   background: none;
   border: none;
-
   font-size: 18px;
   cursor: pointer;
 }
 
-/* Cart count badge */
 .cart-count {
   position: absolute;
   top: -6px;
   right: -10px;
-
   background: var(--color-primary);
   color: var(--text-inverse);
-
   font-size: 12px;
   padding: 2px 6px;
   border-radius: 999px;
@@ -131,22 +138,49 @@
 /* ===============================
    LOGIN BUTTON
    =============================== */
-
 .login-btn {
   padding: 8px 16px;
   border-radius: var(--radius-md);
-
   background: var(--color-primary);
   color: var(--text-inverse);
   border: none;
-
   font-weight: 600;
   cursor: pointer;
-
   transition: background var(--transition-fast),
               transform var(--transition-fast);
 }
 
 .login-btn:hover {
   transform: translateY(-1px);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE (<768px)
+   =============================== */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+
+  .search-wrapper input {
+    width: 40px; /* collapsed mobile width */
+  }
+
+  .search-wrapper.active input {
+    width: 160px; /* expanded mobile width */
+  }
+
+  .location-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .nav-center {
+    gap: 8px;
+  }
 }

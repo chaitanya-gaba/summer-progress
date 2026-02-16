@@ -4,7 +4,7 @@
 .hero-banner {
   width: 100%;           /* changed from 100vw */
   overflow: hidden;
-  aspect-ratio: 1584 / 396; /* maintains the ratio */
+  aspect-ratio: 4 / 1; /* maintains the ratio */
   max-height: 250px;
   margin: 0;             /* remove body margin influence */
 }

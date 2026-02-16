@@ -25,6 +25,7 @@
 
   <!-- Page -->
   <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/base/responsive.css">
 </head>
 
 <body>
@@ -41,11 +42,13 @@
       <div class="nav-center">
         <button class="location-btn">
           <span><img src="assets/icons/locations.svg" alt=""></span>
-          <span>Select Store</span>
+          <!-- <span>Select Store</span> -->
         </button>
 
         <div class="search-wrapper">
-          <!-- <label for="search-input" class="sr-only"><img src="assets/icons/icons8-magnifying-glass.svg" alt=""></label> -->
+          <button class="search-toggle">
+            <span><img src="assets/icons/magnifying-glass.svg" alt=""></span>
+          </button>
           <input type="text" id="menu-search" placeholder="Search menu">
         </div>
       </div>
@@ -158,6 +161,7 @@
   </script>
 
   <!-- HERO BANNER SLIDE LOGIC -->
+  <script type="module" src="js/components/search-toggle.js"></script>
   <script type="module" src="js/pages/home.js"></script>
 
 </body>
