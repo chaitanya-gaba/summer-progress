@@ -1,208 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Title -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>District | Portfolio Clone</title>
 
+  <!-- SEO -->
+  <meta name="description" content="District Clone - Discover movies, dining, events and experiences near you.">
+
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- ================= BASE ================= -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- ================= UTILITIES ================= -->
+  <link rel="stylesheet" href="css/utilities/layout-helpers.css">
+  <link rel="stylesheet" href="css/utilities/grid.css">
+
+  <!-- ================= LAYOUT ================= -->
+  <link rel="stylesheet" href="css/layout/navbar.css">
+  <link rel="stylesheet" href="css/layout/hero.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- ================= COMPONENTS ================= -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/forms.css">
+  <link rel="stylesheet" href="css/components/modal.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+
+  <!-- ================= PAGE ================= -->
+  <link rel="stylesheet" href="css/pages/home.css">
 </head>
 
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
-  <nav class="navbar">
-    <div class="nav-container">
+  <!-- ===================== HEADER ===================== -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
 
-      <!-- Left Section -->
-      <div class="nav-left">
-        <div class="logo">district*</div>
+        <!-- Left -->
+        <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
+          </a>
 
-        <div class="location">
-          Gurugram
-          <span class="sub-location">Haryana</span>
-          <svg width="12" height="12" viewBox="0 0 24 24">
-            <path
-              d="M7 10l5 5 5-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-          </svg>
+          <div class="nav-item dropdown-wrapper" id="locationMenu">
+            <span class="location-label">
+              Gurugram
+              <span class="sub-location">Haryana</span>
+              <svg width="12" height="12" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+
+            <!-- Dropdown -->
+            <ul class="dropdown hidden" id="locationDropdown">
+              <li>Gurugram, Haryana</li>
+              <li>Delhi, Delhi</li>
+              <li>Mumbai, Maharashtra</li>
+              <li>Bengaluru, Karnataka</li>
+            </ul>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="index.html">For You</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Play</a></li>
+          </ul>
         </div>
 
-        <ul class="nav-links">
-          <li>For you</li>
-          <li>Dining</li>
-          <li>Movies</li>
-          <li>Events</li>
-          <li>Stores</li>
-          <li>Activities</li>
-          <li>Play</li>
-        </ul>
+        <!-- Right -->
+        <div class="nav-right">
+          <div class="nav-search">
+            <input type="text" id="navSearchInput" placeholder="Search movies..." />
+            <button id="navSearchBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+
+          <a href="login.html" class="login-btn">Login</a>
+        </div>
+
       </div>
+    </nav>
+  </header>
 
-      <!-- Right Section -->
-      <div class="nav-right">
-        <button class="search-btn">
-          <svg viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
-          </svg>
-          Search
-        </button>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero-slider">
+    <div class="slider-track" id="sliderTrack">
 
-        <button class="login-btn">Login</button>
-      </div>
-
-    </div>
-  </nav>
-
-  <!-- ===================== HERO SECTION ===================== -->
-  <section class="hero">
-    <div class="hero-container">
-      <h1>
-        Discover experiences <br />
-        worth stepping out for
-      </h1>
-
-      <div class="search-wrapper">
-        <input
-          type="text"
-          placeholder="Search events, dining, comedy…"
-        />
-        <button>Search</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== CATEGORIES ===================== -->
-  <section class="categories">
-    <h2>Explore</h2>
-
-    <div class="category-row">
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" alt="Music" />
-        <p>Music</p>
-      </div>
-
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1527224857830-43a7acc85260" alt="Comedy" />
-        <p>Comedy</p>
-      </div>
-
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" alt="Dining" />
-        <p>Dining</p>
-      </div>
-
-      <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Workshops" />
-        <p>Workshops</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MOVIES SECTION ===================== -->
-  <section class="movies">
-
-    <div class="section-header">
-      <h2>Movies</h2>
-      <a href="#">View all</a>
-    </div>
-
-    <div class="movie-scroll">
-
-      <!-- Movie Card -->
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba" alt="Interstellar" />
-        <div class="movie-info">
-          <h4>Interstellar</h4>
+      <div class="slide active">
+        <img src="assets/images/5.jpg" alt="Interstellar">
+        <div class="slide-content">
+          <h1>Interstellar</h1>
           <p>English • Sci-Fi</p>
         </div>
       </div>
 
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0" alt="Oppenheimer" />
-        <div class="movie-info">
-          <h4>Oppenheimer</h4>
+      <div class="slide">
+        <img src="assets/images/6.jpg" alt="Oppenheimer">
+        <div class="slide-content">
+          <h1>Oppenheimer</h1>
           <p>English • Drama</p>
         </div>
       </div>
 
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66" alt="Dune" />
-        <div class="movie-info">
-          <h4>Dune</h4>
+      <div class="slide">
+        <img src="assets/images/7.jpg" alt="Dune">
+        <div class="slide-content">
+          <h1>Dune</h1>
           <p>English • Action</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b" alt="Avatar" />
-        <div class="movie-info">
-          <h4>Avatar</h4>
-          <p>English • Fantasy</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1509347528160-9a9e33742cdb" alt="Inception" />
-        <div class="movie-info">
-          <h4>Inception</h4>
-          <p>English • Thriller</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1" alt="Joker" />
-        <div class="movie-info">
-          <h4>Joker</h4>
-          <p>English • Crime</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1559582798-678dfc0fb03f" alt="Batman" />
-        <div class="movie-info">
-          <h4>Batman</h4>
-          <p>English • Action</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1611416517780-eff3a13a5a15" alt="Matrix" />
-        <div class="movie-info">
-          <h4>Matrix</h4>
-          <p>English • Sci-Fi</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee" alt="Tenet" />
-        <div class="movie-info">
-          <h4>Tenet</h4>
-          <p>English • Action</p>
-        </div>
-      </div>
-
-      <div class="movie-card">
-        <img src="https://images.unsplash.com/photo-1512070679279-8988d32161be" alt="Gravity" />
-        <div class="movie-info">
-          <h4>Gravity</h4>
-          <p>English • Sci-Fi</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Scripts -->
-  <script src="script.js"></script>
+  <!-- ===================== CATEGORIES ===================== -->
+  <section class="categories section">
+    <div class="container">
+      <h2>Explore</h2>
+      <div class="category-row">
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" alt="Music">
+          <p>Music</p>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1527224857830-43a7acc85260" alt="Comedy">
+          <p>Comedy</p>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" alt="Dining">
+          <p>Dining</p>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Workshops">
+          <p>Workshops</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MOVIES ===================== -->
+  <section class="movies section alt-section">
+    <div class="container">
+      <div class="flex-between" style="margin-bottom:20px">
+        <h2>Movies</h2>
+        <a href="movies.html" class="btn-outline">View All</a>
+      </div>
+
+      <div class="movie-scroll">
+
+        <a href="movie-details.html" class="movie-card">
+          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba" alt="Interstellar">
+          <div class="movie-info">
+            <h4>Interstellar</h4>
+            <p>English • Sci-Fi</p>
+          </div>
+        </a>
+
+        <a href="movie-details.html" class="movie-card">
+          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0" alt="Oppenheimer">
+          <div class="movie-info">
+            <h4>Oppenheimer</h4>
+            <p>English • Drama</p>
+          </div>
+        </a>
+
+        <a href="movie-details.html" class="movie-card">
+          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66" alt="Dune">
+          <div class="movie-info">
+            <h4>Dune</h4>
+            <p>English • Action</p>
+          </div>
+        </a>
+
+        <a href="movie-details.html" class="movie-card">
+          <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b" alt="Avatar">
+          <div class="movie-info">
+            <h4>Avatar</h4>
+            <p>English • Fantasy</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DINING TEASER ===================== -->
+  <section class="dining section">
+    <div class="container">
+      <h2>Dining Near You</h2>
+      <div class="grid-4">
+
+        <a href="dining.html" class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Olive Garden">
+          <div class="restaurant-info">
+            <h4>Olive Garden</h4>
+            <p>Italian Cuisine</p>
+          </div>
+        </a>
+
+        <a href="dining.html" class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1543779503-7dba8b6b3e82" alt="Spice Hub">
+          <div class="restaurant-info">
+            <h4>Spice Hub</h4>
+            <p>Indian Cuisine</p>
+          </div>
+        </a>
+
+        <a href="dining.html" class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1" alt="Sushi World">
+          <div class="restaurant-info">
+            <h4>Sushi World</h4>
+            <p>Japanese Cuisine</p>
+          </div>
+        </a>
+
+        <a href="dining.html" class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9" alt="Burger Town">
+          <div class="restaurant-info">
+            <h4>Burger Town</h4>
+            <p>Fast Food</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="section alt-section">
+    <div class="container flex-between">
+      <p>&copy; 2026 District Clone. All rights reserved.</p>
+      <p>Designed by You</p>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/script.js" defer></script>
 
 </body>
 </html>

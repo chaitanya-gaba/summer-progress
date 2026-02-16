@@ -1,0 +1,28 @@
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.seat-map {
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  gap: 6px;
+}
+
+.seat {
+  height: 28px;
+  background: var(--gray-300);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.seat.selected {
+  background: var(--purple-700);
+  color: #fff;
+}
+
+.seat.occupied {
+  background: #b0b0b0;
+  cursor: not-allowed;
+}

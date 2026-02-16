@@ -1,0 +1,28 @@
+:root {
+  /* Brand */
+  --purple-900: #2b1b46;
+  --purple-700: #4c2a85;
+  --purple-500: #6d28d9;
+  --purple-100: #f3e8ff;
+  --purple-50:  #faf5ff;
+
+  /* Accent (blue complement) */
+  --accent-500: #3b82f6;
+  --accent-400: #60a5fa;
+
+  /* Grays */
+  --gray-900: #0f172a;
+  --gray-700: #334155;
+  --gray-500: #64748b;
+  --gray-300: #cbd5e1;
+  --gray-100: #f1f5f9;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.35s ease;
+}

@@ -1,0 +1,36 @@
+/* =====================================================
+   FLEX UTILITIES (STRUCTURAL HELPERS)
+===================================================== */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.alt-section {
+  background-color: var(--purple-50);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}

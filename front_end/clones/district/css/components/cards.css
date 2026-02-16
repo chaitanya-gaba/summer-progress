@@ -1,0 +1,32 @@
+.card,
+.movie-card,
+.restaurant-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fff;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+  box-shadow: 0 8px 20px rgba(109,40,217,0.08);
+}
+
+.card:hover,
+.movie-card:hover,
+.restaurant-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(109,40,217,0.15);
+}
+
+.movie-card img {
+  height: 280px;
+  object-fit: cover;
+}
+
+.restaurant-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.movie-info,
+.restaurant-info {
+  padding: 16px;
+}

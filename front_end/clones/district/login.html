@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ================= META ================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login or signup to access your District account." />
+  <meta name="theme-color" content="#4c2a85" />
+
+  <title>Login | District</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <!-- ================= BASE ================= -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- ================= UTILITIES ================= -->
+  <link rel="stylesheet" href="css/utilities/layout-helpers.css">
+  <link rel="stylesheet" href="css/utilities/grid.css">
+
+  <!-- ================= LAYOUT ================= -->
+  <link rel="stylesheet" href="css/layout/navbar.css">
+  <link rel="stylesheet" href="css/layout/hero.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- ================= COMPONENTS ================= -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/forms.css">
+  <link rel="stylesheet" href="css/components/modal.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+
+  <!-- ================= PAGE ================= -->
+  <link rel="stylesheet" href="css/pages/auth.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="container nav-container">
+
+      <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
+          </a>
+        <ul class="nav-links">
+          <li><a href="index.html">For You</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="dining.html">Dining</a></li>
+          <li><a href="#">Events</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right">
+        <button id="themeToggle" class="icon-btn">🌙</button>
+        <a href="#" class="icon-btn">❤️</a>
+        <a href="#" class="icon-btn">🛒</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ================= LOGIN/SIGNUP CARD ================= -->
+  <section class="auth-section">
+    <div class="container">
+
+      <div class="auth-card">
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <button id="loginTab" class="active">Login</button>
+          <button id="signupTab">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password" required />
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="rememberMe" />
+            <label for="rememberMe">Remember Me</label>
+          </div>
+
+          <button type="submit" class="btn-primary full-width">Login</button>
+
+          <p class="form-footer">
+            Don't have an account? <span id="switchToSignup" class="auth-switch">Sign Up</span>
+          </p>
+
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="auth-form">
+
+          <div class="form-group">
+            <label for="signupName">Full Name</label>
+            <input type="text" id="signupName" placeholder="John Doe" required />
+          </div>
+
+          <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" placeholder="Enter password" required />
+            <div id="passwordStrength" class="password-strength">Strength: —</div>
+          </div>
+
+          <div class="form-group">
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <input type="password" id="signupConfirmPassword" placeholder="Re-enter password" required />
+          </div>
+
+          <button type="submit" class="btn-primary full-width">Sign Up</button>
+
+          <p class="form-footer">
+            Already have an account? <span id="switchToLogin" class="auth-switch">Login</span>
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TOAST ================= -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- ================= GLOBAL MODAL ================= -->
+  <div id="globalModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ================= MODULE SCRIPTS ================= -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

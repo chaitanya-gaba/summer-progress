@@ -1,0 +1,25 @@
+.form-group { margin-bottom: 16px; }
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-300);
+  transition: var(--transition-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--purple-500);
+  box-shadow: 0 0 0 3px rgba(109,40,217,0.15);
+  outline: none;
+}

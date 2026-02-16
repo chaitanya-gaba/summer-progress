@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies | District Clone</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Explore movies playing near you. Browse latest releases, search movies and discover details.">
+
+  <!-- Styles -->
+  <!-- ================= BASE ================= -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- ================= UTILITIES ================= -->
+  <link rel="stylesheet" href="css/utilities/layout-helpers.css">
+  <link rel="stylesheet" href="css/utilities/grid.css">
+
+  <!-- ================= LAYOUT ================= -->
+  <link rel="stylesheet" href="css/layout/navbar.css">
+  <link rel="stylesheet" href="css/layout/hero.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- ================= COMPONENTS ================= -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/forms.css">
+  <link rel="stylesheet" href="css/components/modal.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+
+  <!-- ================= PAGE ================= -->
+  <link rel="stylesheet" href="css/pages/movies.css">
+</head>
+
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+
+        <!-- Left -->
+        <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
+          </a>
+
+          <div class="nav-item dropdown-wrapper" id="locationMenu">
+            <span class="location-label">
+              Gurugram
+              <span class="sub-location">Haryana</span>
+              <svg width="12" height="12" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </span>
+
+            <!-- Dropdown -->
+            <ul class="dropdown hidden" id="locationDropdown">
+              <li>Gurugram, Haryana</li>
+              <li>Delhi, Delhi</li>
+              <li>Mumbai, Maharashtra</li>
+              <li>Bengaluru, Karnataka</li>
+            </ul>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="index.html">For You</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Play</a></li>
+          </ul>
+        </div>
+
+        <!-- Right -->
+        <div class="nav-right">
+          <div class="nav-search">
+            <input type="text" id="navSearchInput" placeholder="Search movies..." />
+            <button id="navSearchBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+
+          <a href="login.html" class="login-btn">Login</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1>Explore Movies</h1>
+
+      <div class="search-wrapper">
+        <input 
+          type="text" 
+          placeholder="Search movies..." 
+          id="movieSearch"
+          aria-label="Search movies"
+        >
+        <button id="searchBtn">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MOVIES GRID ===================== -->
+  <section class="movies section alt-section">
+    <div class="container">
+
+      <div class="flex-between" style="margin-bottom:20px">
+        <h2>All Movies</h2>
+        <!-- <button class="btn-outline" id="loadMoreBtn">Load More</button> -->
+      </div>
+
+      <div class="movie-grid grid-4" id="moviesContainer">
+        <!-- Movies will be injected dynamically via movies.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="section alt-section">
+    <div class="container flex-between">
+      <p>&copy; 2026 District Clone. All rights reserved.</p>
+      <p>Designed by You</p>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script type="module" src="js/movies.js"></script>
+
+</body>
+</html>
