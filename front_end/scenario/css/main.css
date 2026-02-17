@@ -1,0 +1,89 @@
+/* =========================
+   BASE
+========================= */
+@import "./base/reset.css";
+@import "./base/variables.css";
+@import "./base/typography.css";
+@import "./base/utilities.css";
+
+/* =========================
+   LAYOUT
+========================= */
+@import "./layout/navbar.css";
+@import "./layout/footer.css";
+
+/* =========================
+   COMPONENTS
+========================= */
+@import "./components/buttons.css";
+@import "./components/dropdown.css";
+@import "./components/hero.css";
+@import "./components/tray.css";
+@import "./components/cards.css";
+@import "./components/grid.css";
+@import "./components/pricing.css";
+@import "./components/testimonials.css";
+
+/* =========================
+   ANIMATIONS
+========================= */
+@import "./animations/keyframes.css";
+@import "./animations/transitions.css";
+
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Prevent horizontal overflow bugs */
+body {
+  overflow-x: hidden;
+}
+
+
+/* Premium scrollbar styling (Webkit only) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--section-dark));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+
+/* Text selection glow */
+::selection {
+  background: hsl(var(--primary));
+  color: white;
+}
+
+
+/* Smooth image rendering */
+img {
+  image-rendering: auto;
+  user-select: none;
+}
+
+
+/* Anchor default cleanup */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Button font consistency */
+button {
+  font-family: inherit;
+}

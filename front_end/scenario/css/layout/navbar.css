@@ -1,0 +1,207 @@
+/* ======================================================
+   SCENARIO — NAVBAR (UL/LI DROPDOWN VERSION)
+====================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid hsl(var(--border));
+  transition: var(--duration-base) var(--ease-standard);
+}
+
+/* Optional shrink state */
+.navbar--scrolled {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* Container */
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+/* Gradient Text */
+.logo-text {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--neon-purple))
+  );
+
+  background-clip: text;              /* Standard */
+  -webkit-background-clip: text;      /* Webkit */
+
+  color: transparent;                 /* Standard fallback */
+  -webkit-text-fill-color: transparent;
+}
+
+/* AI Dot */
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  box-shadow:
+    0 0 8px hsla(var(--primary), 0.9),
+    0 0 18px hsla(var(--primary), 0.6);
+  transition: var(--duration-base) var(--ease-standard)
+}
+
+/* Subtle hover glow */
+.navbar__logo:hover .logo-dot {
+  transform: scale(1.3);
+  box-shadow:
+    0 0 14px hsla(var(--primary), 1),
+    0 0 28px hsla(var(--primary), 0.7);
+}
+
+/* ======================================================
+   NAV LIST
+====================================================== */
+
+.navbar__menu {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.nav-list li {
+  list-style: none;
+  position: relative;
+}
+
+/* Links */
+.nav-list a {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  transition: var(--duration-base) var(--ease-standard)
+}
+
+/* Underline animation */
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: hsl(var(--primary));
+  transition: var(--duration-base) var(--ease-standard);
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+.nav-list a:hover {
+  color: hsl(var(--primary));
+}
+
+/* ======================================================
+   DROPDOWN
+====================================================== */
+
+.has-dropdown > .dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-md);
+
+  padding: 0.8rem 1rem;
+  min-width: 170px;
+
+  box-shadow: var(--shadow-elev-1);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+
+  transition: var(--duration-base) var(--ease-standard);
+}
+
+/* Show on hover */
+.has-dropdown:hover > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  font-size: 0.9rem;
+  color: hsl(var(--foreground));
+  transition: var(--duration-base) var(--ease-standard);
+}
+
+.dropdown-menu a:hover {
+  color: hsl(var(--primary));
+}
+
+/* ======================================================
+   ACTIONS
+====================================================== */
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  transition: var(--duration-base) var(--ease-standard);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+  transform: rotate(15deg);
+}
+
+/* ======================================================
+   RESPONSIVE PREP
+====================================================== */
+
+@media (max-width: 1024px) {
+  .nav-list {
+    gap: 1.5rem;
+  }
+}

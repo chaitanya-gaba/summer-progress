@@ -1,0 +1,93 @@
+/* ======================================================
+   SCENARIO — HERO
+====================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 25% 30%, hsla(var(--primary), 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 75% 70%, hsla(var(--neon-purple), 0.25) 0%, transparent 45%);
+
+  background-color: hsl(var(--background));
+  perspective: 1000px;
+}
+
+/* Soft animated glow layer */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    hsla(var(--primary), 0.2),
+    transparent 70%
+  );
+  filter: blur(80px);
+  animation: floatGlow 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.hero .reveal {
+  transition-duration: 1200ms;
+}
+
+.hero__slider {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  padding: 0 1rem;
+  margin-inline: auto;
+}
+
+/* Heading */
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+
+  /* Fallback color */
+  color: hsl(var(--primary));
+
+  /* Gradient */
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--neon-purple))
+  );
+
+  /* Standard property */
+  background-clip: text;
+
+  /* WebKit support */
+  -webkit-background-clip: text;
+
+  /* Required for proper clipping */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% 100%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Subheading */
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: hsl(var(--text-muted));
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* CTA spacing (future proof) */
+.hero .btn {
+  margin-top: 2rem;
+}

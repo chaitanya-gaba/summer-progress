@@ -1,0 +1,183 @@
+/* .dark {
+    --card-gradient: linear-gradient(135deg, #181b20, #1d2025);
+    --background: 218 15% 4%;
+    --foreground: 220 9% 97%;
+    --section-base: 218 15% 5%;
+    --section-light: 218 12% 8%;
+    --section-dark: 218 18% 3%;
+    --section-accent: 218 20% 6%;
+    --card: 218 15% 5%;
+    --card-foreground: 220 9% 97%;
+    --popover: 220 13% 11%;
+    --popover-foreground: 220 9% 97%;
+    --primary: 208 55% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 208 55% 60%;
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 220 9% 97%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 208 55% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 9% 97%;
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 208 55% 50%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+:root {
+    --background: 210 20% 98%;
+    --foreground: 222 84% 5%;
+    --section-base: 210 20% 98%;
+    --section-light: 210 20% 100%;
+    --section-dark: 220 14% 94%;
+    --section-accent: 210 25% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 5%;
+    --primary: 208 55% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 208 55% 60%;
+    --accent-orange: 15 91% 55%;
+    --accent-yellow: 45 93% 58%;
+    --secondary: 210 20% 93%;
+    --secondary-foreground: 222 84% 5%;
+    --muted: 210 20% 93%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 208 55% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 87%;
+    --input: 220 13% 93%;
+    --ring: 208 55% 50%;
+    --hero-gradient: radial-gradient(circle at 85% 10%, hsla(0, 0%, 100%, .08) 0%, hsla(0, 0%, 100%, .04) 40%, hsla(0, 0%, 100%, 0) 60%);
+    --card-gradient: linear-gradient(135deg, #fff, #f9fafb);
+    --glow-primary: 0 0 40px rgba(57, 132, 198, .3);
+    --glow-subtle: 0 4px 20px rgba(11, 12, 14, .4);
+    --shadow-elegant: 0 10px 30px -10px rgba(11, 12, 14, .3);
+    --shadow-card: 0 4px 20px -4px rgba(11, 12, 14, .2);
+    --transition-smooth: all .3s cubic-bezier(.4, 0, .2, 1);
+    --transition-bounce: all .4s cubic-bezier(.68, -.55, .265, 1.55);
+    --faq-border: #2c313a;
+    --faq-border-width: 1px;
+    --faq-radius: 12px;
+    --radius: .5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+} */
+
+/* ======================================================
+   SCENARIO DESIGN SYSTEM
+   Token-Based Architecture
+====================================================== */
+
+
+/* =========================
+   🎨 RAW COLOR TOKENS
+========================= */
+
+:root {
+  /* Brand */
+  --color-primary-hsl: 208 90% 60%;
+  --color-primary-glow-hsl: 208 100% 70%;
+  --color-purple-hsl: 270 90% 65%;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  /* Motion */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Motion System */
+  --ease-standard: cubic-bezier(.4, 0, .2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, .2, 1);
+  --ease-accelerate: cubic-bezier(.4, 0, 1, 1);
+
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-reveal: 900ms;
+
+  /* Shadow */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 30px hsla(var(--color-primary-hsl), 0.25);
+  --shadow-elev-1: 0 4px 20px -8px rgba(0,0,0,0.4);
+  --shadow-elev-2: 0 10px 40px -10px rgba(0,0,0,0.5);
+  --shadow-elev-3: 0 20px 60px -15px rgba(0,0,0,0.6);
+}
+
+
+/* =========================
+   🌙 DARK THEME (DEFAULT)
+========================= */
+
+.dark {
+
+  /* Background Layers */
+  --background: 220 18% 4%;
+  --section-base: 220 18% 6%;
+  --section-light: 220 18% 9%;
+  --section-dark: 220 18% 3%;
+
+  /* Text */
+  --foreground: 220 15% 96%;
+  --text-muted: 220 8% 72%;
+
+  /* Surfaces */
+  --card-bg: 220 18% 7%;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+
+  /* Borders */
+  --border: 220 15% 20%;
+
+  /* Brand (Semantic Mapping) */
+  --primary: var(--color-primary-hsl);
+  --primary-glow: var(--color-primary-glow-hsl);
+  --neon-purple: var(--color-purple-hsl);
+}
+
+
+/* =========================
+   ☀ LIGHT THEME (Optional Future Support)
+========================= */
+
+.light {
+
+  --background: 210 20% 98%;
+  --section-base: 210 20% 98%;
+  --section-light: 210 20% 100%;
+  --section-dark: 220 14% 94%;
+
+  --foreground: 222 84% 5%;
+  --text-muted: 215 16% 47%;
+
+  --card-bg: 0 0% 100%;
+  --glass-bg: rgba(0, 0, 0, 0.02);
+
+  --border: 220 13% 87%;
+
+  --primary: var(--color-primary-hsl);
+  --primary-glow: var(--color-primary-glow-hsl);
+  --neon-purple: var(--color-purple-hsl);
+}
