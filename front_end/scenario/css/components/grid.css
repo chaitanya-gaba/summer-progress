@@ -18,7 +18,7 @@
 .grid-card {
   padding: 2.5rem;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   border: 1px solid hsl(var(--border));
   backdrop-filter: blur(10px);
   transition: var(--transition);
