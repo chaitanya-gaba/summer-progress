@@ -1,0 +1,82 @@
+/* ======================================================
+   SCENARIO — GLOBAL RESET
+====================================================== */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins */
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default padding */
+body {
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove anchor default styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove button/input inconsistencies */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Remove button default cursor issues */
+button {
+  cursor: pointer;
+}
+
+/* Prevent text overflow issues */
+p,
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}

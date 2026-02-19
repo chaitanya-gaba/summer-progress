@@ -1,0 +1,94 @@
+/* ======================================================
+   SCENARIO — PREMIUM SCROLL REVEAL SYSTEM
+   Motion Hierarchy + Cinematic Timing
+====================================================== */
+
+
+/* =========================
+   Base Reveal Setup
+========================= */
+
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  will-change: transform, opacity;
+
+  transition:
+    opacity var(--duration-reveal) var(--ease-decelerate),
+    transform var(--duration-reveal) var(--ease-decelerate);
+}
+
+
+/* =========================
+   Vertical Reveal
+========================= */
+
+.reveal {
+  transform: translateY(60px);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================
+   Left Reveal
+========================= */
+
+.reveal-left {
+  transform: translateX(-80px);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* =========================
+   Right Reveal
+========================= */
+
+.reveal-right {
+  transform: translateX(80px);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* =========================
+   Stagger Utilities
+========================= */
+
+.reveal-delay-1 { transition-delay: 80ms; }
+.reveal-delay-2 { transition-delay: 160ms; }
+.reveal-delay-3 { transition-delay: 240ms; }
+.reveal-delay-4 { transition-delay: 320ms; }
+.reveal-delay-5 { transition-delay: 400ms; }
+
+
+/* =========================
+   Subtle Scale Reveal (Optional)
+   Add class: reveal-scale
+========================= */
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  will-change: transform, opacity;
+
+  transition:
+    opacity var(--duration-reveal) var(--ease-decelerate),
+    transform var(--duration-reveal) var(--ease-decelerate);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}

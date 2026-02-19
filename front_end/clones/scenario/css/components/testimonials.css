@@ -1,0 +1,101 @@
+/* ======================================================
+   SCENARIO — TESTIMONIALS
+====================================================== */
+
+.testimonials {
+  background: hsl(var(--section-light));
+}
+
+
+/* =========================
+   Layout
+========================= */
+
+.testimonial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.testimonial:last-child {
+  margin-bottom: 0;
+}
+
+.testimonial--reverse {
+  flex-direction: row-reverse;
+}
+
+
+/* =========================
+   Content
+========================= */
+
+.testimonial__content {
+  max-width: 600px;
+}
+
+.testimonial__text {
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.testimonial__author h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.testimonial__author span {
+  font-size: 0.9rem;
+  color: hsl(var(--text-muted));
+}
+
+
+/* =========================
+   Image
+========================= */
+
+.testimonial__image {
+  position: relative;
+}
+
+.testimonial__image img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: 2px solid hsl(var(--border));
+  transition: var(--duration-base) var(--ease-standard);
+}
+
+/* Soft glow effect */
+.testimonial__image img:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 1024px) {
+  .testimonial {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .testimonial--reverse {
+    flex-direction: column;
+  }
+
+  .testimonial__text {
+    font-size: 1.3rem;
+  }
+}
