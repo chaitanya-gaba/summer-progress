@@ -4,33 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>District | Portfolio Clone</title>
-
-  <!-- SEO -->
   <meta name="description" content="District Clone - Discover movies, dining, events and experiences near you.">
 
-  <!-- Styles -->
-  <!-- ================= BASE ================= -->
   <link rel="stylesheet" href="css/base/variables.css">
   <link rel="stylesheet" href="css/base/reset.css">
   <link rel="stylesheet" href="css/base/typography.css">
-
-  <!-- ================= UTILITIES ================= -->
   <link rel="stylesheet" href="css/utilities/layout-helpers.css">
   <link rel="stylesheet" href="css/utilities/grid.css">
-
-  <!-- ================= LAYOUT ================= -->
   <link rel="stylesheet" href="css/layout/navbar.css">
   <link rel="stylesheet" href="css/layout/hero.css">
   <link rel="stylesheet" href="css/layout/footer.css">
-
-  <!-- ================= COMPONENTS ================= -->
   <link rel="stylesheet" href="css/components/buttons.css">
   <link rel="stylesheet" href="css/components/cards.css">
   <link rel="stylesheet" href="css/components/forms.css">
   <link rel="stylesheet" href="css/components/modal.css">
   <link rel="stylesheet" href="css/components/toast.css">
-
-  <!-- ================= PAGE ================= -->
   <link rel="stylesheet" href="css/pages/home.css">
 </head>
 
@@ -41,7 +29,6 @@
     <nav class="navbar">
       <div class="nav-container">
 
-        <!-- Left -->
         <div class="nav-left">
           <a href="index.html" class="logo">
             <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
@@ -55,8 +42,6 @@
                 <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
               </svg>
             </span>
-
-            <!-- Dropdown -->
             <ul class="dropdown hidden" id="locationDropdown">
               <li>Gurugram, Haryana</li>
               <li>Delhi, Delhi</li>
@@ -76,7 +61,6 @@
           </ul>
         </div>
 
-        <!-- Right -->
         <div class="nav-right">
           <div class="nav-search">
             <input type="text" id="navSearchInput" placeholder="Search movies..." />
@@ -87,19 +71,18 @@
               </svg>
             </button>
           </div>
-
           <a href="login.html" class="login-btn">Login</a>
         </div>
+
         <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
 
       </div>
     </nav>
+
     <div class="mobile-menu" id="mobileMenu">
-      <span class="mobile-location">📍 Gurugram, Haryana</span>
+      <!-- <span class="mobile-location">📍 Gurugram, Haryana</span> -->
       <div class="mobile-search">
         <input type="text" placeholder="Search movies..." />
         <button>
@@ -123,7 +106,6 @@
   <!-- ===================== HERO ===================== -->
   <section class="hero-slider">
     <div class="slider-track" id="sliderTrack">
-
       <div class="slide active">
         <img src="assets/images/5.jpg" alt="Interstellar">
         <div class="slide-content">
@@ -131,7 +113,6 @@
           <p>English • Sci-Fi</p>
         </div>
       </div>
-
       <div class="slide">
         <img src="assets/images/6.jpg" alt="Oppenheimer">
         <div class="slide-content">
@@ -139,7 +120,6 @@
           <p>English • Drama</p>
         </div>
       </div>
-
       <div class="slide">
         <img src="assets/images/7.jpg" alt="Dune">
         <div class="slide-content">
@@ -147,7 +127,6 @@
           <p>English • Action</p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -183,84 +162,20 @@
         <h2>Movies</h2>
         <a href="movies.html" class="btn-outline">View All</a>
       </div>
-
-      <div class="movie-scroll">
-
-        <a href="movie-details.html" class="movie-card">
-          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba" alt="Interstellar">
-          <div class="movie-info">
-            <h4>Interstellar</h4>
-            <p>English • Sci-Fi</p>
-          </div>
-        </a>
-
-        <a href="movie-details.html" class="movie-card">
-          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0" alt="Oppenheimer">
-          <div class="movie-info">
-            <h4>Oppenheimer</h4>
-            <p>English • Drama</p>
-          </div>
-        </a>
-
-        <a href="movie-details.html" class="movie-card">
-          <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66" alt="Dune">
-          <div class="movie-info">
-            <h4>Dune</h4>
-            <p>English • Action</p>
-          </div>
-        </a>
-
-        <a href="movie-details.html" class="movie-card">
-          <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b" alt="Avatar">
-          <div class="movie-info">
-            <h4>Avatar</h4>
-            <p>English • Fantasy</p>
-          </div>
-        </a>
-
-      </div>
+      <!-- ✅ Empty container — injected by home.js from movies-data.js -->
+      <div class="movie-scroll" id="homeMovieScroll"></div>
     </div>
   </section>
 
   <!-- ===================== DINING TEASER ===================== -->
   <section class="dining section">
     <div class="container">
-      <h2>Dining Near You</h2>
-      <div class="grid-4">
-
-        <a href="dining.html" class="restaurant-card">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Olive Garden">
-          <div class="restaurant-info">
-            <h4>Olive Garden</h4>
-            <p>Italian Cuisine</p>
-          </div>
-        </a>
-
-        <a href="dining.html" class="restaurant-card">
-          <img src="https://images.unsplash.com/photo-1543779503-7dba8b6b3e82" alt="Spice Hub">
-          <div class="restaurant-info">
-            <h4>Spice Hub</h4>
-            <p>Indian Cuisine</p>
-          </div>
-        </a>
-
-        <a href="dining.html" class="restaurant-card">
-          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1" alt="Sushi World">
-          <div class="restaurant-info">
-            <h4>Sushi World</h4>
-            <p>Japanese Cuisine</p>
-          </div>
-        </a>
-
-        <a href="dining.html" class="restaurant-card">
-          <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9" alt="Burger Town">
-          <div class="restaurant-info">
-            <h4>Burger Town</h4>
-            <p>Fast Food</p>
-          </div>
-        </a>
-
+      <div class="flex-between" style="margin-bottom:20px">
+        <h2>Dining Near You</h2>
+        <a href="dining.html" class="btn-outline">View All</a>
       </div>
+      <!-- ✅ Empty container — injected by home.js from restaurants-data.js -->
+      <div class="dining-scroll" id="homeDiningScroll"></div>
     </div>
   </section>
 
@@ -272,8 +187,9 @@
     </div>
   </footer>
 
-  <!-- ===================== SCRIPTS ===================== -->
+  <!-- ✅ script.js first, then home.js as module -->
   <script src="js/script.js" defer></script>
+  <script type="module" src="js/home.js"></script>
 
 </body>
 </html>

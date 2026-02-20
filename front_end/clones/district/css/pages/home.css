@@ -21,6 +21,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  margin-top: 20px;
 }
 
 .category-card {
@@ -186,7 +187,6 @@
   aspect-ratio: unset;
   object-fit: cover;
   width: 100%;
-  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
@@ -231,5 +231,60 @@
   .category-row .category-card {
     flex: 0 0 120px;
     width: 120px;
+  }
+}
+
+
+/* ========================================
+   DINING SCROLL (homepage teaser)
+   Mirrors .movie-scroll behaviour
+======================================== */
+.dining-scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.dining-scroll::-webkit-scrollbar { height: 4px; }
+.dining-scroll::-webkit-scrollbar-thumb {
+  background: #e0d4f7;
+  border-radius: 4px;
+}
+
+.dining-scroll .restaurant-card {
+  flex: 0 0 160px;
+  width: 160px;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dining-scroll .restaurant-card img {
+  height: 200px;
+  aspect-ratio: unset;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .dining-scroll .restaurant-card {
+    flex: 0 0 140px;
+    width: 140px;
+  }
+  .dining-scroll .restaurant-card img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dining-scroll .restaurant-card {
+    flex: 0 0 120px;
+    width: 120px;
+  }
+  .dining-scroll .restaurant-card img {
+    height: 130px;
   }
 }
