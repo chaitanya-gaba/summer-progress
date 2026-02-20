@@ -1,6 +1,10 @@
+/* =====================================================
+   MOVIES PAGE
+===================================================== */
+
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 24px;
 }
 
@@ -9,4 +13,89 @@
   gap: 12px;
   justify-content: center;
   margin-top: 20px;
+  padding: 0 16px; /* prevents edge clipping */
+}
+
+.search-wrapper input {
+  flex: 1;
+  max-width: 420px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.search-wrapper input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.search-wrapper input:focus {
+  border-color: rgba(255,255,255,0.8);
+}
+
+.search-wrapper button {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #6d28d9;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.search-wrapper button:hover {
+  background: #f3e8ff;
+}
+
+/* ========================================
+   TABLET (max 1024px)
+======================================== */
+@media (max-width: 1024px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* ========================================
+   MOBILE (max 768px)
+======================================== */
+@media (max-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns — safe on all phones */
+    gap: 14px;
+  }
+
+  .search-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .search-wrapper input {
+    max-width: 100%;
+  }
+
+  .search-wrapper button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* ========================================
+   SMALL PHONES (max 480px)
+======================================== */
+@media (max-width: 480px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }

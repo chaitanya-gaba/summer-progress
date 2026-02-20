@@ -1,26 +1,394 @@
+/* =====================================================
+   DINING PAGE
+===================================================== */
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+.page-header {
+  background: linear-gradient(135deg, var(--purple-700), var(--purple-500));
+  color: #fff;
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.page-header h1 {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* ========================================
+   DINING LAYOUT (sidebar + content)
+======================================== */
 .dining-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  align-items: start;
 }
 
+/* ========================================
+   FILTER SIDEBAR (desktop only)
+======================================== */
 .filters {
-  background: linear-gradient(180deg,#fff,var(--purple-50));
+  background: linear-gradient(180deg, #fff, var(--purple-50, #f5f3ff));
   padding: 24px;
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   position: sticky;
   top: 90px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
-.sort-bar {
+.filters h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.filter-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.filter-group input[type="text"],
+.filter-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: #fff;
+}
+
+.filter-group input[type="text"]:focus,
+.filter-group select:focus {
+  border-color: #6d28d9;
+}
+
+.filter-group input[type="range"] {
+  width: 100%;
+  accent-color: #6d28d9;
+}
+
+/* ========================================
+   MOBILE FILTER TOGGLE BUTTON
+   Hidden on desktop, shown on mobile
+======================================== */
+.filter-toggle-btn {
+  display: none;
+}
+
+/* ========================================
+   FILTER DRAWER OVERLAY (mobile)
+======================================== */
+.filter-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9990;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.filter-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ========================================
+   FILTER DRAWER (slides up from bottom)
+======================================== */
+.filter-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  padding: 16px 20px 40px;
+  z-index: 9991;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
+}
+
+.filter-drawer.open {
+  transform: translateY(0);
+}
+
+/* Drag handle pill */
+.filter-drawer-handle {
+  width: 40px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin: 0 auto 20px;
+}
+
+.filter-drawer-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
 }
 
+.filter-drawer-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+.filter-drawer-close {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  transition: background 0.2s ease;
+}
+
+.filter-drawer-close:hover {
+  background: #e5e7eb;
+}
+
+/* Reuse existing .filter-group styles inside the drawer */
+
+.filter-drawer-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.filter-drawer-footer button {
+  flex: 1;
+  padding: 13px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-apply {
+  background: #6d28d9;
+  color: #fff;
+}
+
+.btn-apply:hover {
+  background: #5b21b6;
+}
+
+.btn-clear-drawer {
+  background: #fff;
+  color: #6d28d9;
+  border: 2px solid #6d28d9 !important;
+}
+
+.btn-clear-drawer:hover {
+  background: #f5f3ff;
+}
+
+/* ========================================
+   SORT BAR
+======================================== */
+.sort-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sort-bar select {
+  padding: 8px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+/* ========================================
+   RESTAURANT CARDS
+======================================== */
+.restaurant-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.restaurant-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.restaurant-info {
+  padding: 12px 14px;
+}
+
+.restaurant-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.restaurant-info p {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+/* ========================================
+   PAGINATION
+======================================== */
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
   margin-top: 32px;
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* ========================================
+   TABLET (max 1024px)
+======================================== */
+@media (max-width: 1024px) {
+  .dining-layout {
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+  }
+}
+
+/* ========================================
+   MOBILE (max 768px)
+======================================== */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 100px 16px 40px;
+  }
+
+  .page-header h1 {
+    font-size: 26px;
+  }
+
+  /* Collapse to single column, hide sidebar */
+  .dining-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 20px;
+  }
+
+  .filters {
+    display: none; /* sidebar hidden on mobile — drawer takes over */
+  }
+
+  /* Show the filter button */
+  .filter-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #6d28d9;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background 0.2s ease;
+    width: fit-content;
+  }
+
+  .filter-toggle-btn:hover {
+    background: #5b21b6;
+  }
+
+  /* Show the overlay */
+  .filter-drawer-overlay {
+    display: block;
+  }
+
+  .sort-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sort-bar select {
+    width: 100%;
+  }
+
+  .pagination {
+    gap: 10px;
+  }
+}
+
+/* ========================================
+   SMALL PHONES (max 480px)
+======================================== */
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 22px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+  }
 }

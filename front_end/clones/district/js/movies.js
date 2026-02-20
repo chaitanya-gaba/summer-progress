@@ -20,6 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function createMovieCard(movie) {
+    const card = document.createElement("a");
+    card.classList.add("movie-card");
+    card.href = `movie-details.html?id=${movie.id}`;
+
+    card.innerHTML = `
+      <img src="${movie.img}" alt="${movie.title}">
+      <div class="movie-info">
+        <h4>${movie.title}</h4>
+        <p>${movie.genre}</p>
+      </div>
+    `;
+
+    return card;
+  }
+
   function handleSearch() {
     const query = searchInput.value.trim().toLowerCase();
 
@@ -31,33 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   searchBtn.addEventListener("click", handleSearch);
-
   searchInput.addEventListener("input", handleSearch); // live search
 
-  // Initial render (all movies)
-  renderMovies(moviesData);
+  // ✅ FIXED: moved inside DOMContentLoaded so searchInput & handleSearch are in scope
+  const params = new URLSearchParams(window.location.search);
+  const searchParam = params.get("search");
+
+  if (searchParam) {
+    searchInput.value = searchParam;
+    handleSearch();
+  } else {
+    // Initial render (all movies)
+    renderMovies(moviesData);
+  }
 });
-
-function createMovieCard(movie) {
-  const card = document.createElement("a");
-  card.classList.add("movie-card");
-  card.href = `movie-details.html?id=${movie.id}`;
-
-  card.innerHTML = `
-    <img src="${movie.img}" alt="${movie.title}">
-    <div class="movie-info">
-      <h4>${movie.title}</h4>
-      <p>${movie.genre}</p>
-    </div>
-  `;
-
-  return card;
-}
-
-const params = new URLSearchParams(window.location.search);
-const searchParam = params.get("search");
-
-if (searchParam) {
-  searchInput.value = searchParam;
-  handleSearch();
-}

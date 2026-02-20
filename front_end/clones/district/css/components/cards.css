@@ -1,32 +1,82 @@
+/* =====================================================
+   CARDS — unified design across all card types
+   Structure: [ image on top ] [ info below ]
+===================================================== */
+
 .card,
 .movie-card,
-.restaurant-card {
-  border-radius: var(--radius-lg);
+.restaurant-card,
+.category-card {
+  border-radius: var(--radius-lg, 12px);
   overflow: hidden;
   background: #fff;
-  transition: transform var(--transition-fast),
-              box-shadow var(--transition-fast);
+  display: flex;
+  flex-direction: column;   /* image on top, info below */
+  transition: transform var(--transition-fast, 0.2s),
+              box-shadow var(--transition-fast, 0.2s);
   box-shadow: 0 8px 20px rgba(109,40,217,0.08);
+  text-decoration: none;
+  color: inherit;
 }
 
 .card:hover,
 .movie-card:hover,
-.restaurant-card:hover {
+.restaurant-card:hover,
+.category-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 32px rgba(109,40,217,0.15);
 }
 
-.movie-card img {
-  height: 280px;
+/* ========================================
+   IMAGE — same rules for all cards
+======================================== */
+.movie-card img,
+.restaurant-card img,
+.category-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;    /* uniform square by default — overridden in home.css */
   object-fit: cover;
+  display: block;
+  flex-shrink: 0;
 }
 
-.restaurant-card img {
-  height: 220px;
-  object-fit: cover;
-}
-
+/* ========================================
+   INFO BLOCK — same structure for all cards
+======================================== */
 .movie-info,
-.restaurant-info {
-  padding: 16px;
+.restaurant-info,
+.category-info {
+  padding: 10px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-info h4,
+.restaurant-info h4,
+.category-card p {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #222;
+}
+
+.movie-info p,
+.restaurant-info p {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Category card — name is a <p> directly under img, wrap it */
+.category-card p {
+  padding: 8px 4px 4px;
+  text-align: center;
 }

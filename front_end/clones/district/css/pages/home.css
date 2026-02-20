@@ -3,7 +3,19 @@
 ===================================================== */
 
 /* ========================================
-   CATEGORIES
+   SECTION SPACING
+======================================== */
+.section {
+  padding: 60px 0;
+}
+
+.alt-section {
+  background: #faf9ff;
+}
+
+/* ========================================
+   CATEGORIES — grid on desktop,
+   horizontal scroll on mobile
 ======================================== */
 .category-row {
   display: grid;
@@ -12,81 +24,63 @@
 }
 
 .category-card {
-  text-align: center;
   cursor: pointer;
-}
-
-.category-card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.category-card p {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ========================================
-   MOVIE SCROLL (horizontal)
+   MOVIE SCROLL (always horizontal)
 ======================================== */
 .movie-scroll {
   display: flex;
   gap: 18px;
   overflow-x: auto;
   padding-bottom: 12px;
-  /* Smooth scrolling on iOS */
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
 }
 
-/* Hide scrollbar but keep functionality */
-.movie-scroll::-webkit-scrollbar {
-  height: 4px;
-}
+.movie-scroll::-webkit-scrollbar { height: 4px; }
 .movie-scroll::-webkit-scrollbar-thumb {
-  background: #ddd;
+  background: #e0d4f7;
   border-radius: 4px;
 }
 
-.movie-card {
+.movie-scroll .movie-card {
+  flex: 0 0 180px;   /* fixed width keeps all cards equal */
   scroll-snap-align: start;
-  flex: 0 0 200px; /* fixed width so cards don't collapse */
   text-decoration: none;
   color: inherit;
 }
 
-.movie-card img {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  border-radius: 10px;
+/* ========================================
+   DINING GRID — 4 col desktop
+======================================== */
+.dining .grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.movie-info {
-  padding: 8px 2px;
-}
-
-.movie-info h4 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.movie-info p {
-  font-size: 12px;
-  color: #888;
+.dining .grid-4 .restaurant-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 /* ========================================
-   TABLET (768px - 1024px)
+   TABLET (max 1024px)
 ======================================== */
 @media (max-width: 1024px) {
   .category-row {
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+  }
+
+  .dining .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -94,13 +88,58 @@
    MOBILE (max 768px)
 ======================================== */
 @media (max-width: 768px) {
-  .category-row {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile, not 4 */
-    gap: 14px;
+
+  .section {
+    padding: 40px 0;
   }
 
-  .movie-card {
-    flex: 0 0 150px; /* slightly smaller cards on mobile */
+  /* ── Categories: horizontal scroll ── */
+  .category-row {
+    display: flex;               /* switch from grid to flex */
+    overflow-x: auto;
+    gap: 14px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .category-row::-webkit-scrollbar { height: 4px; }
+  .category-row::-webkit-scrollbar-thumb {
+    background: #e0d4f7;
+    border-radius: 4px;
+  }
+
+  .category-card {
+    flex: 0 0 120px;             /* fixed width so cards don't squish */
+    scroll-snap-align: start;
+  }
+
+  /* ── Movie scroll: slightly smaller cards ── */
+  .movie-scroll .movie-card {
+    flex: 0 0 140px;
+  }
+
+  /* ── Dining: horizontal scroll ── */
+  .dining .grid-4 {
+    display: flex;               /* switch from grid to flex */
+    overflow-x: auto;
+    gap: 14px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* reset grid columns */
+    grid-template-columns: unset;
+  }
+
+  .dining .grid-4::-webkit-scrollbar { height: 4px; }
+  .dining .grid-4::-webkit-scrollbar-thumb {
+    background: #e0d4f7;
+    border-radius: 4px;
+  }
+
+  .dining .grid-4 .restaurant-card {
+    flex: 0 0 200px;             /* fixed width card */
+    scroll-snap-align: start;
   }
 }
 
@@ -108,16 +147,89 @@
    SMALL PHONES (max 480px)
 ======================================== */
 @media (max-width: 480px) {
-  .category-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  .category-card {
+    flex: 0 0 100px;
   }
 
-  .movie-card {
+  .movie-scroll .movie-card {
     flex: 0 0 130px;
   }
 
-  .movie-card img {
-    border-radius: 8px;
+  .dining .grid-4 .restaurant-card {
+    flex: 0 0 170px;
+  }
+}
+
+
+/* ========================================
+   UNIFORM CARD HEIGHT ON HOMEPAGE SCROLL ROWS
+   Overrides aspect-ratio so all 3 sections
+   feel visually consistent
+======================================== */
+.movie-scroll .movie-card,
+.dining .grid-4 .restaurant-card,
+.category-row .category-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-scroll .movie-card img,
+.dining .grid-4 .restaurant-card img {
+  height: 200px;        /* same fixed height for all scroll card images */
+  aspect-ratio: unset;  /* override the per-card ratios from cards.css */
+  object-fit: cover;
+  width: 100%;
+}
+
+.category-row .category-card img {
+  height: 200px;
+  aspect-ratio: unset;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .movie-scroll .movie-card img,
+  .dining .grid-4 .restaurant-card img,
+  .category-row .category-card img {
+    height: 150px;      /* slightly shorter on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-scroll .movie-card img,
+  .dining .grid-4 .restaurant-card img,
+  .category-row .category-card img {
+    height: 130px;
+  }
+}
+
+
+/* ========================================
+   UNIFORM CARD WIDTH ON HOMEPAGE SCROLL ROWS
+======================================== */
+.movie-scroll .movie-card,
+.dining .grid-4 .restaurant-card,
+.category-row .category-card {
+  flex: 0 0 160px;   /* same fixed width for all three scroll rows */
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .movie-scroll .movie-card,
+  .dining .grid-4 .restaurant-card,
+  .category-row .category-card {
+    flex: 0 0 140px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-scroll .movie-card,
+  .dining .grid-4 .restaurant-card,
+  .category-row .category-card {
+    flex: 0 0 120px;
+    width: 120px;
   }
 }

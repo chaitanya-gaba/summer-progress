@@ -5,32 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movies | District Clone</title>
 
-  <!-- SEO -->
   <meta name="description" content="Explore movies playing near you. Browse latest releases, search movies and discover details.">
 
   <!-- Styles -->
-  <!-- ================= BASE ================= -->
   <link rel="stylesheet" href="css/base/variables.css">
   <link rel="stylesheet" href="css/base/reset.css">
   <link rel="stylesheet" href="css/base/typography.css">
 
-  <!-- ================= UTILITIES ================= -->
   <link rel="stylesheet" href="css/utilities/layout-helpers.css">
   <link rel="stylesheet" href="css/utilities/grid.css">
 
-  <!-- ================= LAYOUT ================= -->
   <link rel="stylesheet" href="css/layout/navbar.css">
   <link rel="stylesheet" href="css/layout/hero.css">
   <link rel="stylesheet" href="css/layout/footer.css">
 
-  <!-- ================= COMPONENTS ================= -->
   <link rel="stylesheet" href="css/components/buttons.css">
   <link rel="stylesheet" href="css/components/cards.css">
   <link rel="stylesheet" href="css/components/forms.css">
   <link rel="stylesheet" href="css/components/modal.css">
   <link rel="stylesheet" href="css/components/toast.css">
 
-  <!-- ================= PAGE ================= -->
   <link rel="stylesheet" href="css/pages/movies.css">
 </head>
 
@@ -55,8 +49,6 @@
                 <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
               </svg>
             </span>
-
-            <!-- Dropdown -->
             <ul class="dropdown hidden" id="locationDropdown">
               <li>Gurugram, Haryana</li>
               <li>Delhi, Delhi</li>
@@ -87,12 +79,40 @@
               </svg>
             </button>
           </div>
-
           <a href="login.html" class="login-btn">Login</a>
         </div>
 
+        <!-- ✅ Hamburger button (mobile only) -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
       </div>
     </nav>
+
+    <!-- ✅ Mobile menu drawer -->
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mobile-location">📍 Gurugram, Haryana</span>
+      <div class="mobile-search">
+        <input type="text" placeholder="Search movies..." />
+        <button>
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+      <a href="index.html">For You</a>
+      <a href="movies.html">Movies</a>
+      <a href="dining.html">Dining</a>
+      <a href="#">Events</a>
+      <a href="#">Stores</a>
+      <a href="#">Activities</a>
+      <a href="#">Play</a>
+      <a href="login.html" class="mobile-login">Login</a>
+    </div>
   </header>
 
   <!-- ===================== HERO ===================== -->
@@ -101,9 +121,9 @@
       <h1>Explore Movies</h1>
 
       <div class="search-wrapper">
-        <input 
-          type="text" 
-          placeholder="Search movies..." 
+        <input
+          type="text"
+          placeholder="Search movies..."
           id="movieSearch"
           aria-label="Search movies"
         >
@@ -118,11 +138,10 @@
 
       <div class="flex-between" style="margin-bottom:20px">
         <h2>All Movies</h2>
-        <!-- <button class="btn-outline" id="loadMoreBtn">Load More</button> -->
       </div>
 
       <div class="movie-grid grid-4" id="moviesContainer">
-        <!-- Movies will be injected dynamically via movies.js -->
+        <!-- Injected by movies.js -->
       </div>
 
     </div>
@@ -136,7 +155,8 @@
     </div>
   </footer>
 
-  <!-- ===================== SCRIPTS ===================== -->
+  <!-- ✅ script.js must load BEFORE movies.js so hamburger is wired up -->
+  <script src="js/script.js" defer></script>
   <script type="module" src="js/movies.js"></script>
 
 </body>

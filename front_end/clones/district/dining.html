@@ -1,56 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ================= META ================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Discover premium restaurants and book tables instantly." />
   <meta name="theme-color" content="#4c2a85" />
-
   <title>Dining | District Clone</title>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <!-- ================= BASE ================= -->
   <link rel="stylesheet" href="css/base/variables.css">
   <link rel="stylesheet" href="css/base/reset.css">
   <link rel="stylesheet" href="css/base/typography.css">
-
-  <!-- ================= UTILITIES ================= -->
   <link rel="stylesheet" href="css/utilities/layout-helpers.css">
   <link rel="stylesheet" href="css/utilities/grid.css">
-
-  <!-- ================= LAYOUT ================= -->
   <link rel="stylesheet" href="css/layout/navbar.css">
   <link rel="stylesheet" href="css/layout/hero.css">
   <link rel="stylesheet" href="css/layout/footer.css">
-
-  <!-- ================= COMPONENTS ================= -->
   <link rel="stylesheet" href="css/components/buttons.css">
   <link rel="stylesheet" href="css/components/cards.css">
   <link rel="stylesheet" href="css/components/forms.css">
   <link rel="stylesheet" href="css/components/modal.css">
   <link rel="stylesheet" href="css/components/toast.css">
-
-  <!-- ================= PAGE ================= -->
   <link rel="stylesheet" href="css/pages/dining.css">
 </head>
-
 <body>
 
-  <!-- ================= HEADER ================= -->
+  <!-- ===================== HEADER ===================== -->
   <header>
     <nav class="navbar">
       <div class="nav-container">
-
-        <!-- Left -->
         <div class="nav-left">
           <a href="index.html" class="logo">
             <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
           </a>
-
           <div class="nav-item dropdown-wrapper" id="locationMenu">
             <span class="location-label">
               Gurugram
@@ -59,8 +40,6 @@
                 <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
               </svg>
             </span>
-
-            <!-- Dropdown -->
             <ul class="dropdown hidden" id="locationDropdown">
               <li>Gurugram, Haryana</li>
               <li>Delhi, Delhi</li>
@@ -68,7 +47,6 @@
               <li>Bengaluru, Karnataka</li>
             </ul>
           </div>
-
           <ul class="nav-links">
             <li><a href="index.html">For You</a></li>
             <li><a href="movies.html">Movies</a></li>
@@ -79,8 +57,6 @@
             <li><a href="#">Play</a></li>
           </ul>
         </div>
-
-        <!-- Right -->
         <div class="nav-right">
           <div class="nav-search">
             <input type="text" id="navSearchInput" placeholder="Search movies..." />
@@ -91,18 +67,38 @@
               </svg>
             </button>
           </div>
-
           <a href="login.html" class="login-btn">Login</a>
         </div>
-
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mobile-location">📍 Gurugram, Haryana</span>
+      <div class="mobile-search">
+        <input type="text" placeholder="Search restaurants..." />
+        <button>
+          <svg viewBox="0 0 24 24" width="16" height="16">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+      <a href="index.html">For You</a>
+      <a href="movies.html">Movies</a>
+      <a href="dining.html">Dining</a>
+      <a href="#">Events</a>
+      <a href="#">Stores</a>
+      <a href="#">Activities</a>
+      <a href="#">Play</a>
+      <a href="login.html" class="mobile-login">Login</a>
+    </div>
   </header>
 
   <!-- ================= MAIN ================= -->
   <main>
 
-    <!-- ================= PAGE HEADER ================= -->
     <section class="page-header">
       <div class="container">
         <h1>Premium Dining Experiences</h1>
@@ -110,18 +106,15 @@
       </div>
     </section>
 
-    <!-- ================= MAIN LAYOUT ================= -->
     <section class="container dining-layout">
 
-      <!-- ================= FILTER SIDEBAR ================= -->
+      <!-- ================= FILTER SIDEBAR (desktop) ================= -->
       <aside class="filters">
         <h3>Filters</h3>
-
         <div class="filter-group">
           <label for="restaurantSearch">Search</label>
           <input type="text" id="restaurantSearch" placeholder="Search restaurant..." />
         </div>
-
         <div class="filter-group">
           <label for="cuisineFilter">Cuisine</label>
           <select id="cuisineFilter">
@@ -132,7 +125,6 @@
             <option value="Continental">Continental</option>
           </select>
         </div>
-
         <div class="filter-group">
           <label for="priceFilter">Price Range</label>
           <select id="priceFilter">
@@ -143,25 +135,27 @@
             <option value="4">₹₹₹₹</option>
           </select>
         </div>
-
         <div class="filter-group">
           <label for="diningRatingFilter">Minimum Rating</label>
           <input type="range" id="diningRatingFilter" min="0" max="5" step="0.1" />
           <span id="diningRatingValue">0</span>
         </div>
-
-        <button id="clearDiningFilters" class="btn-outline full-width">
-          Clear Filters
-        </button>
+        <button id="clearDiningFilters" class="btn-outline full-width">Clear Filters</button>
       </aside>
 
       <!-- ================= CONTENT ================= -->
       <div class="dining-content">
 
         <div class="sort-bar">
-          <div>
-            Showing <strong id="restaurantCount">0</strong> restaurants
-          </div>
+          <!-- Mobile filter button (hidden on desktop via CSS) -->
+          <button class="filter-toggle-btn" id="filterToggleBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+            </svg>
+            Filters
+          </button>
+
+          <div>Showing <strong id="restaurantCount">0</strong> restaurants</div>
 
           <select id="sortDining">
             <option value="popular">Most Popular</option>
@@ -171,23 +165,14 @@
           </select>
         </div>
 
-        <!-- Loading Skeleton -->
         <div id="diningLoading" class="grid-3"></div>
+        <div class="grid-3 restaurant-grid" id="restaurantGrid" aria-live="polite"></div>
 
-        <!-- Restaurant Grid -->
-        <div 
-          class="grid-3 restaurant-grid" 
-          id="restaurantGrid"
-          aria-live="polite"
-        ></div>
-
-        <!-- Empty State -->
         <div id="diningEmptyState" class="empty-state hidden">
           <h3>No restaurants found</h3>
           <p>Try adjusting filters.</p>
         </div>
 
-        <!-- Pagination -->
         <div class="pagination">
           <button id="prevDiningPage" class="btn-outline">Previous</button>
           <span id="currentDiningPage">1</span>
@@ -196,29 +181,66 @@
 
       </div>
     </section>
-
   </main>
 
-  <!-- ================= MODAL ================= -->
-  <div 
-    id="globalModal" 
-    class="modal" 
-    role="dialog" 
-    aria-modal="true"
-  >
-    <div class="modal-content large">
-      <button class="modal-close" id="modalClose" aria-label="Close Modal">×</button>
-      <div id="modalBody">
-        <!-- JS injects restaurant details + booking form -->
-      </div>
+  <!-- ================= FILTER DRAWER (mobile) ================= -->
+  <div class="filter-drawer-overlay" id="filterDrawerOverlay"></div>
+
+  <div class="filter-drawer" id="filterDrawer" role="dialog" aria-label="Filters">
+    <div class="filter-drawer-handle"></div>
+    <div class="filter-drawer-header">
+      <h3>Filters</h3>
+      <button class="filter-drawer-close" id="filterDrawerClose" aria-label="Close filters">×</button>
+    </div>
+
+    <!-- Mirror of the sidebar filters — wired separately in JS -->
+    <div class="filter-group">
+      <label for="drawerSearch">Search</label>
+      <input type="text" id="drawerSearch" placeholder="Search restaurant..." />
+    </div>
+    <div class="filter-group">
+      <label for="drawerCuisine">Cuisine</label>
+      <select id="drawerCuisine">
+        <option value="all">All</option>
+        <option value="Italian">Italian</option>
+        <option value="Indian">Indian</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Continental">Continental</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="drawerPrice">Price Range</label>
+      <select id="drawerPrice">
+        <option value="all">All</option>
+        <option value="1">₹</option>
+        <option value="2">₹₹</option>
+        <option value="3">₹₹₹</option>
+        <option value="4">₹₹₹₹</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="drawerRating">Minimum Rating</label>
+      <input type="range" id="drawerRating" min="0" max="5" step="0.1" />
+      <span id="drawerRatingValue">0</span>
+    </div>
+
+    <div class="filter-drawer-footer">
+      <button class="btn-clear-drawer" id="drawerClearBtn">Clear All</button>
+      <button class="btn-apply" id="drawerApplyBtn">Apply Filters</button>
     </div>
   </div>
 
-  <!-- ================= TOAST ================= -->
+  <!-- ================= MODAL ================= -->
+  <div id="globalModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content large">
+      <button class="modal-close" id="modalClose" aria-label="Close Modal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
   <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
-  <!-- ================= SCRIPTS ================= -->
-  <script type="module" src="js/main.js"></script>
+  <script src="js/script.js" defer></script>
   <script type="module" src="js/dining.js"></script>
 
 </body>
