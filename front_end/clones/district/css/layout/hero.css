@@ -20,6 +20,7 @@
 .hero-container {
   max-width: 700px;
   margin: 0 auto;
+  padding: 0 20px; /* prevents text from touching screen edges */
 }
 
 /* ========================================
@@ -57,19 +58,87 @@
   bottom: 20%;
   left: 8%;
   color: white;
+  /* Removed leftover background-color from slide-content children */
 }
 
 .slide-content h1 {
   font-size: 56px;
   font-weight: 800;
   margin-bottom: 12px;
-  background-color: #b0b0b0;
-  border-radius: 6px;
+  /* Removed: background-color: #b0b0b0 — was a placeholder, breaks the look */
 }
 
 .slide-content p {
   font-size: 18px;
   opacity: 0.9;
-  background-color: #b0b0b0;
-  border-radius: 2px;
+  /* Removed: background-color: #b0b0b0 — was a placeholder */
+}
+
+/* ===========================
+   TABLET (768px - 1024px)
+=========================== */
+@media (max-width: 1024px) {
+  .hero-slider {
+    height: 70vh;
+  }
+
+  .slide-content h1 {
+    font-size: 42px;
+  }
+
+  .slide-content p {
+    font-size: 16px;
+  }
+}
+
+/* ===========================
+   MOBILE (max 768px)
+=========================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0 40px; /* extra top padding accounts for fixed navbar */
+  }
+
+  .hero-container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  .hero-slider {
+    height: 55vh; /* shorter on mobile — avoids dead space */
+    min-height: 280px; /* never too small on tiny phones */
+  }
+
+  .slide-content {
+    bottom: 12%;
+    left: 5%;
+    right: 5%; /* prevents text overflow on narrow screens */
+  }
+
+  .slide-content h1 {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .slide-content p {
+    font-size: 13px;
+  }
+}
+
+/* ===========================
+   SMALL PHONES (max 480px)
+=========================== */
+@media (max-width: 480px) {
+  .hero-slider {
+    height: 48vh;
+    min-height: 240px;
+  }
+
+  .slide-content h1 {
+    font-size: 22px;
+  }
+
+  .slide-content p {
+    font-size: 12px;
+  }
 }

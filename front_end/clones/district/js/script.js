@@ -62,14 +62,22 @@ if (sliderTrack) {
 /* =====================================================
    MOBILE MENU
 ===================================================== */
-function initMobileMenu() {
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const navLinks = document.querySelector('.nav-links');
+// Hamburger menu toggle
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
 
-  if (!mobileMenuBtn || !navLinks) return;
+if (hamburgerBtn && mobileMenu) {
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
 
-  mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('hidden');
+  // Close menu when a link is clicked
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerBtn.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
   });
 }
 

@@ -15,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .hidden {
@@ -33,4 +34,11 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 12px;
+    max-width: 100%;
+  }
 }

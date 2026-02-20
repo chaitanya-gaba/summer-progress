@@ -13,16 +13,45 @@
   gap: 20px;
 }
 
-/* Responsive grids */
+/* ========================================
+   TABLET (max 1024px)
+======================================== */
 @media (max-width: 1024px) {
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* ========================================
+   MOBILE (max 768px)
+======================================== */
 @media (max-width: 768px) {
-  .grid-3,
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr); /* 2-col looks better than 1-col on phones */
+    gap: 14px;
+  }
+
   .grid-4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* restaurant cards: 2 per row on mobile */
+    gap: 14px;
+  }
+}
+
+/* ========================================
+   SMALL PHONES (max 480px)
+======================================== */
+@media (max-width: 480px) {
+  .grid-3 {
+    grid-template-columns: 1fr; /* single column only on very small phones */
+    gap: 12px;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr); /* keep 2-col even on small phones for cards */
+    gap: 10px;
   }
 }
