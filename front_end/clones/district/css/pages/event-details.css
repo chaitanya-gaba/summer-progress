@@ -9,7 +9,6 @@
   position: relative;
   height: 420px;
   overflow: hidden;
-  margin-top: 0;
 }
 
 .event-details-hero img {
@@ -68,7 +67,6 @@
   padding: 28px 20px;
   background: #fff;
   border-bottom: 1px solid #f3f4f6;
-  gap: 0;
 }
 
 .step {
@@ -76,7 +74,6 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  position: relative;
 }
 
 .step-circle {
@@ -92,7 +89,6 @@
   font-weight: 700;
   color: #aaa;
   transition: all 0.3s ease;
-  z-index: 1;
 }
 
 .step.active .step-circle {
@@ -116,7 +112,7 @@
 }
 
 .step.active .step-label { color: #6d28d9; }
-.step.done .step-label { color: #10b981; }
+.step.done .step-label   { color: #10b981; }
 
 .step-line {
   flex: 1;
@@ -141,9 +137,6 @@
   align-items: start;
 }
 
-/* ========================================
-   STEPS PANELS
-======================================== */
 .step-panel { display: none; }
 .step-panel.active { display: block; }
 
@@ -179,13 +172,6 @@
 .gallery-grid img:first-child {
   grid-row: span 2;
   height: 100%;
-}
-
-.event-description {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #555;
-  margin-bottom: 32px;
 }
 
 /* ========================================
@@ -332,13 +318,13 @@
 }
 
 .review-row:last-child { border-bottom: none; }
-.review-row .label { color: #888; }
-.review-row .value { font-weight: 600; color: #222; }
-.review-total { font-size: 18px; }
+.review-row .label  { color: #888; }
+.review-row .value  { font-weight: 600; color: #222; }
+.review-total       { font-size: 18px; }
 .review-total .value { color: #6d28d9; font-size: 20px; }
 
 /* ========================================
-   BOOKING SIDEBAR
+   BOOKING SIDEBAR (desktop)
 ======================================== */
 .booking-sidebar {
   background: #fff;
@@ -387,27 +373,37 @@
   text-align: center;
   border: none;
   cursor: pointer;
+  display: block;
 }
 
 /* ========================================
-   STICKY BOOKING BAR
+   STICKY BOOKING BAR (mobile only)
 ======================================== */
 .sticky-booking-bar {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   background: #fff;
   padding: 14px 24px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
   z-index: 999;
-  display: none; /* shown via JS on mobile */
+  display: none; /* flex on mobile via media query below */
 }
 
-.sticky-bar-info { display: flex; flex-direction: column; gap: 2px; }
+.sticky-bar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .sticky-bar-info span { font-size: 13px; color: #888; }
-.sticky-price { font-size: 18px !important; font-weight: 700 !important; color: #6d28d9 !important; }
+
+.sticky-price {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #6d28d9 !important;
+}
 
 .sticky-booking-bar .btn-primary {
   padding: 12px 28px;
@@ -439,7 +435,9 @@
   object-fit: contain;
 }
 
-.lightbox-close, .lightbox-prev, .lightbox-next {
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
   position: absolute;
   background: rgba(255,255,255,0.15);
   border: none;
@@ -455,12 +453,12 @@
   transition: background 0.2s;
 }
 
-.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
-  background: rgba(255,255,255,0.3);
-}
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover { background: rgba(255,255,255,0.3); }
 
 .lightbox-close { top: 20px; right: 20px; }
-.lightbox-prev  { left: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
 .lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); }
 
 /* ========================================
@@ -478,7 +476,8 @@
     gap: 24px;
   }
 
-  .booking-sidebar { display: none; } /* sidebar hidden — sticky bar takes over */
+  /* Desktop sidebar hidden — sticky bar takes over */
+  .booking-sidebar  { display: none; }
   .sticky-booking-bar { display: flex; }
 
   .gallery-grid { grid-template-columns: 1fr; }

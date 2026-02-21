@@ -5,25 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilterDrawer();
 });
 
-/* ================= MAIN INIT ================= */
-
-function initDining() {
-  const el = getElements();
-  if (!el.grid) return;
-
-  const state = {
-    all: restaurantsData,
-    filtered: restaurantsData,
-    page: 1,
-    perPage: 6
-  };
-
-  bindEvents(el, state);
-  render(state, el);
-}
-
-/* ================= ELEMENTS ================= */
-
+/* =====================================================
+   ELEMENTS
+===================================================== */
 function getElements() {
   return {
     grid:        document.getElementById("restaurantGrid"),
@@ -40,12 +24,31 @@ function getElements() {
     clearBtn:    document.getElementById("clearDiningFilters"),
     modal:       document.getElementById("globalModal"),
     modalBody:   document.getElementById("modalBody"),
-    modalClose:  document.getElementById("modalClose")
+    modalClose:  document.getElementById("modalClose"),
   };
 }
 
-/* ================= EVENTS ================= */
+/* =====================================================
+   MAIN INIT
+===================================================== */
+function initDining() {
+  const el = getElements();
+  if (!el.grid) return;
 
+  const state = {
+    all:      restaurantsData,
+    filtered: restaurantsData,
+    page:     1,
+    perPage:  6,
+  };
+
+  bindEvents(el, state);
+  render(state, el);
+}
+
+/* =====================================================
+   BIND EVENTS
+===================================================== */
 function bindEvents(el, state) {
   el.search.addEventListener("input",   () => applyFilters(el, state));
   el.cuisine.addEventListener("change", () => applyFilters(el, state));
@@ -62,30 +65,28 @@ function bindEvents(el, state) {
   });
 
   el.next.addEventListener("click", () => {
-    const total = Math.ceil(state.filtered.length / state.perPage);
-    if (state.page < total) { state.page++; render(state, el); }
+    const totalPages = Math.ceil(state.filtered.length / state.perPage);
+    if (state.page < totalPages) { state.page++; render(state, el); }
   });
 
-  if (el.clearBtn) {
-    el.clearBtn.addEventListener("click", () => clearFilters(el, state));
-  }
+  el.clearBtn?.addEventListener("click", () => clearFilters(el, state));
 
-  el.modalClose.addEventListener("click", () => el.modal.style.display = "none");
-  el.modal.addEventListener("click", (e) => {
+  el.modalClose?.addEventListener("click", () => el.modal.style.display = "none");
+  el.modal?.addEventListener("click", (e) => {
     if (e.target === el.modal) el.modal.style.display = "none";
   });
 }
 
-/* ================= FILTER DRAWER (mobile) ================= */
-
+/* =====================================================
+   FILTER DRAWER (mobile)
+===================================================== */
 function initFilterDrawer() {
-  const toggleBtn  = document.getElementById("filterToggleBtn");
-  const overlay    = document.getElementById("filterDrawerOverlay");
-  const drawer     = document.getElementById("filterDrawer");
-  const closeBtn   = document.getElementById("filterDrawerClose");
-  const applyBtn   = document.getElementById("drawerApplyBtn");
-  const clearBtn   = document.getElementById("drawerClearBtn");
-
+  const overlay       = document.getElementById("filterDrawerOverlay");
+  const drawer        = document.getElementById("filterDrawer");
+  const toggleBtn     = document.getElementById("filterToggleBtn");
+  const closeBtn      = document.getElementById("filterDrawerClose");
+  const applyBtn      = document.getElementById("drawerApplyBtn");
+  const clearBtn      = document.getElementById("drawerClearBtn");
   const drawerSearch  = document.getElementById("drawerSearch");
   const drawerCuisine = document.getElementById("drawerCuisine");
   const drawerPrice   = document.getElementById("drawerPrice");
@@ -94,63 +95,54 @@ function initFilterDrawer() {
 
   if (!toggleBtn || !drawer) return;
 
-  // Live rating label update
-  drawerRating.addEventListener("input", () => {
-    drawerRatingVal.textContent = parseFloat(drawerRating.value).toFixed(1);
-  });
-
-  function openDrawer() {
+  const openDrawer = () => {
     overlay.classList.add("open");
     drawer.classList.add("open");
-    document.body.style.overflow = "hidden"; // prevent background scroll
-  }
+    document.body.style.overflow = "hidden";
+  };
 
-  function closeDrawer() {
+  const closeDrawer = () => {
     overlay.classList.remove("open");
     drawer.classList.remove("open");
     document.body.style.overflow = "";
-  }
+  };
 
-  toggleBtn.addEventListener("click", openDrawer);
-  closeBtn.addEventListener("click", closeDrawer);
-  overlay.addEventListener("click", closeDrawer);
-
-  // Apply: copy drawer values into desktop sidebar inputs, then trigger filter
-  applyBtn.addEventListener("click", () => {
-    const sidebarSearch  = document.getElementById("restaurantSearch");
-    const sidebarCuisine = document.getElementById("cuisineFilter");
-    const sidebarPrice   = document.getElementById("priceFilter");
-    const sidebarRating  = document.getElementById("diningRatingFilter");
-    const sidebarRatingVal = document.getElementById("diningRatingValue");
-
-    sidebarSearch.value  = drawerSearch.value;
-    sidebarCuisine.value = drawerCuisine.value;
-    sidebarPrice.value   = drawerPrice.value;
-    sidebarRating.value  = drawerRating.value;
-    sidebarRatingVal.textContent = drawerRatingVal.textContent;
-
-    // Trigger the main filter logic
-    sidebarSearch.dispatchEvent(new Event("input"));
-
-    closeDrawer();
-
-    if (typeof showToast === "function") {
-      showToast("Filters applied!", "success");
-    }
+  drawerRating?.addEventListener("input", () => {
+    drawerRatingVal.textContent = parseFloat(drawerRating.value).toFixed(1);
   });
 
-  // Clear drawer inputs
-  clearBtn.addEventListener("click", () => {
-    drawerSearch.value  = "";
-    drawerCuisine.value = "all";
-    drawerPrice.value   = "all";
-    drawerRating.value  = 0;
-    drawerRatingVal.textContent = "0";
+  toggleBtn.addEventListener("click", openDrawer);
+  closeBtn?.addEventListener("click", closeDrawer);
+  overlay?.addEventListener("click", closeDrawer);
+
+  // Apply: sync drawer → sidebar, then fire existing filter logic
+  applyBtn?.addEventListener("click", () => {
+    document.getElementById("restaurantSearch").value  = drawerSearch.value;
+    document.getElementById("cuisineFilter").value     = drawerCuisine.value;
+    document.getElementById("priceFilter").value       = drawerPrice.value;
+    document.getElementById("diningRatingFilter").value = drawerRating.value;
+    document.getElementById("diningRatingValue").textContent = drawerRatingVal.textContent;
+
+    // Trigger filter via the existing sidebar listener
+    document.getElementById("restaurantSearch").dispatchEvent(new Event("input"));
+
+    closeDrawer();
+    if (typeof showToast === "function") showToast("Filters applied!", "success");
+  });
+
+  // Clear drawer inputs only (sidebar state unchanged until Apply)
+  clearBtn?.addEventListener("click", () => {
+    drawerSearch.value            = "";
+    drawerCuisine.value           = "all";
+    drawerPrice.value             = "all";
+    drawerRating.value            = 0;
+    drawerRatingVal.textContent   = "0";
   });
 }
 
-/* ================= FILTERS ================= */
-
+/* =====================================================
+   FILTERS
+===================================================== */
 function applyFilters(el, state) {
   const query   = el.search.value.toLowerCase();
   const cuisine = el.cuisine.value;
@@ -160,35 +152,34 @@ function applyFilters(el, state) {
   state.filtered = state.all.filter(r =>
     r.name.toLowerCase().includes(query) &&
     (cuisine === "all" || r.cuisine === cuisine) &&
-    (price === "all"   || r.price === parseInt(price)) &&
+    (price   === "all" || r.price === parseInt(price)) &&
     r.rating >= rating
   );
 
-  sortRestaurants(el.sort.value, state);
+  const sort = el.sort.value;
+  if (sort === "rating")    state.filtered.sort((a, b) => b.rating - a.rating);
+  if (sort === "priceLow")  state.filtered.sort((a, b) => a.price - b.price);
+  if (sort === "priceHigh") state.filtered.sort((a, b) => b.price - a.price);
+
   state.page = 1;
   render(state, el);
 }
 
-function sortRestaurants(type, state) {
-  if (type === "rating")    state.filtered.sort((a, b) => b.rating - a.rating);
-  if (type === "priceLow")  state.filtered.sort((a, b) => a.price - b.price);
-  if (type === "priceHigh") state.filtered.sort((a, b) => b.price - a.price);
-}
-
 function clearFilters(el, state) {
-  el.search.value  = "";
-  el.cuisine.value = "all";
-  el.price.value   = "all";
-  el.rating.value  = 0;
+  el.search.value            = "";
+  el.cuisine.value           = "all";
+  el.price.value             = "all";
+  el.rating.value            = 0;
   el.ratingValue.textContent = "0";
-  el.sort.value    = "popular";
-  state.filtered   = state.all;
-  state.page       = 1;
+  el.sort.value              = "popular";
+  state.filtered             = state.all;
+  state.page                 = 1;
   render(state, el);
 }
 
-/* ================= RENDER ================= */
-
+/* =====================================================
+   RENDER
+===================================================== */
 function render(state, el) {
   el.grid.innerHTML = "";
 
@@ -196,19 +187,20 @@ function render(state, el) {
   const pageData = state.filtered.slice(start, start + state.perPage);
 
   if (pageData.length === 0) {
-    el.empty.classList.remove("hidden");
+    el.empty?.classList.remove("hidden");
   } else {
-    el.empty.classList.add("hidden");
+    el.empty?.classList.add("hidden");
     pageData.forEach(r => el.grid.appendChild(createCard(r, el)));
   }
 
   el.count.textContent = state.filtered.length;
-  el.prev.disabled = state.page === 1;
-  el.next.disabled = state.page >= Math.ceil(state.filtered.length / state.perPage);
+  el.prev.disabled     = state.page === 1;
+  el.next.disabled     = state.page >= Math.ceil(state.filtered.length / state.perPage);
 }
 
-/* ================= CARD ================= */
-
+/* =====================================================
+   CARD
+===================================================== */
 function createCard(r, el) {
   const card = document.createElement("div");
   card.className = "restaurant-card";
@@ -225,8 +217,9 @@ function createCard(r, el) {
   return card;
 }
 
-/* ================= MODAL ================= */
-
+/* =====================================================
+   MODAL
+===================================================== */
 function openModal(r, el) {
   el.modalBody.innerHTML = `
     <h2>${r.name}</h2>
@@ -240,8 +233,6 @@ function openModal(r, el) {
 
   document.getElementById("confirmBooking").addEventListener("click", () => {
     el.modal.style.display = "none";
-    if (typeof showToast === "function") {
-      showToast(`Table booked at ${r.name}! 🎉`, "success");
-    }
+    if (typeof showToast === "function") showToast(`Table booked at ${r.name}! 🎉`, "success");
   });
 }

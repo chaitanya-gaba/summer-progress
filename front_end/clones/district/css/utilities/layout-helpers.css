@@ -1,35 +1,11 @@
 /* =====================================================
-   FLEX UTILITIES (STRUCTURAL HELPERS)
+   LAYOUT HELPERS
+   Pure utility classes — no component styles here
 ===================================================== */
-.flex {
-  display: flex;
-}
 
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.section {
-  padding: 60px 0;
-}
-
-.alt-section {
-  background-color: var(--purple-50);
-}
-
+/* ========================================
+   CONTAINER
+======================================== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -37,8 +13,268 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 12px;
-    max-width: 100%;
-  }
+  .container { padding: 0 16px; }
+}
+
+/* ========================================
+   SECTION SPACING
+======================================== */
+.section {
+  padding: 60px 0;
+}
+
+.alt-section {
+  background: var(--purple-50);
+}
+
+@media (max-width: 768px) {
+  .section { padding: 40px 0; }
+}
+
+/* ========================================
+   FLEXBOX HELPERS
+======================================== */
+.flex          { display: flex; }
+.flex-center   { display: flex; align-items: center; justify-content: center; }
+.flex-between  { display: flex; align-items: center; justify-content: space-between; }
+.flex-col      { display: flex; flex-direction: column; }
+.flex-wrap     { flex-wrap: wrap; }
+.gap-sm        { gap: 8px; }
+.gap-md        { gap: 16px; }
+.gap-lg        { gap: 24px; }
+
+/* ========================================
+   DISPLAY HELPERS
+======================================== */
+.hidden        { display: none !important; }
+.block         { display: block; }
+.inline-block  { display: inline-block; }
+
+/* ========================================
+   SPACING HELPERS
+======================================== */
+.mt-sm  { margin-top: 8px; }
+.mt-md  { margin-top: 16px; }
+.mt-lg  { margin-top: 24px; }
+.mb-sm  { margin-bottom: 8px; }
+.mb-md  { margin-bottom: 16px; }
+.mb-lg  { margin-bottom: 24px; }
+
+/* ========================================
+   TEXT HELPERS
+======================================== */
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-muted   { color: var(--gray-500); }
+.text-sm      { font-size: 13px; }
+.font-bold    { font-weight: 700; }
+.truncate     { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/* ========================================
+   PAGE HEADER (shared across pages)
+======================================== */
+.page-header {
+  padding: 100px 0 36px; /* top accounts for fixed navbar */
+  background: linear-gradient(135deg, #1a0533, #4c1d95);
+  color: #fff;
+  text-align: center;
+}
+
+.page-header h1 {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .page-header { padding: 90px 16px 28px; }
+  .page-header h1 { font-size: 26px; }
+}
+
+/* ========================================
+   EMPTY STATE (shared across pages)
+======================================== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray-500);
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--gray-700);
+}
+
+/* ========================================
+   SEARCH WRAPPER (movies page hero)
+======================================== */
+.search-wrapper {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .search-wrapper { flex-direction: column; }
+}
+
+/* ========================================
+   PAGINATION
+======================================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--purple-700);
+  background: #fff;
+  color: var(--purple-700);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--purple-700);
+  color: #fff;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SORT BAR (dining page)
+======================================== */
+.sort-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 12px 18px;
+  background: var(--purple-50);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ========================================
+   FILTER DRAWER (shared — dining + events)
+======================================== */
+.filter-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9990;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.filter-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.filter-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  padding: 16px 20px 40px;
+  z-index: 9991;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.15);
+}
+
+.filter-drawer.open {
+  transform: translateY(0);
+}
+
+.filter-drawer-handle {
+  width: 40px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin: 0 auto 20px;
+}
+
+.filter-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.filter-drawer-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.filter-drawer-close {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-700);
+}
+
+.filter-drawer-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.filter-drawer-footer button {
+  flex: 1;
+  padding: 13px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.btn-drawer-apply { background: var(--purple-700); color: #fff; }
+.btn-drawer-apply:hover { background: var(--purple-500); }
+.btn-drawer-clear { background: #fff; color: var(--purple-700); border: 2px solid var(--purple-700) !important; }
+
+/* Only show overlay on mobile */
+@media (min-width: 769px) {
+  .filter-drawer-overlay,
+  .filter-drawer { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  .filter-drawer-overlay { display: block; }
 }

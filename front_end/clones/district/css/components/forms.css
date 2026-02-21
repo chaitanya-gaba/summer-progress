@@ -1,25 +1,61 @@
-.form-group { margin-bottom: 16px; }
+/* =====================================================
+   FORMS — base styles only
+   Specific form layouts live in their page CSS files
+   (login.css, profile.css, dining.css)
+===================================================== */
 
-label {
-  font-size: 14px;
-  margin-bottom: 6px;
-  display: block;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
-input,
-select,
-textarea {
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+/* Only scope to .form-group to avoid overriding navbar/search inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 14px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--gray-300);
-  transition: var(--transition-fast);
+  border: 1.5px solid var(--gray-300);
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--gray-900);
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+  outline: none;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   border-color: var(--purple-500);
-  box-shadow: 0 0 0 3px rgba(109,40,217,0.15);
-  outline: none;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: #ef4444;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Field-level error message */
+.field-error {
+  font-size: 12px;
+  color: #ef4444;
+  min-height: 16px;
+  display: block;
 }

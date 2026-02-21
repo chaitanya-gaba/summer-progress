@@ -1,5 +1,8 @@
 /* =====================================================
    EVENTS PAGE
+   Removed: .empty-state, .filter-drawer-*, .filter-group,
+            .filter-drawer-overlay, .pagination
+   All now live in layout-helpers.css
 ===================================================== */
 
 /* ========================================
@@ -43,23 +46,16 @@
   color: rgba(255,255,255,0.8);
   font-size: 14px;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.tab-btn:hover {
-  border-color: #fff;
-  color: #fff;
-}
-
-.tab-btn.active {
-  background: #fff;
-  color: #4c1d95;
-  border-color: #fff;
-}
+.tab-btn:hover { border-color: #fff; color: #fff; }
+.tab-btn.active { background: #fff; color: #4c1d95; border-color: #fff; }
 
 /* ========================================
-   LAYOUT
+   LAYOUT (sidebar + content)
 ======================================== */
 .events-layout {
   display: grid;
@@ -71,7 +67,7 @@
 }
 
 /* ========================================
-   FILTER SIDEBAR
+   FILTER SIDEBAR (desktop)
 ======================================== */
 .filters {
   background: #fff;
@@ -86,40 +82,6 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 20px;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 18px;
-}
-
-.filter-group label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #555;
-}
-
-.filter-group input[type="text"],
-.filter-group select {
-  width: 100%;
-  padding: 9px 12px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-  background: #fff;
-  transition: border-color 0.2s;
-}
-
-.filter-group input[type="text"]:focus,
-.filter-group select:focus {
-  border-color: #6d28d9;
-}
-
-.filter-group input[type="range"] {
-  accent-color: #6d28d9;
 }
 
 /* ========================================
@@ -145,6 +107,7 @@
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
 }
 
@@ -157,9 +120,7 @@
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  text-decoration: none;
-  color: inherit;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
@@ -182,11 +143,8 @@
   transition: transform 0.4s ease;
 }
 
-.event-card:hover .event-card-img img {
-  transform: scale(1.05);
-}
+.event-card:hover .event-card-img img { transform: scale(1.05); }
 
-/* Category badge */
 .event-badge {
   position: absolute;
   top: 12px;
@@ -201,7 +159,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Bookmark button */
 .bookmark-btn {
   position: absolute;
   top: 10px;
@@ -215,7 +172,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 16px;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -294,100 +250,11 @@
   letter-spacing: 0.3px;
 }
 
-/* ========================================
-   FILTER DRAWER (mobile)
-======================================== */
-.filter-drawer-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 9990;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.filter-drawer-overlay.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.filter-drawer {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: #fff;
-  border-radius: 24px 24px 0 0;
-  padding: 16px 20px 40px;
-  z-index: 9991;
-  max-height: 85vh;
-  overflow-y: auto;
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-  box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
-}
-
-.filter-drawer.open { transform: translateY(0); }
-
-.filter-drawer-handle {
-  width: 40px; height: 4px;
-  background: #e5e7eb;
-  border-radius: 4px;
-  margin: 0 auto 20px;
-}
-
-.filter-drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.filter-drawer-header h3 { font-size: 18px; font-weight: 700; }
-
-.filter-drawer-close {
-  background: #f3f4f6;
-  border: none;
-  border-radius: 50%;
-  width: 32px; height: 32px;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-}
-
-.filter-drawer-footer {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.filter-drawer-footer button {
-  flex: 1;
-  padding: 13px;
-  border-radius: 999px;
-  font-size: 15px;
+.countdown-live {
+  font-size: 12px;
+  color: #e11d48;
   font-weight: 600;
-  cursor: pointer;
-  border: none;
 }
-
-.btn-apply { background: #6d28d9; color: #fff; }
-.btn-apply:hover { background: #5b21b6; }
-.btn-clear-drawer { background: #fff; color: #6d28d9; border: 2px solid #6d28d9 !important; }
-
-/* ========================================
-   EMPTY STATE
-======================================== */
-.empty-state {
-  text-align: center;
-  padding: 60px 20px;
-  color: #888;
-}
-
-.empty-state h3 { font-size: 18px; margin-bottom: 8px; }
 
 /* ========================================
    TABLET
@@ -410,12 +277,9 @@
   }
 
   .filters { display: none; }
-
   .filter-toggle-btn { display: flex; }
-  .filter-drawer-overlay { display: block; }
 
   .events-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-
   .event-card-img img { height: 130px; }
 }
 

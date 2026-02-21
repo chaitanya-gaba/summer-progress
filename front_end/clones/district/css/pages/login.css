@@ -1,6 +1,8 @@
 /* =====================================================
    LOGIN PAGE
+   Removed: .form-group, .field-error — now in forms.css
 ===================================================== */
+
 .login-body {
   min-height: 100vh;
   background: linear-gradient(135deg, #1a0533 0%, #4c1d95 50%, #1a0533 100%);
@@ -13,7 +15,6 @@
 .login-page {
   width: 100%;
   max-width: 440px;
-  position: relative;
 }
 
 /* ========================================
@@ -54,13 +55,8 @@
   justify-content: center;
 }
 
-.login-logo img { height: 32px; }
-
-.login-logo span {
-  font-size: 22px;
-  font-weight: 800;
-  color: #6d28d9;
-}
+.login-logo img   { height: 32px; }
+.login-logo span  { font-size: 22px; font-weight: 800; color: #6d28d9; }
 
 /* ========================================
    AUTH TABS
@@ -83,6 +79,7 @@
   font-weight: 600;
   color: #888;
   cursor: pointer;
+  font-family: inherit;
   transition: all 0.2s ease;
 }
 
@@ -93,45 +90,12 @@
 }
 
 /* ========================================
-   FORMS
+   FORM SHOW/HIDE
 ======================================== */
-.auth-form { display: none; }
-.auth-form.active { display: block; }
+.auth-form         { display: none; }
+.auth-form.active  { display: block; }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.form-group label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #555;
-}
-
-.form-group input {
-  padding: 12px 14px;
-  border: 1.5px solid #e5e7eb;
-  border-radius: 10px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s ease;
-  background: #fff;
-  width: 100%;
-}
-
-.form-group input:focus { border-color: #6d28d9; }
-.form-group input.error { border-color: #ef4444; }
-
-.field-error {
-  font-size: 12px;
-  color: #ef4444;
-  min-height: 16px;
-  display: block;
-}
-
+/* Two-column row for first/last name */
 .form-row-half {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -163,7 +127,7 @@
 .toggle-password:hover { opacity: 1; }
 
 /* ========================================
-   PASSWORD STRENGTH
+   PASSWORD STRENGTH METER
 ======================================== */
 .password-strength {
   display: flex;
@@ -194,7 +158,7 @@
 }
 
 /* ========================================
-   FORM OPTIONS
+   FORM OPTIONS ROW
 ======================================== */
 .form-options {
   display: flex;
@@ -213,8 +177,8 @@
   cursor: pointer;
 }
 
-.checkbox-label a { color: #6d28d9; text-decoration: none; }
-.checkbox-label a:hover { text-decoration: underline; }
+.checkbox-label a          { color: #6d28d9; text-decoration: none; }
+.checkbox-label a:hover    { text-decoration: underline; }
 
 .forgot-link {
   color: #6d28d9;
@@ -226,7 +190,7 @@
 .forgot-link:hover { text-decoration: underline; }
 
 /* ========================================
-   AUTH BUTTON
+   AUTH SUBMIT BUTTON
 ======================================== */
 .btn-auth {
   width: 100%;
@@ -237,15 +201,16 @@
   border-radius: 999px;
   font-size: 15px;
   font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
-.btn-auth:hover { background: #5b21b6; }
+.btn-auth:hover  { background: #5b21b6; }
 .btn-auth:active { transform: scale(0.98); }
 
 /* ========================================
-   DIVIDER
+   OR DIVIDER
 ======================================== */
 .auth-divider {
   display: flex;
@@ -284,6 +249,7 @@
   background: #fff;
   font-size: 14px;
   font-weight: 500;
+  font-family: inherit;
   color: #333;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -298,6 +264,6 @@
    MOBILE
 ======================================== */
 @media (max-width: 480px) {
-  .login-card { padding: 28px 20px; border-radius: 20px; }
-  .form-row-half { grid-template-columns: 1fr; }
+  .login-card     { padding: 28px 20px; border-radius: 20px; }
+  .form-row-half  { grid-template-columns: 1fr; }
 }

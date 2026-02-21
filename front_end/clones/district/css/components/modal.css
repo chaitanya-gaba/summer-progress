@@ -1,22 +1,32 @@
+/* =====================================================
+   MODAL
+===================================================== */
 .modal {
   position: fixed;
   inset: 0;
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(15,23,42,0.6);
+  background: rgba(15, 23, 42, 0.6);
   z-index: 10000;
-  animation: fadeIn 0.2s ease-in-out;
+  padding: 20px;
+}
+
+/* Show state — toggle via JS: modal.style.display = "flex" */
+.modal.open {
+  display: flex;
 }
 
 .modal-content {
   background: #fff;
-  padding: 24px;
+  padding: 28px 24px;
   border-radius: var(--radius-lg);
   position: relative;
   max-width: 600px;
   width: 100%;
-  animation: scaleIn 0.2s ease-in-out;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalScaleIn 0.22s ease;
 }
 
 .modal-content.large {
@@ -25,10 +35,35 @@
 
 .modal-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  font-size: 24px;
-  background: transparent;
+  top: 14px;
+  right: 14px;
+  font-size: 22px;
+  background: var(--gray-100);
   border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  color: var(--gray-700);
+  transition: background var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--gray-300);
+}
+
+/* =====================================================
+   KEYFRAMES (used by modal + other components)
+===================================================== */
+@keyframes modalScaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

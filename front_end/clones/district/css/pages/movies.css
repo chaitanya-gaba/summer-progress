@@ -1,22 +1,24 @@
 /* =====================================================
    MOVIES PAGE
+   Note: .search-wrapper in layout-helpers.css is generic.
+   This one is scoped to the hero and has glassmorphism styling.
 ===================================================== */
 
+/* ========================================
+   MOVIE GRID
+======================================== */
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 24px;
 }
 
-.search-wrapper {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin-top: 20px;
-  padding: 0 16px; /* prevents edge clipping */
-}
-
-.search-wrapper input {
+/* ========================================
+   HERO SEARCH — glassmorphism style
+   Scoped to .hero so it doesn't clash with
+   the generic .search-wrapper in layout-helpers
+======================================== */
+.hero .search-wrapper input {
   flex: 1;
   max-width: 420px;
   padding: 10px 16px;
@@ -29,15 +31,15 @@
   transition: border 0.2s ease;
 }
 
-.search-wrapper input::placeholder {
+.hero .search-wrapper input::placeholder {
   color: rgba(255,255,255,0.7);
 }
 
-.search-wrapper input:focus {
+.hero .search-wrapper input:focus {
   border-color: rgba(255,255,255,0.8);
 }
 
-.search-wrapper button {
+.hero .search-wrapper button {
   padding: 10px 24px;
   border-radius: 999px;
   border: none;
@@ -50,7 +52,7 @@
   white-space: nowrap;
 }
 
-.search-wrapper button:hover {
+.hero .search-wrapper button:hover {
   background: #f3e8ff;
 }
 
@@ -69,25 +71,19 @@
 ======================================== */
 @media (max-width: 768px) {
   .movie-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns — safe on all phones */
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 
-  .search-wrapper {
+  .hero .search-wrapper {
     flex-direction: column;
     align-items: stretch;
     padding: 0 16px;
     gap: 10px;
   }
 
-  .search-wrapper input {
-    max-width: 100%;
-  }
-
-  .search-wrapper button {
-    width: 100%;
-    padding: 12px;
-  }
+  .hero .search-wrapper input { max-width: 100%; }
+  .hero .search-wrapper button { width: 100%; padding: 12px; }
 }
 
 /* ========================================
