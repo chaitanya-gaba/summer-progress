@@ -1,0 +1,303 @@
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+.login-body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0533 0%, #4c1d95 50%, #1a0533 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-page {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+}
+
+/* ========================================
+   BACK LINK
+======================================== */
+.login-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.login-back:hover { color: #fff; }
+
+/* ========================================
+   CARD
+======================================== */
+.login-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   LOGO
+======================================== */
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  justify-content: center;
+}
+
+.login-logo img { height: 32px; }
+
+.login-logo span {
+  font-size: 22px;
+  font-weight: 800;
+  color: #6d28d9;
+}
+
+/* ========================================
+   AUTH TABS
+======================================== */
+.auth-tabs {
+  display: flex;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-tab.active {
+  background: #fff;
+  color: #6d28d9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+   FORMS
+======================================== */
+.auth-form { display: none; }
+.auth-form.active { display: block; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  padding: 12px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: #fff;
+  width: 100%;
+}
+
+.form-group input:focus { border-color: #6d28d9; }
+.form-group input.error { border-color: #ef4444; }
+
+.field-error {
+  font-size: 12px;
+  color: #ef4444;
+  min-height: 16px;
+  display: block;
+}
+
+.form-row-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ========================================
+   PASSWORD TOGGLE
+======================================== */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input { padding-right: 44px; }
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.toggle-password:hover { opacity: 1; }
+
+/* ========================================
+   PASSWORD STRENGTH
+======================================== */
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.strength-bar {
+  flex: 1;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.strength-label {
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 50px;
+}
+
+/* ========================================
+   FORM OPTIONS
+======================================== */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+}
+
+.checkbox-label a { color: #6d28d9; text-decoration: none; }
+.checkbox-label a:hover { text-decoration: underline; }
+
+.forgot-link {
+  color: #6d28d9;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.forgot-link:hover { text-decoration: underline; }
+
+/* ========================================
+   AUTH BUTTON
+======================================== */
+.btn-auth {
+  width: 100%;
+  padding: 14px;
+  background: #6d28d9;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-auth:hover { background: #5b21b6; }
+.btn-auth:active { transform: scale(0.98); }
+
+/* ========================================
+   DIVIDER
+======================================== */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 13px;
+  color: #bbb;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ========================================
+   SOCIAL BUTTONS
+======================================== */
+.social-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  border-color: #6d28d9;
+  background: #f5f3ff;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+@media (max-width: 480px) {
+  .login-card { padding: 28px 20px; border-radius: 20px; }
+  .form-row-half { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoMarket — Buy & Sell Cars</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-content">
+    <div class="logo">AutoMarket</div>
+    <nav>
+      <div class="nav-item">
+        <a href="#">Buy Cars</a>
+        <div class="dropdown">
+          <a href="#">By Brand</a>
+          <a href="#">By Budget</a>
+          <a href="#">Latest Additions</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#">Sell Car</a>
+        <div class="dropdown">
+          <a href="#">Get Quote</a>
+          <a href="#">Why Sell With Us</a>
+          <a href="#">Selling Tips</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#">Compare</a>
+        <div class="dropdown">
+          <a href="#">Compare Cars</a>
+          <a href="#">Price Trends</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#">Support</a>
+        <div class="dropdown">
+          <a href="#">FAQ</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Test Drive</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Find Your Next Car, Hassle-Free</h1>
+      <p>Search certified listings with transparent pricing and location‑based filtering.</p>
+    </div>
+
+    <div class="filter-bar">
+      <select id="locationFilter">
+        <option value="all">All Locations</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Bangalore">Bangalore</option>
+      </select>
+
+      <select id="brandFilter">
+        <option value="all">All Brands</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Honda">Honda</option>
+        <option value="BMW">BMW</option>
+      </select>
+
+      <select id="priceFilter">
+        <option value="all">Any Budget</option>
+        <option value="low">Below ₹10L</option>
+        <option value="high">Above ₹10L</option>
+      </select>
+
+      <select id="fuelFilter">
+        <option value="all">Any Fuel Type</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Electric">Electric</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="cars" id="carList"></section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

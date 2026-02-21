@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details | District Clone</title>
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/utilities/layout-helpers.css">
+  <link rel="stylesheet" href="css/utilities/grid.css">
+  <link rel="stylesheet" href="css/layout/navbar.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <link rel="stylesheet" href="css/pages/event-details.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
+          </a>
+          <div class="nav-item dropdown-wrapper" id="locationMenu">
+            <span class="location-label">Gurugram <span class="sub-location">Haryana</span>
+              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <ul class="dropdown hidden" id="locationDropdown">
+              <li>Gurugram, Haryana</li><li>Delhi, Delhi</li>
+              <li>Mumbai, Maharashtra</li><li>Bengaluru, Karnataka</li>
+            </ul>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">For You</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+        <div class="nav-right">
+          <div class="nav-search">
+            <input type="text" id="navSearchInput" placeholder="Search..."/>
+            <button id="navSearchBtn"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/></svg></button>
+          </div>
+          <a href="login.html" class="login-btn">Login</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">For You</a><a href="movies.html">Movies</a>
+      <a href="dining.html">Dining</a><a href="events.html">Events</a>
+      <a href="login.html" class="mobile-login">Login</a>
+    </div>
+  </header>
+
+  <!-- INJECTED BY JS -->
+  <main id="eventDetailsMain"></main>
+
+  <!-- STICKY BOOKING BAR -->
+  <div class="sticky-booking-bar" id="stickyBar">
+    <div class="sticky-bar-info">
+      <span id="stickyTitle">Event</span>
+      <span id="stickyPrice" class="sticky-price">₹0</span>
+    </div>
+    <button class="btn-primary" id="stickyBookBtn">Book Now</button>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <button class="lightbox-prev" id="lightboxPrev">‹</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-next" id="lightboxNext">›</button>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <footer class="section alt-section">
+    <div class="container flex-between">
+      <p>&copy; 2026 District Clone.</p>
+      <p>Designed by You</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+  <script type="module" src="js/event-details.js"></script>
+</body>
+</html>

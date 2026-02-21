@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | District Clone</title>
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/utilities/layout-helpers.css">
+  <link rel="stylesheet" href="css/utilities/grid.css">
+  <link rel="stylesheet" href="css/layout/navbar.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <link rel="stylesheet" href="css/pages/profile.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
+          </a>
+          <div class="nav-item dropdown-wrapper" id="locationMenu">
+            <span class="location-label">Gurugram <span class="sub-location">Haryana</span>
+              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <ul class="dropdown hidden" id="locationDropdown">
+              <li>Gurugram, Haryana</li><li>Delhi, Delhi</li>
+              <li>Mumbai, Maharashtra</li><li>Bengaluru, Karnataka</li>
+            </ul>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">For You</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+        <div class="nav-right">
+          <div class="nav-search">
+            <input type="text" id="navSearchInput" placeholder="Search..."/>
+            <button id="navSearchBtn"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/></svg></button>
+          </div>
+          <a href="login.html" class="login-btn">Login</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">For You</a><a href="movies.html">Movies</a>
+      <a href="dining.html">Dining</a><a href="events.html">Events</a>
+      <a href="login.html" class="mobile-login">Login</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PROFILE HERO -->
+    <section class="profile-hero">
+      <div class="container profile-hero-inner">
+        <div class="avatar-wrapper">
+          <div class="avatar" id="avatarDisplay">JD</div>
+          <button class="avatar-edit-btn" id="avatarEditBtn">✏️</button>
+        </div>
+        <div class="profile-hero-info">
+          <h1 id="displayName">John Doe</h1>
+          <p id="displayEmail">john@example.com</p>
+          <span class="member-badge">⭐ Premium Member</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-bar">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="statMovies">12</span>
+          <span class="stat-label">Movies Watched</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="statDining">8</span>
+          <span class="stat-label">Tables Booked</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="statEvents">5</span>
+          <span class="stat-label">Events Attended</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="statSaved">3</span>
+          <span class="stat-label">Saved Items</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container profile-layout">
+
+      <!-- SIDEBAR TABS -->
+      <aside class="profile-sidebar">
+        <nav class="profile-nav">
+          <button class="profile-nav-btn active" data-tab="bookings">📋 Bookings</button>
+          <button class="profile-nav-btn" data-tab="saved">❤️ Saved</button>
+          <button class="profile-nav-btn" data-tab="edit">⚙️ Edit Profile</button>
+        </nav>
+      </aside>
+
+      <!-- TAB CONTENT -->
+      <div class="profile-content">
+
+        <!-- BOOKINGS TAB -->
+        <div class="tab-panel active" id="tab-bookings">
+          <h2 class="tab-title">Booking History</h2>
+
+          <div class="bookings-filter">
+            <button class="booking-filter-btn active" data-type="all">All</button>
+            <button class="booking-filter-btn" data-type="movie">🎬 Movies</button>
+            <button class="booking-filter-btn" data-type="dining">🍽 Dining</button>
+            <button class="booking-filter-btn" data-type="event">🎵 Events</button>
+          </div>
+
+          <div class="bookings-list" id="bookingsList">
+            <!-- injected by profile.js -->
+          </div>
+        </div>
+
+        <!-- SAVED TAB -->
+        <div class="tab-panel" id="tab-saved">
+          <h2 class="tab-title">Saved Items</h2>
+          <div class="saved-grid" id="savedGrid">
+            <!-- injected by profile.js -->
+          </div>
+          <div class="empty-state hidden" id="savedEmpty">
+            <h3>Nothing saved yet</h3>
+            <p>Bookmark events, movies and restaurants to see them here.</p>
+          </div>
+        </div>
+
+        <!-- EDIT PROFILE TAB -->
+        <div class="tab-panel" id="tab-edit">
+          <h2 class="tab-title">Edit Profile</h2>
+          <form class="edit-form" id="editProfileForm">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" value="John" placeholder="First name">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" value="Doe" placeholder="Last name">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="editEmail">Email</label>
+              <input type="email" id="editEmail" value="john@example.com" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+              <label for="editPhone">Phone</label>
+              <input type="tel" id="editPhone" value="+91 98765 43210" placeholder="Phone number">
+            </div>
+
+            <div class="form-group">
+              <label for="editCity">City</label>
+              <select id="editCity">
+                <option value="gurugram" selected>Gurugram</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="bengaluru">Bengaluru</option>
+              </select>
+            </div>
+
+            <div class="form-divider">Change Password</div>
+
+            <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <input type="password" id="currentPassword" placeholder="Enter current password">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" placeholder="New password">
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirm</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm password">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-outline" id="cancelEdit">Cancel</button>
+              <button type="submit" class="btn-primary">Save Changes</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <footer class="section alt-section">
+    <div class="container flex-between">
+      <p>&copy; 2026 District Clone.</p>
+      <p>Designed by You</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

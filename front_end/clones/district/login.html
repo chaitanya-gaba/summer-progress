@@ -1,159 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ================= META ================= -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Login or signup to access your District account." />
-  <meta name="theme-color" content="#4c2a85" />
-
-  <title>Login | District</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <!-- ================= BASE ================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | District Clone</title>
   <link rel="stylesheet" href="css/base/variables.css">
   <link rel="stylesheet" href="css/base/reset.css">
   <link rel="stylesheet" href="css/base/typography.css">
-
-  <!-- ================= UTILITIES ================= -->
   <link rel="stylesheet" href="css/utilities/layout-helpers.css">
-  <link rel="stylesheet" href="css/utilities/grid.css">
-
-  <!-- ================= LAYOUT ================= -->
-  <link rel="stylesheet" href="css/layout/navbar.css">
-  <link rel="stylesheet" href="css/layout/hero.css">
-  <link rel="stylesheet" href="css/layout/footer.css">
-
-  <!-- ================= COMPONENTS ================= -->
   <link rel="stylesheet" href="css/components/buttons.css">
-  <link rel="stylesheet" href="css/components/cards.css">
-  <link rel="stylesheet" href="css/components/forms.css">
-  <link rel="stylesheet" href="css/components/modal.css">
   <link rel="stylesheet" href="css/components/toast.css">
-
-  <!-- ================= PAGE ================= -->
-  <link rel="stylesheet" href="css/pages/auth.css">
+  <link rel="stylesheet" href="css/pages/login.css">
 </head>
+<body class="login-body">
 
-<body>
+  <div class="login-page">
 
-  <!-- ================= NAVBAR ================= -->
-  <nav class="navbar">
-    <div class="container nav-container">
+    <!-- BACK LINK -->
+    <a href="index.html" class="login-back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Back to District
+    </a>
 
-      <div class="nav-left">
-          <a href="index.html" class="logo">
-            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
-          </a>
-        <ul class="nav-links">
-          <li><a href="index.html">For You</a></li>
-          <li><a href="movies.html">Movies</a></li>
-          <li><a href="dining.html">Dining</a></li>
-          <li><a href="#">Events</a></li>
-        </ul>
+    <!-- LOGIN CARD -->
+    <div class="login-card">
+
+      <!-- LOGO -->
+      <div class="login-logo">
+        <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District">
+        <span>District</span>
       </div>
 
-      <div class="nav-right">
-        <button id="themeToggle" class="icon-btn">🌙</button>
-        <a href="#" class="icon-btn">❤️</a>
-        <a href="#" class="icon-btn">🛒</a>
+      <!-- TABS -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-form="login">Login</button>
+        <button class="auth-tab" data-form="signup">Sign Up</button>
       </div>
 
-    </div>
-  </nav>
-
-  <!-- ================= LOGIN/SIGNUP CARD ================= -->
-  <section class="auth-section">
-    <div class="container">
-
-      <div class="auth-card">
-
-        <!-- Tabs -->
-        <div class="auth-tabs">
-          <button id="loginTab" class="active">Login</button>
-          <button id="signupTab">Sign Up</button>
+      <!-- LOGIN FORM -->
+      <form class="auth-form active" id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required>
+          <span class="field-error" id="loginEmailError"></span>
         </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="loginPassword" placeholder="Enter password" required>
+            <button type="button" class="toggle-password" data-target="loginPassword">👁</button>
+          </div>
+          <span class="field-error" id="loginPasswordError"></span>
+        </div>
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe"> Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-auth">Login</button>
+        <div class="auth-divider"><span>or continue with</span></div>
+        <div class="social-btns">
+          <button type="button" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+        </div>
+      </form>
 
-        <!-- Login Form -->
-        <form id="loginForm" class="auth-form active">
-
+      <!-- SIGNUP FORM -->
+      <form class="auth-form" id="signupForm">
+        <div class="form-row-half">
           <div class="form-group">
-            <label for="loginEmail">Email</label>
-            <input type="email" id="loginEmail" placeholder="you@example.com" required />
+            <label for="signupFirst">First Name</label>
+            <input type="text" id="signupFirst" placeholder="First name" required>
+            <span class="field-error" id="signupFirstError"></span>
           </div>
-
           <div class="form-group">
-            <label for="loginPassword">Password</label>
-            <input type="password" id="loginPassword" placeholder="Enter password" required />
+            <label for="signupLast">Last Name</label>
+            <input type="text" id="signupLast" placeholder="Last name" required>
           </div>
-
-          <div class="form-group checkbox">
-            <input type="checkbox" id="rememberMe" />
-            <label for="rememberMe">Remember Me</label>
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com" required>
+          <span class="field-error" id="signupEmailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="signupPhone">Phone</label>
+          <input type="tel" id="signupPhone" placeholder="+91 XXXXX XXXXX">
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="signupPassword" placeholder="Min 8 characters" required>
+            <button type="button" class="toggle-password" data-target="signupPassword">👁</button>
           </div>
-
-          <button type="submit" class="btn-primary full-width">Login</button>
-
-          <p class="form-footer">
-            Don't have an account? <span id="switchToSignup" class="auth-switch">Sign Up</span>
-          </p>
-
-        </form>
-
-        <!-- Signup Form -->
-        <form id="signupForm" class="auth-form">
-
-          <div class="form-group">
-            <label for="signupName">Full Name</label>
-            <input type="text" id="signupName" placeholder="John Doe" required />
+          <div class="password-strength" id="passwordStrength">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-label" id="strengthLabel"></span>
           </div>
+          <span class="field-error" id="signupPasswordError"></span>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="agreeTerms" required>
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+          <span class="field-error" id="agreeError"></span>
+        </div>
+        <button type="submit" class="btn-auth">Create Account</button>
+        <div class="auth-divider"><span>or continue with</span></div>
+        <div class="social-btns">
+          <button type="button" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </button>
+          <button type="button" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </button>
+        </div>
+      </form>
 
-          <div class="form-group">
-            <label for="signupEmail">Email</label>
-            <input type="email" id="signupEmail" placeholder="you@example.com" required />
-          </div>
-
-          <div class="form-group">
-            <label for="signupPassword">Password</label>
-            <input type="password" id="signupPassword" placeholder="Enter password" required />
-            <div id="passwordStrength" class="password-strength">Strength: —</div>
-          </div>
-
-          <div class="form-group">
-            <label for="signupConfirmPassword">Confirm Password</label>
-            <input type="password" id="signupConfirmPassword" placeholder="Re-enter password" required />
-          </div>
-
-          <button type="submit" class="btn-primary full-width">Sign Up</button>
-
-          <p class="form-footer">
-            Already have an account? <span id="switchToLogin" class="auth-switch">Login</span>
-          </p>
-
-        </form>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= TOAST ================= -->
-  <div id="toastContainer" class="toast-container"></div>
-
-  <!-- ================= GLOBAL MODAL ================= -->
-  <div id="globalModal" class="modal">
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose">×</button>
-      <div id="modalBody"></div>
     </div>
   </div>
 
-  <!-- ================= MODULE SCRIPTS ================= -->
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/auth.js"></script>
+  <div id="toastContainer" class="toast-container"></div>
 
+  <script src="js/script.js" defer></script>
+  <script src="js/login.js" defer></script>
 </body>
 </html>

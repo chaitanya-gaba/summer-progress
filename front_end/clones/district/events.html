@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | District Clone</title>
+  <meta name="description" content="Discover live events, concerts, comedy nights and sports near you.">
+
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/utilities/layout-helpers.css">
+  <link rel="stylesheet" href="css/utilities/grid.css">
+  <link rel="stylesheet" href="css/layout/navbar.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <link rel="stylesheet" href="css/pages/events.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/bookmyshow_logo_icon_247443.svg" alt="District Logo">
+          </a>
+          <div class="nav-item dropdown-wrapper" id="locationMenu">
+            <span class="location-label">
+              Gurugram
+              <span class="sub-location">Haryana</span>
+              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <ul class="dropdown hidden" id="locationDropdown">
+              <li>Gurugram, Haryana</li>
+              <li>Delhi, Delhi</li>
+              <li>Mumbai, Maharashtra</li>
+              <li>Bengaluru, Karnataka</li>
+            </ul>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">For You</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Play</a></li>
+          </ul>
+        </div>
+        <div class="nav-right">
+          <div class="nav-search">
+            <input type="text" id="navSearchInput" placeholder="Search events..." />
+            <button id="navSearchBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+          <a href="login.html" class="login-btn">Login</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mobile-location">📍 Gurugram, Haryana</span>
+      <div class="mobile-search">
+        <input type="text" placeholder="Search events..." />
+        <button><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2"/></svg></button>
+      </div>
+      <a href="index.html">For You</a>
+      <a href="movies.html">Movies</a>
+      <a href="dining.html">Dining</a>
+      <a href="events.html">Events</a>
+      <a href="#">Stores</a>
+      <a href="profile.html">Profile</a>
+      <a href="login.html" class="mobile-login">Login</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="events-hero">
+    <div class="container">
+      <h1>Live Events Near You</h1>
+      <p>Concerts, comedy, sports & more — book your spot today</p>
+
+      <!-- Category Tab Switcher -->
+      <div class="category-tabs">
+        <button class="tab-btn active" data-category="all">All</button>
+        <button class="tab-btn" data-category="Music">🎵 Music</button>
+        <button class="tab-btn" data-category="Comedy">🎤 Comedy</button>
+        <button class="tab-btn" data-category="Sports">🏆 Sports</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <main>
+    <section class="container events-layout">
+
+      <!-- FILTER SIDEBAR (desktop) -->
+      <aside class="filters" id="eventFilters">
+        <h3>Filters</h3>
+
+        <div class="filter-group">
+          <label for="eventSearch">Search</label>
+          <input type="text" id="eventSearch" placeholder="Search events...">
+        </div>
+
+        <div class="filter-group">
+          <label for="priceMaxFilter">Max Price: <span id="priceMaxLabel">₹5000</span></label>
+          <input type="range" id="priceMaxFilter" min="0" max="5000" step="100" value="5000">
+        </div>
+
+        <div class="filter-group">
+          <label for="sortEvents">Sort By</label>
+          <select id="sortEvents">
+            <option value="date">Date: Soonest</option>
+            <option value="priceLow">Price: Low to High</option>
+            <option value="priceHigh">Price: High to Low</option>
+          </select>
+        </div>
+
+        <button id="clearEventFilters" class="btn-outline full-width">Clear Filters</button>
+      </aside>
+
+      <!-- EVENTS CONTENT -->
+      <div class="events-content">
+        <div class="events-toolbar">
+          <!-- Mobile filter button -->
+          <button class="filter-toggle-btn" id="eventFilterToggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+            </svg>
+            Filters
+          </button>
+          <span><strong id="eventCount">0</strong> events found</span>
+        </div>
+
+        <div class="grid-3 events-grid" id="eventsGrid"></div>
+
+        <div id="eventsEmpty" class="empty-state hidden">
+          <h3>No events found</h3>
+          <p>Try a different category or adjust filters.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FILTER DRAWER (mobile) -->
+  <div class="filter-drawer-overlay" id="eventDrawerOverlay"></div>
+  <div class="filter-drawer" id="eventFilterDrawer">
+    <div class="filter-drawer-handle"></div>
+    <div class="filter-drawer-header">
+      <h3>Filters</h3>
+      <button class="filter-drawer-close" id="eventDrawerClose">×</button>
+    </div>
+    <div class="filter-group">
+      <label for="drawerEventSearch">Search</label>
+      <input type="text" id="drawerEventSearch" placeholder="Search events...">
+    </div>
+    <div class="filter-group">
+      <label for="drawerPriceMax">Max Price: <span id="drawerPriceLabel">₹5000</span></label>
+      <input type="range" id="drawerPriceMax" min="0" max="5000" step="100" value="5000">
+    </div>
+    <div class="filter-group">
+      <label for="drawerSortEvents">Sort By</label>
+      <select id="drawerSortEvents">
+        <option value="date">Date: Soonest</option>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+      </select>
+    </div>
+    <div class="filter-drawer-footer">
+      <button class="btn-clear-drawer" id="drawerEventClear">Clear All</button>
+      <button class="btn-apply" id="drawerEventApply">Apply Filters</button>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <footer class="section alt-section">
+    <div class="container flex-between">
+      <p>&copy; 2026 District Clone. All rights reserved.</p>
+      <p>Designed by You</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+  <script type="module" src="js/events.js"></script>
+</body>
+</html>
