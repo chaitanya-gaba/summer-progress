@@ -65,13 +65,13 @@
   font-size: 56px;
   font-weight: 800;
   margin-bottom: 12px;
-  /* Removed: background-color: #b0b0b0 — was a placeholder, breaks the look */
+  color: #fff;
 }
 
 .slide-content p {
   font-size: 18px;
   opacity: 0.9;
-  /* Removed: background-color: #b0b0b0 — was a placeholder */
+  color: antiquewhite;
 }
 
 /* ===========================

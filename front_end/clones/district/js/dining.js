@@ -209,7 +209,7 @@ function createCard(r, el) {
     <div class="restaurant-info">
       <h4>${r.name}</h4>
       <p>${r.cuisine}</p>
-      <p>${"₹".repeat(r.price)}</p>
+      <p>${r.price <= 5 ? "₹".repeat(r.price) : "₹" + r.price.toLocaleString()}</p>
       <p>${r.rating} ⭐</p>
     </div>
   `;
@@ -226,7 +226,7 @@ function openModal(r, el) {
     <p>${r.description}</p>
     <p><strong>Cuisine:</strong> ${r.cuisine}</p>
     <p><strong>Rating:</strong> ${r.rating} ⭐</p>
-    <p><strong>Price:</strong> ${"₹".repeat(r.price)}</p>
+    <p><strong>Price:</strong> ${r.price <= 5 ? "₹".repeat(r.price) : "₹" + r.price.toLocaleString()}</p>
     <button class="btn-primary" id="confirmBooking">Confirm Booking</button>
   `;
   el.modal.style.display = "flex";

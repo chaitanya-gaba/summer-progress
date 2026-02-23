@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="restaurant-info">
           <h4>${restaurant.name}</h4>
           <p>${restaurant.cuisine}</p>
-          <p>${"₹".repeat(restaurant.price)}</p>
+          <p>${restaurant.price <= 5 ? "₹".repeat(restaurant.price) : "₹" + restaurant.price.toLocaleString()}</p>
         </div>
       `;
       diningScroll.appendChild(card);
