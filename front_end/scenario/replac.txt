@@ -1,8 +1,0 @@
-Search your project for:
-
-rgba(255, 255, 255, 0.03)
-
-
-Replace with:
-
-var(--glass-bg)
