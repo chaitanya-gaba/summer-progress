@@ -1,0 +1,52 @@
+/* ==========================================================
+   TRANSITIONS.CSS
+   Smooth theme switching — scoped to color/bg/border only.
+   Components own their own transform/opacity transitions.
+   ========================================================== */
+
+/* Theme-change transitions */
+body,
+.site-header,
+.site-footer,
+.nav,
+.cart,
+.product-card,
+.category-card,
+.store-card,
+.btn-primary,
+.btn-secondary {
+  transition:
+    background-color var(--transition-base),
+    color           var(--transition-fast),
+    border-color    var(--transition-fast),
+    box-shadow      var(--transition-fast);
+}
+
+/* Exclude elements where blanket transitions cause visual bugs */
+.banner-track,
+.category-track,
+.mobile-drawer,
+.search-overlay,
+.search-modal,
+.theme-dropdown,
+img,
+video,
+canvas {
+  /* No blanket transitions — these have their own */
+  transition: none !important;
+}
+
+/* Re-add only what these need */
+.mobile-drawer {
+  transition: transform var(--transition-slow) var(--ease-out) !important;
+}
+
+.search-overlay {
+  transition: opacity var(--duration-base) var(--ease-standard) !important;
+}
+
+.theme-dropdown {
+  transition:
+    opacity var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-spring) !important;
+}

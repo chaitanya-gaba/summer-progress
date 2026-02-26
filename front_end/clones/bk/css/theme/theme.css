@@ -1,0 +1,324 @@
+/* ==========================================================
+   THEME.CSS — Design Token System
+   Classic BK colors sourced directly from official
+   burgerking.co.in SCSS variables file.
+
+   Key official vars used:
+     $color_brown_five:     #512314  → nav background
+     $color_red_primary:    #e02726  → primary red
+     $color_red_one:        #e2231a  → CTA / hover red
+     $color_red_brick:      #d72300  → deep action red
+     $color_orange_primary: #ee7700  → accent orange
+     $color_brown_four:     #f5ebdc  → page background (= Antique White)
+     $color_pink_bg:        rgb(245,235,220) → same antique bg
+     $color_white_one:      #fbfaf8  → card background
+     $color_black_one:      #1f1f1f  → primary text
+     $color_black_two:      #323231  → secondary text
+     $color_brown_primary:  #6f3c2f  → brown text / accents
+     $color_brown_two:      #803527  → darker brown
+     $color_maroon_primary: #af0c2a  → maroon accent
+     $color_yellow_orange:  #f7a800  → yellow/gold CTA
+   ========================================================== */
+
+/* ==========================================================
+   SYSTEM TOKENS — never change with theme
+   ========================================================== */
+
+:root {
+  /* Fonts — official BK uses Flame & FlameSans; closest free match: Barlow Condensed */
+  --font-display: 'Barlow Condensed', 'Impact', sans-serif;
+  --font-primary: 'Barlow', system-ui, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+  /* Border radius */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-full: 9999px;
+
+  /* Motion */
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:       cubic-bezier(0, 0, 0.2, 1);
+
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+
+  --transition-fast:   var(--duration-fast)   var(--ease-standard);
+  --transition-base:   var(--duration-base)   var(--ease-standard);
+  --transition-slow:   var(--duration-slow)   var(--ease-standard);
+  --transition-spring: var(--duration-base)   var(--ease-spring);
+
+  /* Shadows */
+  --shadow-xs:     0 1px 3px rgba(0,0,0,0.08);   /* $color_black_rgba_four */
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.15);   /* $color_black_rgba_one  */
+  --shadow-md:     0 4px 16px rgba(0,0,0,0.30);  /* $color_black_rgba_three */
+  --shadow-lg:     0 8px 32px rgba(0,0,0,0.40);  /* $color_black_rgba_five */
+  --shadow-xl:     0 16px 56px rgba(0,0,0,0.50);
+  --shadow-soft:   0 4px 20px rgba(0,0,0,0.07);  /* $color_black_rgba_seven */
+  --shadow-medium: 0 8px 32px rgba(0,0,0,0.15);
+  --shadow-glow-red:    0 0 24px rgba(224,39,38,0.35);
+  --shadow-glow-yellow: 0 0 20px rgba(247,168,0,0.45);
+
+  /* Z-index scale */
+  --z-base:    1;
+  --z-sticky:  100;
+  --z-overlay: 200;
+  --z-drawer:  300;
+  --z-modal:   400;
+  --z-toast:   500;
+
+  /* Spacing scale */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+
+/* ==========================================================
+   CLASSIC BK — 100% official burgerking.co.in colors
+   ========================================================== */
+
+:root,
+[data-theme="classic"] {
+
+  /* ── Brand ── */
+  --color-primary:        #e02726;   /* $color_red_primary          */
+  --color-primary-dark:   #af0c2a;   /* $color_maroon_primary       */
+  --color-primary-light:  #e2231a;   /* $color_red_one              */
+  --color-red-brick:      #d72300;   /* $color_red_brick            */
+  --color-orange:         #ee7700;   /* $color_orange_primary       */
+  --color-orange-dark:    #be5a09;   /* $color_fire_brick           */
+  --color-yellow:         #f7a800;   /* $color_yellow_orange        */
+  --color-brown-nav:      #512314;   /* $color_brown_five  — NAV BG */
+  --color-brown:          #6f3c2f;   /* $color_brown_primary        */
+  --color-brown-dark:     #803527;   /* $color_brown_two            */
+  --color-secondary:      #f7a800;   /* $color_yellow_orange — CTA  */
+  --color-secondary-dark: #d4900a;
+  --color-accent:         #ee7700;   /* $color_orange_primary       */
+  --color-success:        #1a8738;   /* $color_dark_green           */
+  --color-success-light:  rgba(113,186,0,0.10); /* $color_dark-lime-green_rgba */
+  --color-warning:        #f7a800;   /* $color_yellow_orange        */
+  --color-danger:         #e02726;   /* $color_red_primary          */
+
+  /* ── Backgrounds ── */
+  --bg-page:         #f5ebdc;        /* $color_brown_four / $color_pink_bg  */
+  --bg-section:      #fbfaf8;        /* $color_white_one                    */
+  --bg-section-alt:  #f8f6f3;        /* $color_white_two                    */
+  --bg-card:         #ffffff;        /* $color_white                        */
+  --bg-card-hover:   #fbfaf8;        /* $color_white_one                    */
+  --bg-nav:          #512314;        /* $color_brown_five — real nav bg     */
+  --bg-footer:       #3a180e;        /* darker than brown_five              */
+  --bg-input:        rgba(0,0,0,0.05); /* $color_black_rgba_six             */
+  --bg-overlay:      rgba(0,0,0,0.50); /* $color_black_rgba_two             */
+  --bg-hover:        rgba(238,119,0,0.10); /* $color_orange_rgba_one        */
+
+  /* ── Text ── */
+  --text-primary:    #1f1f1f;        /* $color_black_one            */
+  --text-secondary:  #323231;        /* $color_black_two            */
+  --text-body:       #4e4e4e;        /* $color_greyish_brown        */
+  --text-muted:      #797979;        /* $color_warm_grey            */
+  --text-placeholder:#969696;        /* $color_grey_two             */
+  --text-disabled:   #c4c4c4;        /* $color_light_grey_three     */
+  --text-inverse:    #ffffff;        /* $color_white                */
+  --text-on-primary: #ffffff;
+  --text-on-yellow:  #1f1f1f;        /* $color_black_one            */
+  --text-on-brown:   #ffffff;
+
+  /* ── Borders ── */
+  --border-subtle:   rgba(0,0,0,0.08);  /* $color_black_rgba_four  */
+  --border-medium:   rgba(0,0,0,0.15);  /* $color_black_rgba_one   */
+  --border-strong:   rgba(0,0,0,0.30);  /* $color_black_rgba_three */
+  --border-divider:  #dcdcdc;           /* $color_white_three      */
+
+  /* ── Nav-specific ── */
+  --nav-bg:                #512314;          /* $color_brown_five        */
+  --nav-link-color:        rgba(255,255,255,0.90);
+  --nav-link-hover-color:  #ffffff;
+  --nav-link-active-color: #f7a800;          /* $color_yellow_orange     */
+  --nav-link-hover-bg:     rgba(0,0,0,0.15); /* $color_black_rgba_one    */
+  --nav-btn-bg:            rgba(0,0,0,0.15);
+  --nav-btn-border:        rgba(255,255,255,0.20);
+  --nav-order-bg:          #f7a800;          /* $color_yellow_orange     */
+  --nav-order-color:       #512314;          /* $color_brown_five        */
+  --nav-order-hover-bg:    #ee7700;          /* $color_orange_primary    */
+
+  /* ── Topbar ── */
+  --topbar-bg:       #e02726;               /* $color_red_primary       */
+  --topbar-color:    #ffffff;
+
+  /* ── Gradients ── */
+  --gradient-hero:   linear-gradient(135deg, #512314 0%, #803527 40%, #e02726 80%, #ee7700 100%);
+  --gradient-card:   linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.65) 100%);
+  --gradient-page:   linear-gradient(180deg, #f5ebdc 0%, #fbfaf8 100%);
+  --gradient-nav:    linear-gradient(180deg, #512314 0%, #3a180e 100%);
+
+  /* ── Orange delivery accent (from $themes) ── */
+  --color-delivery:  #ee7700;
+}
+
+/* ==========================================================
+   LATE NIGHT — [data-theme="latenight"]
+   Deep char · Ember red · Amber glow
+   ========================================================== */
+
+[data-theme="latenight"] {
+  --color-primary:        #e02726;
+  --color-primary-dark:   #af0c2a;
+  --color-primary-light:  #e2231a;
+  --color-red-brick:      #d72300;
+  --color-orange:         #ee7700;
+  --color-orange-dark:    #be5a09;
+  --color-yellow:         #f7a800;
+  --color-brown-nav:      #1a0a00;
+  --color-brown:          #6f3c2f;
+  --color-brown-dark:     #803527;
+  --color-secondary:      #f7a800;
+  --color-secondary-dark: #d4900a;
+  --color-accent:         #f7a800;
+  --color-success:        #71ba00;
+  --color-warning:        #f7a800;
+  --color-danger:         #e02726;
+
+  --bg-page:         #0f0a07;
+  --bg-section:      #17100c;
+  --bg-section-alt:  #1f1510;
+  --bg-card:         #1f1510;
+  --bg-card-hover:   #271b14;
+  --bg-nav:          #17100c;
+  --bg-footer:       #0f0a07;
+  --bg-input:        rgba(255,255,255,0.06);
+  --bg-overlay:      rgba(0,0,0,0.72);
+  --bg-hover:        rgba(238,119,0,0.10);
+
+  --text-primary:    #f8f6f3;
+  --text-secondary:  #dcdcdc;
+  --text-body:       #c4c4c4;
+  --text-muted:      #797979;
+  --text-placeholder:#616161;
+  --text-disabled:   #4e4e4e;
+  --text-inverse:    #0f0a07;
+  --text-on-primary: #ffffff;
+  --text-on-yellow:  #1f1f1f;
+  --text-on-brown:   #f8f6f3;
+
+  --border-subtle:   rgba(255,255,255,0.07);
+  --border-medium:   rgba(255,255,255,0.12);
+  --border-strong:   rgba(255,255,255,0.22);
+  --border-divider:  rgba(255,255,255,0.10);
+
+  --nav-bg:                #17100c;
+  --nav-link-color:        rgba(248,246,243,0.85);
+  --nav-link-hover-color:  #f8f6f3;
+  --nav-link-active-color: #f7a800;
+  --nav-link-hover-bg:     rgba(0,0,0,0.30);
+  --nav-btn-bg:            rgba(255,255,255,0.07);
+  --nav-btn-border:        rgba(255,255,255,0.13);
+  --nav-order-bg:          #f7a800;
+  --nav-order-color:       #1f1f1f;
+  --nav-order-hover-bg:    #ee7700;
+
+  --topbar-bg:       #1a0a00;
+  --topbar-color:    rgba(248,246,243,0.80);
+
+  --shadow-xs:     0 1px 3px rgba(0,0,0,0.30);
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.40);
+  --shadow-md:     0 4px 16px rgba(0,0,0,0.50);
+  --shadow-lg:     0 8px 32px rgba(0,0,0,0.60);
+  --shadow-soft:   0 4px 20px rgba(0,0,0,0.35);
+  --shadow-medium: 0 8px 32px rgba(0,0,0,0.50);
+  --shadow-glow-red:    0 0 32px rgba(224,39,38,0.45);
+  --shadow-glow-yellow: 0 0 28px rgba(247,168,0,0.50);
+
+  --gradient-hero:   linear-gradient(135deg, #af0c2a 0%, #0f0a07 100%);
+  --gradient-card:   linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+  --gradient-page:   linear-gradient(180deg, #0f0a07 0%, #17100c 100%);
+  --gradient-nav:    linear-gradient(180deg, #17100c 0%, #0f0a07 100%);
+
+  --color-delivery:  #ee7700;
+}
+
+/* ==========================================================
+   BK CAFÉ — [data-theme="cafe"]
+   Espresso · Antique White · Orange warmth
+   Uses same base palette, shifted warm/coffee
+   ========================================================== */
+
+[data-theme="cafe"] {
+  --color-primary:        #6f3c2f;   /* $color_brown_primary     */
+  --color-primary-dark:   #512314;   /* $color_brown_five        */
+  --color-primary-light:  #803527;   /* $color_brown_two         */
+  --color-red-brick:      #d03710;   /* $color_brick_orange      */
+  --color-orange:         #ee7700;   /* $color_orange_primary    */
+  --color-orange-dark:    #be5a09;   /* $color_fire_brick        */
+  --color-yellow:         #f7a800;   /* $color_yellow_orange     */
+  --color-brown-nav:      #512314;   /* $color_brown_five        */
+  --color-brown:          #6f3c2f;
+  --color-brown-dark:     #803527;
+  --color-secondary:      #ee7700;   /* $color_orange_primary    */
+  --color-secondary-dark: #be5a09;
+  --color-accent:         #cd853f;   /* $color_brown_three       */
+  --color-success:        #1a8738;
+  --color-warning:        #f7a800;
+  --color-danger:         #e02726;
+
+  --bg-page:         #f5ebdc;        /* $color_brown_four        */
+  --bg-section:      #fbfaf8;        /* $color_white_one         */
+  --bg-section-alt:  #f8f6f3;        /* $color_white_two         */
+  --bg-card:         #ffffff;
+  --bg-card-hover:   #fbfaf8;
+  --bg-nav:          #512314;        /* $color_brown_five        */
+  --bg-footer:       #3a180e;
+  --bg-input:        rgba(0,0,0,0.05);
+  --bg-overlay:      rgba(0,0,0,0.50);
+  --bg-hover:        rgba(238,119,0,0.10);
+
+  --text-primary:    #1f1f1f;        /* $color_black_one         */
+  --text-secondary:  #323231;        /* $color_black_two         */
+  --text-body:       #4e4e4e;        /* $color_greyish_brown     */
+  --text-muted:      #797979;        /* $color_warm_grey         */
+  --text-placeholder:#969696;
+  --text-disabled:   #c4c4c4;
+  --text-inverse:    #ffffff;
+  --text-on-primary: #ffffff;
+  --text-on-yellow:  #1f1f1f;
+  --text-on-brown:   #ffffff;
+
+  --border-subtle:   rgba(0,0,0,0.08);
+  --border-medium:   rgba(0,0,0,0.15);
+  --border-strong:   rgba(0,0,0,0.30);
+  --border-divider:  #dcdcdc;
+
+  --nav-bg:                #512314;
+  --nav-link-color:        rgba(255,255,255,0.90);
+  --nav-link-hover-color:  #ffffff;
+  --nav-link-active-color: #ee7700;
+  --nav-link-hover-bg:     rgba(0,0,0,0.15);
+  --nav-btn-bg:            rgba(0,0,0,0.15);
+  --nav-btn-border:        rgba(255,255,255,0.20);
+  --nav-order-bg:          #ee7700;
+  --nav-order-color:       #ffffff;
+  --nav-order-hover-bg:    #be5a09;
+
+  --topbar-bg:       #6f3c2f;        /* $color_brown_primary     */
+  --topbar-color:    #ffffff;
+
+  --shadow-glow-red:    0 0 24px rgba(111,60,47,0.30);
+  --shadow-glow-yellow: 0 0 20px rgba(238,119,0,0.40);
+
+  --gradient-hero:   linear-gradient(135deg, #512314 0%, #6f3c2f 50%, #ee7700 100%);
+  --gradient-card:   linear-gradient(180deg, transparent 50%, rgba(31,15,4,0.65) 100%);
+  --gradient-page:   linear-gradient(180deg, #f5ebdc 0%, #fbfaf8 100%);
+  --gradient-nav:    linear-gradient(180deg, #512314 0%, #3a180e 100%);
+
+  --color-delivery:  #ee7700;
+}

@@ -1,0 +1,67 @@
+/* ==========================================================
+   TYPOGRAPHY.CSS
+   Font imports + base type scale
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+/*
+  Font stack:
+  - Display / headings: Barlow Condensed — bold, condensed, food-brand energy
+  - Body: Barlow — clean, readable, matches the display weight
+  - Mono: DM Mono — for prices, tags, labels
+*/
+
+:root {
+  --font-display: 'Barlow Condensed', 'Impact', sans-serif;
+  --font-primary: 'Barlow', system-ui, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+  /* Type scale */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3rem;      /* 48px */
+
+  /* Line heights */
+  --leading-tight:  1.15;
+  --leading-normal: 1.5;
+  --leading-loose:  1.75;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl)); font-weight: 900; }
+h2 { font-size: var(--text-3xl); font-weight: 800; }
+h3 { font-size: var(--text-xl);  font-weight: 700; }
+h4 { font-size: var(--text-lg);  font-weight: 700; }
+
+p { font-size: var(--text-base); }
+
+small { font-size: var(--text-sm); }
+
+.mono { font-family: var(--font-mono); }
+
+/* Utility classes */
+.text-primary   { color: var(--color-primary); }
+.text-secondary { color: var(--text-secondary); }
+.font-bold      { font-weight: 700; }
+.font-black     { font-weight: 900; }
+.uppercase      { text-transform: uppercase; letter-spacing: 0.08em; }

@@ -1,0 +1,75 @@
+/* ==========================================================
+   PAGE SHELL
+   ========================================================== */
+
+body {
+  background: var(--bg-page, #f5ebdc);  /* $color_brown_four — real BK page bg */
+  color: var(--text-primary, #1f1f1f);
+  font-family: var(--font-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* site-header is defined in layout/nav.css */
+
+/* Main expands to fill */
+main {
+  flex: 1;
+  display: block;
+  width: 100%;
+}
+
+main.home {
+  padding-top: 0;
+}
+
+/* Page max-width containers */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-12) 0;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-8) 0;
+}
+
+/* Skip to content (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Scroll lock — applied by JS when drawer/modal opens */
+body.scroll-locked {
+  overflow: hidden !important;
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Clone | Home</title>
+
+  <!-- Base -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="css/components/banner.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/category-card.css">
+
+  <!-- Page -->
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/base/responsive.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SITE HEADER — Exact replica of burgerking.co.in
+       Structure: Logo | Toggle | Location | [Nearby|Deals|Login|Cart] | Search
+  ============================================================ -->
+  <header class="site-header">
+    <nav class="nav">
+
+      <!-- LOGO — circular, overflows below nav -->
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
+
+      <!-- DELIVERY / DINE-IN TOGGLE -->
+      <div class="order-mode-toggle" id="order-mode-toggle">
+        <button class="toggle-option" id="toggle-delivery" onclick="setMode('delivery')">Delivery</button>
+        <button class="toggle-option active" id="toggle-dine" onclick="setMode('dine')">Dine-in/Takeaway</button>
+      </div>
+
+      <div class="header__divider"></div>
+
+      <!-- LOCATION PILL -->
+      <div class="location-pill" role="button" tabindex="0">
+        <span class="pin-icon">📍</span>
+        <span class="loc-text">Select your location</span>
+      </div>
+
+      <!-- RIGHT NAV MENU — icon + label stacked -->
+      <nav class="nav-menu">
+
+        <a href="locations.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Nearby<br>Stores</span>
+        </a>
+
+        <a href="rewards.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+            </svg>
+          </span>
+          <span class="menu-label">King<br>Deals</span>
+        </a>
+
+        <button class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Login</span>
+        </button>
+
+        <button class="nav-menu-item">
+          <span class="menu-icon">
+            <div class="cart-badge-wrap">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.44 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+              <span class="cart-count" data-cart-count>0</span>
+            </div>
+          </span>
+          <span class="menu-label">Cart</span>
+        </button>
+
+        <!-- Search — standalone circle button -->
+        <button class="nav-search-btn search-toggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#4e4e4e" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </nav>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main class="home">
+
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+      <div class="banner-track">
+        <img src="assets/images/banners/1.png" alt="banner">
+        <img src="assets/images/banners/2.png" alt="banner">
+        <img src="assets/images/banners/3.png" alt="banner">
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="home-categories">
+      <div class="category-row-wrapper">
+        <div class="category-row">
+          <div class="category-track">
+            <a href="menu.html?category=whopper" class="category-card">
+              <img src="assets/images/categories/burger.png" alt="Whopper Central">
+              <span>Whopper Central</span>
+            </a>
+            <a href="menu.html?category=meals" class="category-card">
+              <img src="assets/images/categories/meal.png" alt="Meals">
+              <span>Meals</span>
+            </a>
+            <a href="menu.html?category=crispy-sides" class="category-card">
+              <img src="assets/images/categories/fries.png" alt="Crispy Sides">
+              <span>Crispy Sides</span>
+            </a>
+            <a href="menu.html?category=beverages" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="Beverages">
+              <span>Beverages</span>
+            </a>
+            <a href="menu.html?category=desserts" class="category-card">
+              <img src="assets/images/categories/ice-cream.png" alt="Desserts">
+              <span>Desserts</span>
+            </a>
+            <a href="menu.html?category=bk-cafe" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="BK Café">
+              <span>BK Café</span>
+            </a>
+            <a href="menu.html?category=kids-menu" class="category-card">
+              <img src="assets/images/categories/beverage.png" alt="Kids Menu">
+              <span>Kid's Menu</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-menu-wrapper">
+        <a href="menu.html" class="btn-primary full-menu-btn">Explore Full Menu</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About BK</a>
+        <a href="#">Careers</a>
+        <a href="#">Nutrition</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="#">Support</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SEARCH OVERLAY
+  ============================================================ -->
+  <div class="search-overlay">
+    <div class="search-modal">
+      <input
+        class="search-modal-input"
+        type="text"
+        placeholder="Search burgers, sides, drinks..."
+        autocomplete="off"
+        aria-label="Search menu items"
+      >
+      <button class="search-close-btn">✕ Close</button>
+    </div>
+    <div class="search-results" role="listbox"></div>
+  </div>
+
+  <!-- ============================================================
+       MOBILE DRAWER
+  ============================================================ -->
+  <div class="drawer-backdrop"></div>
+
+  <div class="mobile-drawer" role="dialog" aria-label="Navigation menu">
+    <div class="drawer-header">
+      <a href="index.html" class="drawer-logo">
+        <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+      </a>
+      <button class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="drawer-section-label">Navigate</div>
+      <a href="index.html"     class="drawer-nav-link"><span class="drawer-nav-icon">🏠</span> Home</a>
+      <a href="menu.html"      class="drawer-nav-link"><span class="drawer-nav-icon">🍔</span> Menu</a>
+      <a href="locations.html" class="drawer-nav-link"><span class="drawer-nav-icon">📍</span> Locations</a>
+      <a href="rewards.html"   class="drawer-nav-link"><span class="drawer-nav-icon">🎁</span> Rewards</a>
+      <a href="mood.html"      class="drawer-nav-link"><span class="drawer-nav-icon">✨</span> Mood Menu</a>
+
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Theme</div>
+
+      <div class="drawer-theme-grid">
+        <button class="drawer-theme-btn active" data-theme="classic">
+          <div class="theme-swatch classic"></div>
+          <span>Classic</span>
+        </button>
+        <button class="drawer-theme-btn" data-theme="latenight">
+          <div class="theme-swatch latenight"></div>
+          <span>Night</span>
+        </button>
+        <button class="drawer-theme-btn" data-theme="cafe">
+          <div class="theme-swatch cafe"></div>
+          <span>Café</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="drawer-login-btn">Login / Sign Up</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS
+
+       REMOVED: search-toggle.js — not needed on home page.
+                It only handles menu.html's inline search input.
+                nav.js handles the search overlay instead.
+  ============================================================ -->
+  <script type="module" src="js/components/nav.js"></script>
+  <script type="module" src="js/pages/home.js"></script>
+  <script>
+    function setMode(mode) {
+      const delivery = document.getElementById('toggle-delivery');
+      const dine     = document.getElementById('toggle-dine');
+      const loc      = document.querySelector('.loc-text');
+      if (mode === 'delivery') {
+        delivery.classList.add('active');
+        dine.classList.remove('active');
+        if (loc) loc.textContent = 'Enter delivery address';
+      } else {
+        dine.classList.add('active');
+        delivery.classList.remove('active');
+        if (loc) loc.textContent = 'Select your location';
+      }
+    }
+  </script>
+
+</body>
+</html>

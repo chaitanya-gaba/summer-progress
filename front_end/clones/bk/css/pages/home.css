@@ -1,0 +1,152 @@
+/* ==========================================================
+   HOME PAGE — Category Slider
+   ========================================================== */
+
+.home-categories {
+  position: relative;
+  margin: var(--space-5) var(--space-6) 0;
+}
+
+/* ==========================================================
+   SLIDER WRAPPER
+   ========================================================== */
+
+.category-row-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+/* Prev / Next buttons (present on menu.html, absent on index.html) */
+.prev-btn,
+.next-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  opacity: 0.85;
+  z-index: 2;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  transform: scale(1.12);
+  opacity: 1;
+}
+
+/* ==========================================================
+   CATEGORY ROW — the visible window
+   
+   DEFAULT (index.html — no buttons):
+     overflow-x: auto  → native scroll
+     JS adds grab cursor + mouse drag
+   
+   WITH BUTTONS (menu.html):
+     overflow: hidden  → JS transform drives it
+     JS sets this via .has-buttons class or inline
+   ========================================================== */
+
+.category-row {
+  flex: 1;
+  min-width: 0;                    /* stops flex overflow */
+  overflow-x: auto;                /* DEFAULT: native scroll */
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  position: relative;
+}
+
+.category-row:active {
+  cursor: grabbing;
+}
+
+.category-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* When JS is driving (buttons mode) — switch to hidden overflow */
+.category-row.js-driven {
+  overflow: hidden;
+  cursor: default;
+}
+
+/* ==========================================================
+   CATEGORY TRACK — the full-width flex strip
+   ========================================================== */
+
+.category-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  /* CRITICAL: grow to natural content width, wider than the row */
+  width: max-content;
+  transition: transform 0.45s cubic-bezier(0, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* CRITICAL: cards must never shrink — hold their min-width */
+.category-track .category-card {
+  flex-shrink: 0;
+}
+
+/* ==========================================================
+   FULL MENU BUTTON
+   ========================================================== */
+
+.full-menu-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .home-categories {
+    margin: 16px 16px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-categories {
+    margin: 12px 12px 0;
+  }
+
+  /* Always native scroll on mobile regardless of buttons */
+  .prev-btn,
+  .next-btn {
+    display: none;
+  }
+
+  .category-row,
+  .category-row.js-driven {
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    cursor: grab;
+  }
+
+  .category-track {
+    transition: none;
+    transform: none !important;
+    gap: 12px;
+  }
+
+  .full-menu-wrapper {
+    margin-top: 16px;
+  }
+}

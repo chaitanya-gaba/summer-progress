@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Clone | Rewards</title>
+
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/base/responsive.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== HERO ===== */
+    .rewards-hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-nav);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+
+    /* Flame shapes */
+    .rewards-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(255,194,0,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 30%, rgba(255,100,0,0.12) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+      margin-bottom: 14px;
+    }
+
+    .rewards-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 9vw, 5.8rem);
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .rewards-hero h1 .gold {
+      color: var(--color-secondary);
+    }
+
+    .rewards-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-join {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      background: var(--color-secondary);
+      color: var(--text-on-yellow);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255,194,0,0.35);
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .btn-join:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(255,194,0,0.50);
+      filter: brightness(1.06);
+    }
+
+    .btn-signin {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-signin:hover {
+      border-color: rgba(255,255,255,0.70);
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Floating crown decoration */
+    .hero-crown {
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.06;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .hero-crown.left  { top: 10%; left: 3%;  transform: rotate(-20deg); }
+    .hero-crown.right { bottom: 5%; right: 3%; transform: rotate(15deg); font-size: 6rem; }
+
+    /* ===== POINTS EXPLAINER STRIP ===== */
+    .how-strip {
+      background: var(--color-secondary);
+      padding: 20px 24px;
+    }
+
+    .how-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .how-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+    }
+
+    .how-step + .how-step {
+      border-left: 2px solid rgba(0,0,0,0.12);
+    }
+
+    .how-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .how-text strong {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-on-yellow);
+      display: block;
+      letter-spacing: 0.02em;
+    }
+
+    .how-text span {
+      font-size: 12px;
+      color: rgba(0,0,0,0.55);
+    }
+
+    /* ===== TIERS SECTION ===== */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-head .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .section-head p {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ===== TIER CARDS ===== */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .tier-card {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid var(--border-subtle);
+      background: var(--bg-card);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    .tier-card.featured {
+      border-color: var(--color-secondary);
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 0 0 3px rgba(255,194,0,0.25);
+    }
+
+    .tier-card.featured:hover {
+      transform: scale(1.04) translateY(-6px);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--color-secondary);
+      color: var(--text-on-yellow);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .tier-header {
+      padding: 28px 24px 20px;
+      text-align: center;
+    }
+
+    .tier-icon {
+      font-size: 3.2rem;
+      display: block;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    }
+
+    .tier-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+    }
+
+    .tier-range {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .tier-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 0 24px;
+    }
+
+    .tier-perks {
+      padding: 20px 24px 28px;
+    }
+
+    .tier-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .tier-perk:last-child { margin-bottom: 0; }
+
+    .perk-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(214,43,43,0.10);
+      color: var(--color-primary);
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tier-card.featured .perk-dot {
+      background: rgba(255,194,0,0.15);
+      color: #b8860b;
+    }
+
+    .perk-text {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .perk-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .tier-cta {
+      margin: 0 24px 24px;
+      width: calc(100% - 48px);
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .tier-cta:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(214,43,43,0.35);
+    }
+
+    .tier-card.featured .tier-cta {
+      background: var(--color-secondary);
+      color: var(--text-on-yellow);
+    }
+
+    .tier-card.featured .tier-cta:hover {
+      box-shadow: 0 6px 20px rgba(255,194,0,0.40);
+    }
+
+    /* ===== POINTS CALCULATOR ===== */
+    .calc-section {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .calc-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .calc-inner .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+
+    .calc-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .calc-inner > p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+
+    .calc-box {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .calc-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .spend-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-secondary) 0%,
+        var(--color-secondary) var(--sfill, 20%),
+        var(--border-medium) var(--sfill, 20%),
+        var(--border-medium) 100%
+      );
+      margin-bottom: 8px;
+    }
+
+    .spend-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      border: 4px solid var(--bg-card);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .spend-slider::-webkit-slider-thumb:hover { transform: scale(1.18); }
+
+    .spend-slider::-moz-range-thumb {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      border: 4px solid var(--bg-card);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+      cursor: pointer;
+    }
+
+    .spend-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .calc-result {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .calc-stat {
+      background: var(--bg-section);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .calc-stat-val {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--color-primary);
+      line-height: 1;
+      display: block;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .calc-stat-val.pop { transform: scale(1.12); }
+
+    .calc-stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .calc-stat:last-child .calc-stat-val { color: #b8860b; }
+
+    /* ===== PERKS BENTO ===== */
+    .perks-section { background: var(--bg-page); }
+
+    .perks-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .perk-tile {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 28px 22px;
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.15s ease;
+      animation: tileIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    .perk-tile:nth-child(1) { animation-delay: 0.0s; }
+    .perk-tile:nth-child(2) { animation-delay: 0.07s; }
+    .perk-tile:nth-child(3) { animation-delay: 0.14s; }
+    .perk-tile:nth-child(4) { animation-delay: 0.21s; }
+    .perk-tile:nth-child(5) { animation-delay: 0.28s; }
+    .perk-tile:nth-child(6) { animation-delay: 0.35s; }
+
+    @keyframes tileIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .perk-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+    }
+
+    .perk-tile.wide {
+      grid-column: span 2;
+    }
+
+    .perk-tile-icon {
+      font-size: 2.4rem;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .perk-tile-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+
+    .perk-tile-body {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .perk-tile.highlight {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #9b1a1a 100%);
+      border-color: transparent;
+    }
+
+    .perk-tile.highlight .perk-tile-title,
+    .perk-tile.highlight .perk-tile-body { color: rgba(255,255,255,0.92); }
+
+    .perk-tile.highlight .perk-tile-icon { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.20)); }
+
+    /* ===== FAQ ===== */
+    .faq-section {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .faq-list {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-q span {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .faq-chevron {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding: 0 0 20px;
+      display: none;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      background: var(--bg-nav);
+      padding: 72px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,194,0,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(255,100,0,0.08) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    .bottom-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .bottom-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .bottom-cta h2 .gold { color: var(--color-secondary); }
+
+    .bottom-cta p {
+      color: rgba(255,255,255,0.68);
+      font-size: 0.98rem;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .tier-card.featured { transform: none; }
+      .tier-card.featured:hover { transform: translateY(-6px); }
+      .perks-bento { grid-template-columns: 1fr 1fr; }
+      .perk-tile.wide { grid-column: span 2; }
+      .how-step + .how-step { border-left: none; border-top: 1px solid rgba(0,0,0,0.12); }
+      .how-inner { flex-direction: column; gap: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .perks-bento { grid-template-columns: 1fr; }
+      .perk-tile.wide { grid-column: span 1; }
+      .calc-result { grid-template-columns: 1fr; }
+      .how-inner { flex-direction: row; flex-wrap: wrap; }
+      .how-step + .how-step { border-top: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <nav class="nav">
+
+      <!-- LOGO — circular, overflows below nav -->
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
+
+      <!-- DELIVERY / DINE-IN TOGGLE -->
+      <div class="order-mode-toggle" id="order-mode-toggle">
+        <button class="toggle-option" id="toggle-delivery" onclick="setMode('delivery')">Delivery</button>
+        <button class="toggle-option active" id="toggle-dine" onclick="setMode('dine')">Dine-in/Takeaway</button>
+      </div>
+
+      <div class="header__divider"></div>
+
+      <!-- LOCATION PILL -->
+      <div class="location-pill" role="button" tabindex="0">
+        <span class="pin-icon">📍</span>
+        <span class="loc-text">Select your location</span>
+      </div>
+
+      <!-- RIGHT NAV MENU — icon + label stacked -->
+      <nav class="nav-menu">
+
+        <a href="locations.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Nearby<br>Stores</span>
+        </a>
+
+        <a href="rewards.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+            </svg>
+          </span>
+          <span class="menu-label">King<br>Deals</span>
+        </a>
+
+        <button class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Login</span>
+        </button>
+
+        <button class="nav-menu-item">
+          <span class="menu-icon">
+            <div class="cart-badge-wrap">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.44 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+              <span class="cart-count" data-cart-count>0</span>
+            </div>
+          </span>
+          <span class="menu-label">Cart</span>
+        </button>
+
+        <!-- Search — standalone circle button -->
+        <button class="nav-search-btn search-toggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#4e4e4e" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </nav>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <div class="rewards-hero">
+    <div class="hero-crown left">👑</div>
+    <div class="hero-crown right">🔥</div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">🎁 BK Rewards Programme</div>
+      <h1>Earn Your <span class="gold">Crown</span></h1>
+      <p>Every rupee you spend at Burger King earns you points. Redeem them for free food, exclusive deals, and royal perks.</p>
+      <div class="hero-cta-row">
+        <button class="btn-join" onclick="document.getElementById('join-modal').style.display='flex'">
+          👑 Join Free — Get 100 pts
+        </button>
+        <button class="btn-signin">Already a member? Sign in</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <div class="how-strip">
+    <div class="how-inner">
+      <div class="how-step">
+        <span class="how-icon">🛒</span>
+        <div class="how-text">
+          <strong>Order</strong>
+          <span>Any BK meal, any size</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <span class="how-icon">⭐</span>
+        <div class="how-text">
+          <strong>Earn 10 pts / ₹1</strong>
+          <span>Points added instantly</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <span class="how-icon">🎁</span>
+        <div class="how-text">
+          <strong>Redeem</strong>
+          <span>Free food from 500 pts</span>
+        </div>
+      </div>
+      <div class="how-step">
+        <span class="how-icon">👑</span>
+        <div class="how-text">
+          <strong>Level Up</strong>
+          <span>Unlock better perks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TIERS ===== -->
+  <section class="perks-section">
+    <div class="section-wrap">
+      <div class="section-head">
+        <div class="eyebrow">🏆 Membership Tiers</div>
+        <h2>Your Rank Awaits</h2>
+        <p>Spend more, earn more, unlock exclusive royal treatment at every level.</p>
+      </div>
+
+      <div class="tiers-grid">
+
+        <!-- FLAME -->
+        <div class="tier-card">
+          <div class="tier-header">
+            <span class="tier-icon">🔥</span>
+            <div class="tier-name">Flame</div>
+            <div class="tier-range">0 – 4,999 pts</div>
+          </div>
+          <div class="tier-divider"></div>
+          <div class="tier-perks">
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>10 pts per ₹1</strong> spent on all orders</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Birthday bonus</strong> — 500 free points</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text">Access to <strong>member-only deals</strong> weekly</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Free Fries</strong> on your first order</div>
+            </div>
+          </div>
+          <button class="tier-cta" onclick="document.getElementById('join-modal').style.display='flex'">
+            Start Here
+          </button>
+        </div>
+
+        <!-- CROWN (featured) -->
+        <div class="tier-card featured">
+          <div class="tier-badge">Most Popular</div>
+          <div class="tier-header">
+            <span class="tier-icon">👑</span>
+            <div class="tier-name">Crown</div>
+            <div class="tier-range">5,000 – 19,999 pts</div>
+          </div>
+          <div class="tier-divider"></div>
+          <div class="tier-perks">
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>15 pts per ₹1</strong> — 50% more points</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Free Whopper</strong> every month</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Priority delivery</strong> queue</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Double points</strong> every weekend</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text">All Flame tier benefits included</div>
+            </div>
+          </div>
+          <button class="tier-cta" onclick="document.getElementById('join-modal').style.display='flex'">
+            Unlock Crown
+          </button>
+        </div>
+
+        <!-- LEGENDARY -->
+        <div class="tier-card">
+          <div class="tier-header">
+            <span class="tier-icon">💎</span>
+            <div class="tier-name">Legendary</div>
+            <div class="tier-range">20,000+ pts</div>
+          </div>
+          <div class="tier-divider"></div>
+          <div class="tier-perks">
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>25 pts per ₹1</strong> — maximum earns</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Free meal</strong> every week</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Exclusive menu</strong> items access</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text"><strong>Skip the queue</strong> — dedicated lane</div>
+            </div>
+            <div class="tier-perk">
+              <div class="perk-dot">✓</div>
+              <div class="perk-text">Personal BK concierge support</div>
+            </div>
+          </div>
+          <button class="tier-cta" onclick="document.getElementById('join-modal').style.display='flex'">
+            Go Legendary
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CALCULATOR ===== -->
+  <section class="calc-section">
+    <div class="calc-inner">
+      <div class="eyebrow">🧮 Points Calculator</div>
+      <h2>How Much Will You Earn?</h2>
+      <p>Drag the slider to see how many points you'd earn based on your monthly spend.</p>
+      <div class="calc-box">
+        <div class="calc-label">Monthly spend — <span id="spend-val">₹500</span></div>
+        <input type="range" class="spend-slider" id="spend-slider"
+               min="100" max="5000" step="100" value="500">
+        <div class="spend-ticks">
+          <span>₹100</span>
+          <span>₹5,000</span>
+        </div>
+        <div class="calc-result">
+          <div class="calc-stat">
+            <span class="calc-stat-val" id="pts-earned">5,000</span>
+            <span class="calc-stat-label">Points / Month</span>
+          </div>
+          <div class="calc-stat">
+            <span class="calc-stat-val" id="free-items">1</span>
+            <span class="calc-stat-label">Free Items / Month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERKS BENTO ===== -->
+  <section class="perks-section">
+    <div class="section-wrap">
+      <div class="section-head">
+        <div class="eyebrow">🎁 Member Benefits</div>
+        <h2>The Royal Treatment</h2>
+        <p>Every BK Rewards member gets access to exclusive perks, deals, and surprises.</p>
+      </div>
+      <div class="perks-bento">
+        <div class="perk-tile highlight">
+          <span class="perk-tile-icon">🎂</span>
+          <div class="perk-tile-title">Birthday Royalty</div>
+          <div class="perk-tile-body">On your birthday, we load your account with 500 bonus points and a surprise treat from the BK kitchen.</div>
+        </div>
+        <div class="perk-tile">
+          <span class="perk-tile-icon">⚡</span>
+          <div class="perk-tile-title">Flash Deals</div>
+          <div class="perk-tile-body">Members-only flash sales every Tuesday and Thursday. Discounts up to 40% for 2 hours only.</div>
+        </div>
+        <div class="perk-tile">
+          <span class="perk-tile-icon">🛵</span>
+          <div class="perk-tile-title">Free Delivery</div>
+          <div class="perk-tile-body">Crown and Legendary members get free delivery on every order, no minimum required.</div>
+        </div>
+        <div class="perk-tile">
+          <span class="perk-tile-icon">🍟</span>
+          <div class="perk-tile-title">Upgrade Vouchers</div>
+          <div class="perk-tile-body">Earn vouchers to upgrade any side or drink to large, absolutely free.</div>
+        </div>
+        <div class="perk-tile wide">
+          <span class="perk-tile-icon">🌍</span>
+          <div class="perk-tile-title">BK Rewards Works Everywhere</div>
+          <div class="perk-tile-body">Earn and redeem your points at any BK location in India — dine-in, drive-thru, or delivery. Your crown travels with you.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section">
+    <div class="section-wrap">
+      <div class="section-head">
+        <div class="eyebrow">❓ FAQ</div>
+        <h2>Got Questions?</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>When do my points expire?</span>
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">Points are valid for 12 months from the date they were earned. As long as you make at least one order per year, your points will never expire.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>Can I use points in-store and online?</span>
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">Yes! You can redeem BK Rewards points at any participating outlet, on our website, or through the BK app. Just scan your QR code at checkout.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>How quickly are points added to my account?</span>
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">Points are added to your account within minutes of your order being confirmed. For in-store purchases, they're applied as soon as the cashier scans your QR code.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>What can I redeem points for?</span>
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">You can redeem points for menu items, upgrades, free delivery, and exclusive merchandise. The redemption catalogue updates every month with new options.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>Is there a joining fee?</span>
+            <span class="faq-chevron">▾</span>
+          </div>
+          <div class="faq-a">BK Rewards is completely free to join. We'll even give you 100 welcome points the moment you sign up — enough to start redeeming immediately.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <div class="bottom-cta">
+    <div class="bottom-cta-inner">
+      <h2>Ready to Wear the <span class="gold">Crown</span>?</h2>
+      <p>Join over 2 million BK Rewards members earning free food every single day.</p>
+      <button class="btn-join" onclick="document.getElementById('join-modal').style.display='flex'">
+        👑 Join Free — Start Earning Today
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About BK</a>
+        <a href="#">Careers</a>
+        <a href="#">Nutrition</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="#">Support</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JOIN MODAL ===== -->
+  <div id="join-modal" style="
+    display:none; position:fixed; inset:0; z-index:2000;
+    background:rgba(0,0,0,0.55); backdrop-filter:blur(6px);
+    align-items:center; justify-content:center; padding:20px;
+  " onclick="if(event.target===this)this.style.display='none'">
+    <div style="
+      background:var(--bg-card); border-radius:24px;
+      padding:40px 32px; max-width:420px; width:100%;
+      box-shadow:0 24px 64px rgba(0,0,0,0.28);
+      animation: stepReveal 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+      position:relative;
+    ">
+      <button onclick="document.getElementById('join-modal').style.display='none'" style="
+        position:absolute; top:16px; right:16px;
+        background:var(--bg-section); border:1px solid var(--border-subtle);
+        border-radius:50%; width:32px; height:32px; cursor:pointer;
+        font-size:14px; color:var(--text-muted);
+        display:flex; align-items:center; justify-content:center;
+      ">✕</button>
+      <div style="text-align:center; margin-bottom:28px;">
+        <div style="font-size:3rem; margin-bottom:10px;">👑</div>
+        <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;text-transform:uppercase;color:var(--text-primary);margin-bottom:6px;">Join BK Rewards</h2>
+        <p style="font-size:13px;color:var(--text-muted);">Free to join · Get 100 welcome points instantly</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <input type="text" placeholder="Full name" style="
+          padding:12px 16px; border-radius:10px;
+          border:2px solid var(--border-subtle); background:var(--bg-section);
+          font-family:var(--font-primary); font-size:14px; color:var(--text-primary);
+          outline:none; transition:border-color 0.15s ease;
+        " onfocus="this.style.borderColor='var(--color-primary)'"
+           onblur="this.style.borderColor='var(--border-subtle)'">
+        <input type="email" placeholder="Email address" style="
+          padding:12px 16px; border-radius:10px;
+          border:2px solid var(--border-subtle); background:var(--bg-section);
+          font-family:var(--font-primary); font-size:14px; color:var(--text-primary);
+          outline:none; transition:border-color 0.15s ease;
+        " onfocus="this.style.borderColor='var(--color-primary)'"
+           onblur="this.style.borderColor='var(--border-subtle)'">
+        <input type="tel" placeholder="Phone number" style="
+          padding:12px 16px; border-radius:10px;
+          border:2px solid var(--border-subtle); background:var(--bg-section);
+          font-family:var(--font-primary); font-size:14px; color:var(--text-primary);
+          outline:none; transition:border-color 0.15s ease;
+        " onfocus="this.style.borderColor='var(--color-primary)'"
+           onblur="this.style.borderColor='var(--border-subtle)'">
+        <button onclick="
+          this.textContent='✓ Welcome to BK Rewards!';
+          this.style.background='#16a34a';
+          setTimeout(() => { document.getElementById('join-modal').style.display='none'; this.textContent='👑 Create My Account'; this.style.background=''; }, 2000);
+        " style="
+          padding:14px; background:var(--color-primary); color:#fff;
+          font-family:var(--font-display); font-size:16px; font-weight:800;
+          text-transform:uppercase; letter-spacing:0.04em; border:none;
+          border-radius:12px; cursor:pointer;
+          transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+          box-shadow:0 4px 16px rgba(214,43,43,0.30);
+        " onmouseover="this.style.filter='brightness(1.1)'"
+           onmouseout="this.style.filter=''">
+          👑 Create My Account
+        </button>
+        <p style="font-size:11px;color:var(--text-muted);text-align:center;line-height:1.5;">
+          By joining you agree to our Terms & Privacy Policy. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== OVERLAYS ===== -->
+  <div class="search-overlay">
+    <div class="search-modal">
+      <input class="search-modal-input" type="text" placeholder="Search burgers, sides, drinks..." autocomplete="off">
+      <button class="search-close-btn">✕ Close</button>
+    </div>
+    <div class="search-results" role="listbox"></div>
+  </div>
+
+  <div class="drawer-backdrop"></div>
+  <div class="mobile-drawer" role="dialog" aria-label="Navigation menu">
+    <div class="drawer-header">
+      <a href="index.html" class="drawer-logo">
+        <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+      </a>
+      <button class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section-label">Navigate</div>
+      <a href="index.html"     class="drawer-nav-link"><span class="drawer-nav-icon">🏠</span> Home</a>
+      <a href="menu.html"      class="drawer-nav-link"><span class="drawer-nav-icon">🍔</span> Menu</a>
+      <a href="locations.html" class="drawer-nav-link"><span class="drawer-nav-icon">📍</span> Locations</a>
+      <a href="rewards.html"   class="drawer-nav-link active"><span class="drawer-nav-icon">🎁</span> Rewards</a>
+      <a href="mood.html"      class="drawer-nav-link"><span class="drawer-nav-icon">✨</span> Mood Menu</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Theme</div>
+      <div class="drawer-theme-grid">
+        <button class="drawer-theme-btn active" data-theme="classic"><div class="theme-swatch classic"></div><span>Classic</span></button>
+        <button class="drawer-theme-btn" data-theme="latenight"><div class="theme-swatch latenight"></div><span>Night</span></button>
+        <button class="drawer-theme-btn" data-theme="cafe"><div class="theme-swatch cafe"></div><span>Café</span></button>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="drawer-login-btn">Login / Sign Up</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/components/nav.js"></script>
+
+  <script>
+    /* ===== FAQ ACCORDION ===== */
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    /* ===== POINTS CALCULATOR ===== */
+    const slider    = document.getElementById('spend-slider');
+    const spendVal  = document.getElementById('spend-val');
+    const ptsEarned = document.getElementById('pts-earned');
+    const freeItems = document.getElementById('free-items');
+
+    function updateCalc(val) {
+      const spend = parseInt(val);
+      const pct = ((spend - 100) / (5000 - 100) * 100).toFixed(1) + '%';
+      slider.style.setProperty('--sfill', pct);
+      spendVal.textContent = '₹' + spend.toLocaleString('en-IN');
+
+      const pts = spend * 10;
+      const items = Math.floor(pts / 500);
+
+      // Animate
+      [ptsEarned, freeItems].forEach(el => {
+        el.classList.remove('pop');
+        void el.offsetWidth;
+        el.classList.add('pop');
+        setTimeout(() => el.classList.remove('pop'), 250);
+      });
+
+      ptsEarned.textContent = pts.toLocaleString('en-IN');
+      freeItems.textContent = items;
+    }
+
+    slider.addEventListener('input', e => updateCalc(e.target.value));
+    updateCalc(slider.value);
+
+    /* ===== KEYFRAME for modal ===== */
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes stepReveal {
+        from { opacity:0; transform:translateY(20px) scale(0.97); }
+        to   { opacity:1; transform:translateY(0) scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>

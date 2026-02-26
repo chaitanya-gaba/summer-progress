@@ -1,0 +1,100 @@
+/* ==========================================================
+   RESPONSIVE.CSS
+   Global responsive overrides — loaded last
+   ========================================================== */
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .site-footer {
+    padding: 36px 20px;
+    margin-top: 40px;
+  }
+}
+
+/* ==========================================================
+   BANNER
+   ========================================================== */
+
+@media (max-width: 600px) {
+  .hero-banner {
+    aspect-ratio: 3 / 1;
+    max-height: 130px;
+  }
+}
+
+/* ==========================================================
+   CATEGORY SLIDER — touch devices
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .home-categories {
+    margin: 12px 12px 0;
+  }
+
+  /* Hide arrows on touch — native swipe handles it */
+  .prev-btn,
+  .next-btn {
+    display: none;
+  }
+
+  .category-row {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-row::-webkit-scrollbar { display: none; }
+}
+
+/* ==========================================================
+   TOPBAR — smallest screens
+   ========================================================== */
+
+@media (max-width: 360px) {
+  .nav-topbar { display: none; }
+}
+
+/* ==========================================================
+   TOUCH TARGETS — 44px minimum (WCAG)
+   ========================================================== */
+
+@media (max-width: 768px) {
+  button,
+  .category-card,
+  .nav-link,
+  .drawer-nav-link {
+    min-height: 44px;
+  }
+}
+
+/* ==========================================================
+   IMAGES
+   ========================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================
+   PRINT
+   ========================================================== */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .cart,
+  .prev-btn,
+  .next-btn {
+    display: none !important;
+  }
+}

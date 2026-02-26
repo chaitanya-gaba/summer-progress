@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC-d Clone | Home</title>
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/category-card.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/base/responsive.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+
+    <!-- PROMO TOPBAR -->
+    <div class="nav-topbar">
+      <span>
+        🔥 Flame-grilled since 1954 &nbsp;·&nbsp;
+        🛵 Free delivery on orders over ₹499 &nbsp;·&nbsp;
+        🎁 Join BK Rewards and earn points on every order &nbsp;·&nbsp;
+        🍔 Try the new Spicy Whopper — limited time only &nbsp;·&nbsp;
+        🔥 Flame-grilled since 1954 &nbsp;·&nbsp;
+        🛵 Free delivery on orders over ₹499
+      </span>
+    </div>
+
+    <!-- MAIN NAV -->
+    <nav class="nav">
+
+      <!-- LEFT: Logo -->
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
+
+      <!-- CENTER: Nav Links -->
+      <div class="nav-links">
+        <a href="index.html"     class="nav-link">🏠 Home</a>
+        <a href="menu.html"      class="nav-link">🍔 Menu</a>
+        <a href="locations.html" class="nav-link">📍 Locations</a>
+        <a href="rewards.html"   class="nav-link">🎁 Rewards</a>
+        <a href="mood.html"      class="nav-link">✨ Mood Menu</a>
+      </div>
+
+      <!-- RIGHT: Actions -->
+      <div class="nav-right">
+
+        <!-- Location -->
+        <button class="location-btn">
+          <span class="loc-icon">📍</span>
+          <span class="loc-text">Select Store</span>
+        </button>
+
+        <!-- Search -->
+        <div class="search-wrapper">
+          <button class="search-toggle" aria-label="Search menu">🔍</button>
+        </div>
+
+        <!-- Theme Switcher -->
+        <div class="theme-switcher">
+          <button class="theme-toggle-btn" aria-label="Switch theme">
+            <span class="theme-toggle-icon">🔥</span>
+            <span class="theme-toggle-label">Classic BK</span>
+            <span class="theme-toggle-caret">▾</span>
+          </button>
+          <div class="theme-dropdown">
+            <!-- Populated by nav.js -->
+          </div>
+        </div>
+
+        <!-- Cart -->
+        <button class="cart-btn" aria-label="View cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </button>
+
+        <!-- Login -->
+        <button class="login-btn">Login</button>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="hamburger-btn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+  
+
+  <script type="module">
+    import { loadTheme } from './js/core/utils.js';
+    loadTheme();
+  </script>
+</body>
+</html>

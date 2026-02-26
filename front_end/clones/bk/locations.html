@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Clone | Find a Restaurant</title>
+
+  <!-- Base -->
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="css/components/buttons.css">
+
+  <!-- Page -->
+  <link rel="stylesheet" href="css/pages/locations.css">
+  <link rel="stylesheet" href="css/base/responsive.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav">
+
+      <!-- LOGO — circular, overflows below nav -->
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
+
+      <!-- DELIVERY / DINE-IN TOGGLE -->
+      <div class="order-mode-toggle" id="order-mode-toggle">
+        <button class="toggle-option" id="toggle-delivery" onclick="setMode('delivery')">Delivery</button>
+        <button class="toggle-option active" id="toggle-dine" onclick="setMode('dine')">Dine-in/Takeaway</button>
+      </div>
+
+      <div class="header__divider"></div>
+
+      <!-- LOCATION PILL -->
+      <div class="location-pill" role="button" tabindex="0">
+        <span class="pin-icon">📍</span>
+        <span class="loc-text">Select your location</span>
+      </div>
+
+      <!-- RIGHT NAV MENU — icon + label stacked -->
+      <nav class="nav-menu">
+
+        <a href="locations.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Nearby<br>Stores</span>
+        </a>
+
+        <a href="rewards.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+            </svg>
+          </span>
+          <span class="menu-label">King<br>Deals</span>
+        </a>
+
+        <button class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Login</span>
+        </button>
+
+        <button class="nav-menu-item">
+          <span class="menu-icon">
+            <div class="cart-badge-wrap">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.44 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+              <span class="cart-count" data-cart-count>0</span>
+            </div>
+          </span>
+          <span class="menu-label">Cart</span>
+        </button>
+
+        <!-- Search — standalone circle button -->
+        <button class="nav-search-btn search-toggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#4e4e4e" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </nav>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="locations-page">
+
+    <!-- PAGE HEADER -->
+    <section class="locations-hero">
+      <div class="locations-hero-inner">
+        <div class="hero-label">📍 Find Us</div>
+        <h1 class="hero-title">Find Your <span class="accent">Nearest</span><br>Burger King</h1>
+        <p class="hero-sub">Over 500 restaurants across India. Hot, fresh, and flame-grilled — always nearby.</p>
+
+        <!-- SEARCH BAR -->
+        <div class="location-search-bar">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="location-search"
+              placeholder="Search by city or area..."
+              autocomplete="off"
+            >
+          </div>
+          <button class="use-location-btn" id="use-location-btn">
+            <span>📡</span> Use My Location
+          </button>
+        </div>
+
+        <!-- FILTER CHIPS -->
+        <div class="filter-chips">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="drive-thru">🚗 Drive-Thru</button>
+          <button class="filter-chip" data-filter="dine-in">🍽️ Dine-In</button>
+          <button class="filter-chip" data-filter="delivery">🛵 Delivery</button>
+          <button class="filter-chip" data-filter="open-now">🟢 Open Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATIONS SPLIT LAYOUT -->
+    <section class="locations-body">
+
+      <!-- LEFT: STORE LIST -->
+      <div class="store-list-panel">
+        <div class="store-list-header">
+          <span class="store-count" id="store-count">12 restaurants found</span>
+          <select class="sort-select" id="sort-select">
+            <option value="distance">Nearest first</option>
+            <option value="name">A–Z</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+
+        <div class="store-list" id="store-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- RIGHT: MAP PANEL -->
+      <div class="map-panel" id="map-panel">
+        <div class="map-canvas" id="map-canvas">
+
+          <!-- Grid lines (decorative) -->
+          <div class="map-grid"></div>
+
+          <!-- City labels -->
+          <div class="city-label" style="left:18%; top:22%">New Delhi</div>
+          <div class="city-label" style="left:62%; top:14%">Chandigarh</div>
+          <div class="city-label" style="left:75%; top:38%">Lucknow</div>
+          <div class="city-label" style="left:28%; top:55%">Jaipur</div>
+          <div class="city-label" style="left:52%; top:62%">Agra</div>
+          <div class="city-label" style="left:14%; top:74%">Ahmedabad</div>
+          <div class="city-label" style="left:68%; top:76%">Mumbai</div>
+          <div class="city-label" style="left:42%; top:85%">Pune</div>
+
+          <!-- Store pins rendered by JS -->
+          <div class="map-pins" id="map-pins"></div>
+
+          <!-- Selected store card on map -->
+          <div class="map-store-card" id="map-store-card" hidden>
+            <button class="map-card-close" id="map-card-close">✕</button>
+            <div class="map-card-img-wrap">
+              <div class="map-card-img-placeholder">🍔</div>
+            </div>
+            <div class="map-card-body">
+              <div class="map-card-name" id="map-card-name">—</div>
+              <div class="map-card-address" id="map-card-address">—</div>
+              <div class="map-card-status" id="map-card-status"></div>
+              <div class="map-card-actions">
+                <button class="btn-primary map-order-btn">Order Now</button>
+                <button class="btn-directions" id="map-directions-btn">Directions</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map attribution -->
+          <div class="map-attribution">BK Locations — Illustrative Map</div>
+        </div>
+
+        <!-- Map controls -->
+        <div class="map-controls">
+          <button class="map-ctrl-btn" id="zoom-in">+</button>
+          <button class="map-ctrl-btn" id="zoom-out">−</button>
+          <button class="map-ctrl-btn" id="map-reset" title="Reset view">⊙</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About BK</a>
+        <a href="#">Careers</a>
+        <a href="#">Nutrition</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="#">Support</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script type="module">
+    import { loadTheme } from './js/core/utils.js';
+    loadTheme();
+  </script>
+  <script type="module" src="js/pages/locations.js"></script>
+
+</body>
+</html>

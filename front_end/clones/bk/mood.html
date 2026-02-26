@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Clone | Mood Menu</title>
+
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/theme/theme.css">
+  <link rel="stylesheet" href="css/theme/transitions.css">
+  <link rel="stylesheet" href="css/layout/page-shell.css">
+  <link rel="stylesheet" href="css/layout/nav.css">
+  <link rel="stylesheet" href="css/layout/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/base/responsive.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== PAGE BACKGROUND ===== */
+    .mood-page {
+      background: var(--bg-page);
+      min-height: 100vh;
+    }
+
+    /* ===== HERO ===== */
+    .mood-hero {
+      position: relative;
+      padding: 64px 24px 52px;
+      text-align: center;
+      overflow: hidden;
+      background: var(--bg-section);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .mood-hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(214,43,43,0.10) 0%, transparent 70%);
+      top: -150px; left: -150px;
+      pointer-events: none;
+    }
+
+    .mood-hero::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,194,0,0.12) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .mood-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .mood-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+    }
+
+    .mood-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .mood-hero h1 .accent {
+      color: var(--color-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .mood-hero h1 .accent::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0; right: 0;
+      height: 6px;
+      background: var(--color-secondary);
+      border-radius: 3px;
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    .mood-hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .mood-progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 28px 24px 0;
+    }
+
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--border-medium);
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+
+    .progress-dot.active {
+      background: var(--color-primary);
+      width: 32px;
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(214,43,43,0.4);
+    }
+
+    .progress-dot.done {
+      background: var(--color-secondary);
+    }
+
+    .progress-dot.done::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 900;
+      color: var(--text-on-yellow);
+    }
+
+    .progress-line {
+      width: 48px; height: 2px;
+      background: var(--border-medium);
+      border-radius: 1px;
+      transition: background 0.35s ease;
+    }
+
+    .progress-line.done {
+      background: var(--color-secondary);
+    }
+
+    /* ===== QUIZ CONTAINER ===== */
+    .mood-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    /* ===== STEP PANELS ===== */
+    .mood-step {
+      display: none;
+    }
+
+    .mood-step.active {
+      display: block;
+      animation: stepReveal 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes stepReveal {
+      from { opacity: 0; transform: translateY(28px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1);    }
+    }
+
+    .step-q {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ===== MOOD OPTION CARDS ===== */
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 14px;
+    }
+
+    .option-card {
+      border-radius: 18px;
+      padding: 26px 14px 20px;
+      background: var(--bg-card);
+      border: 2px solid var(--border-subtle);
+      cursor: pointer;
+      text-align: center;
+      transition:
+        transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+
+    .option-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: var(--color-primary);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+    }
+
+    .option-card.selected {
+      border-color: var(--color-primary);
+      background: rgba(214,43,43,0.05);
+      box-shadow: 0 0 0 3px rgba(214,43,43,0.15);
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    [data-theme="latenight"] .option-card.selected {
+      background: rgba(229,57,53,0.10);
+    }
+
+    [data-theme="cafe"] .option-card.selected {
+      background: rgba(107,58,42,0.07);
+      border-color: var(--color-primary);
+    }
+
+    .option-check {
+      position: absolute;
+      top: 10px; right: 12px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .option-card.selected .option-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .option-emoji {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .option-card:hover .option-emoji,
+    .option-card.selected .option-emoji {
+      transform: scale(1.18) rotate(-6deg);
+    }
+
+    .option-label {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      letter-spacing: 0.03em;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .option-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ===== HUNGER SLIDER STEP ===== */
+    .hunger-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hunger-emoji {
+      font-size: clamp(5rem, 16vw, 8rem);
+      line-height: 1;
+      display: block;
+      margin-bottom: 6px;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .hunger-emoji.pop {
+      transform: scale(1.15);
+    }
+
+    .hunger-text {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    input[type="range"].hunger-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(
+        to right,
+        var(--color-primary) 0%,
+        var(--color-primary) var(--fill, 25%),
+        var(--border-medium) var(--fill, 25%),
+        var(--border-medium) 100%
+      );
+      margin-bottom: 10px;
+    }
+
+    input[type="range"].hunger-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      border: 4px solid var(--bg-card);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+      cursor: pointer;
+      transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    input[type="range"].hunger-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    input[type="range"].hunger-slider::-moz-range-thumb {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      border: 4px solid var(--bg-card);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+      cursor: pointer;
+    }
+
+    .hunger-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== STEP NAV BUTTONS ===== */
+    .step-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 44px;
+    }
+
+    .btn-back {
+      padding: 11px 22px;
+      border-radius: 12px;
+      background: transparent;
+      border: 2px solid var(--border-medium);
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-back:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .btn-next-q {
+      padding: 12px 32px;
+      border-radius: 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(214,43,43,0.30);
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .btn-next-q:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(214,43,43,0.42);
+      filter: brightness(1.08);
+    }
+
+    .btn-next-q:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+      filter: none !important;
+    }
+
+    /* ===== RESULTS ===== */
+    .mood-results {
+      display: none;
+    }
+
+    .mood-results.active {
+      display: block;
+      animation: stepReveal 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    .results-top {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .results-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-secondary);
+      color: var(--text-on-yellow);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .results-top h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .results-top p {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+    }
+
+    /* Results cards */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .result-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.15s ease;
+      animation: cardUp 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    .result-card:nth-child(1) { animation-delay: 0.05s; }
+    .result-card:nth-child(2) { animation-delay: 0.12s; }
+    .result-card:nth-child(3) { animation-delay: 0.19s; }
+    .result-card:nth-child(4) { animation-delay: 0.26s; }
+
+    @keyframes cardUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+    }
+
+    .result-img {
+      height: 140px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, #5c2b0e) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+    }
+
+    .result-pct {
+      position: absolute;
+      bottom: 8px; right: 10px;
+      background: var(--color-secondary);
+      color: var(--text-on-yellow);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .result-body {
+      padding: 14px 16px 16px;
+    }
+
+    .result-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    .result-why {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .result-price {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .result-add-btn {
+      padding: 7px 14px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .result-add-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .result-add-btn.added {
+      background: #16a34a;
+    }
+
+    .results-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 44px;
+      flex-wrap: wrap;
+    }
+
+    .btn-retake {
+      padding: 11px 22px;
+      border-radius: 12px;
+      background: transparent;
+      border: 2px solid var(--border-medium);
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-retake:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .btn-full-menu {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 28px;
+      border-radius: 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(214,43,43,0.30);
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .btn-full-menu:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(214,43,43,0.42);
+      filter: brightness(1.08);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .option-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .option-card { padding: 20px 10px 16px; }
+      .option-emoji { font-size: 2.4rem; }
+      .results-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .mood-hero { padding: 48px 16px 40px; }
+    }
+
+    @media (max-width: 380px) {
+      .results-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body class="mood-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <nav class="nav">
+
+      <!-- LOGO — circular, overflows below nav -->
+      <div class="nav-left">
+        <a href="index.html" class="logo">
+          <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+        </a>
+      </div>
+
+      <!-- DELIVERY / DINE-IN TOGGLE -->
+      <div class="order-mode-toggle" id="order-mode-toggle">
+        <button class="toggle-option" id="toggle-delivery" onclick="setMode('delivery')">Delivery</button>
+        <button class="toggle-option active" id="toggle-dine" onclick="setMode('dine')">Dine-in/Takeaway</button>
+      </div>
+
+      <div class="header__divider"></div>
+
+      <!-- LOCATION PILL -->
+      <div class="location-pill" role="button" tabindex="0">
+        <span class="pin-icon">📍</span>
+        <span class="loc-text">Select your location</span>
+      </div>
+
+      <!-- RIGHT NAV MENU — icon + label stacked -->
+      <nav class="nav-menu">
+
+        <a href="locations.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Nearby<br>Stores</span>
+        </a>
+
+        <a href="rewards.html" class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+            </svg>
+          </span>
+          <span class="menu-label">King<br>Deals</span>
+        </a>
+
+        <button class="nav-menu-item hide-mobile">
+          <span class="menu-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </span>
+          <span class="menu-label">Login</span>
+        </button>
+
+        <button class="nav-menu-item">
+          <span class="menu-icon">
+            <div class="cart-badge-wrap">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.9 18 9 18h12v-2H9.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.44 5H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+              <span class="cart-count" data-cart-count>0</span>
+            </div>
+          </span>
+          <span class="menu-label">Cart</span>
+        </button>
+
+        <!-- Search — standalone circle button -->
+        <button class="nav-search-btn search-toggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#4e4e4e" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </nav>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <div class="mood-hero">
+    <div class="mood-hero-inner">
+      <div class="mood-eyebrow">✨ Personalised For You</div>
+      <h1>What's Your <span class="accent">Mood</span>?</h1>
+      <p>Answer 3 quick questions and we'll find the perfect BK meal for how you're feeling right now.</p>
+    </div>
+  </div>
+
+  <!-- ===== PROGRESS ===== -->
+  <div class="mood-progress" id="mood-progress">
+    <div class="progress-step">
+      <div class="progress-dot active" id="dot-0"></div>
+    </div>
+    <div class="progress-line" id="line-0"></div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot-1"></div>
+    </div>
+    <div class="progress-line" id="line-1"></div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot-2"></div>
+    </div>
+  </div>
+
+  <!-- ===== QUIZ ===== -->
+  <main>
+    <div class="mood-container">
+
+      <!-- STEP 0 — HOW ARE YOU FEELING -->
+      <div class="mood-step active" id="step-0">
+        <div class="step-q">How are you feeling right now?</div>
+        <div class="option-grid">
+          <div class="option-card" data-key="mood" data-val="happy">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">😄</span>
+            <span class="option-label">Happy</span>
+            <span class="option-sub">On top of the world</span>
+          </div>
+          <div class="option-card" data-key="mood" data-val="hungry">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">🤤</span>
+            <span class="option-label">Starving</span>
+            <span class="option-sub">Feed me NOW</span>
+          </div>
+          <div class="option-card" data-key="mood" data-val="tired">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">😴</span>
+            <span class="option-label">Tired</span>
+            <span class="option-sub">Need energy</span>
+          </div>
+          <div class="option-card" data-key="mood" data-val="stressed">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">😤</span>
+            <span class="option-label">Stressed</span>
+            <span class="option-sub">Need comfort</span>
+          </div>
+          <div class="option-card" data-key="mood" data-val="adventurous">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">🤩</span>
+            <span class="option-label">Adventurous</span>
+            <span class="option-sub">Try something new</span>
+          </div>
+          <div class="option-card" data-key="mood" data-val="chill">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">😎</span>
+            <span class="option-label">Chill</span>
+            <span class="option-sub">Just vibing</span>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-next-q" id="btn-0" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 1 — HUNGER LEVEL -->
+      <div class="mood-step" id="step-1">
+        <div class="step-q">How hungry are you?</div>
+        <div class="hunger-wrap">
+          <span class="hunger-emoji" id="hunger-emoji">😐</span>
+          <span class="hunger-text"  id="hunger-text">Peckish</span>
+          <input type="range" class="hunger-slider" id="hunger-slider"
+                 min="1" max="5" value="2" step="1">
+          <div class="hunger-ticks">
+            <span>Just a snack</span>
+            <span>The whole menu</span>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-back" id="back-1">← Back</button>
+          <button class="btn-next-q" id="btn-1">Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 — VIBE -->
+      <div class="mood-step" id="step-2">
+        <div class="step-q">What's your vibe today?</div>
+        <div class="option-grid">
+          <div class="option-card" data-key="vibe" data-val="classic">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">👑</span>
+            <span class="option-label">Classic</span>
+            <span class="option-sub">The OG hits</span>
+          </div>
+          <div class="option-card" data-key="vibe" data-val="spicy">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">🌶️</span>
+            <span class="option-label">Spicy</span>
+            <span class="option-sub">Turn up the heat</span>
+          </div>
+          <div class="option-card" data-key="vibe" data-val="light">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">🥗</span>
+            <span class="option-label">Light</span>
+            <span class="option-sub">Keep it easy</span>
+          </div>
+          <div class="option-card" data-key="vibe" data-val="indulgent">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">🧀</span>
+            <span class="option-label">Indulgent</span>
+            <span class="option-sub">Go all in</span>
+          </div>
+          <div class="option-card" data-key="vibe" data-val="sweet">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">🍦</span>
+            <span class="option-label">Sweet</span>
+            <span class="option-sub">End with dessert</span>
+          </div>
+          <div class="option-card" data-key="vibe" data-val="caffeine">
+            <div class="option-check">✓</div>
+            <span class="option-emoji">☕</span>
+            <span class="option-label">Caffeinated</span>
+            <span class="option-sub">BK Café mode</span>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-back" id="back-2">← Back</button>
+          <button class="btn-next-q" id="btn-2" disabled>Find My Meal 🔥</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="mood-results" id="mood-results">
+        <div class="results-top">
+          <div class="results-tag" id="results-tag">✨ Your Mood Match</div>
+          <h2 id="results-title">We Found Your Meal!</h2>
+          <p id="results-sub">Based on your vibe, here's what we recommend</p>
+        </div>
+        <div class="results-grid" id="results-grid"></div>
+        <div class="results-actions">
+          <button class="btn-retake" id="btn-retake">↺ Retake Quiz</button>
+          <a href="menu.html" class="btn-full-menu">Browse Full Menu →</a>
+        </div>
+      </div>
+
+    </div><!-- /mood-container -->
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About BK</a>
+        <a href="#">Careers</a>
+        <a href="#">Nutrition</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="#">Support</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect With Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== OVERLAYS ===== -->
+  <div class="search-overlay">
+    <div class="search-modal">
+      <input class="search-modal-input" type="text" placeholder="Search burgers, sides, drinks..." autocomplete="off">
+      <button class="search-close-btn">✕ Close</button>
+    </div>
+    <div class="search-results" role="listbox"></div>
+  </div>
+
+  <div class="drawer-backdrop"></div>
+  <div class="mobile-drawer" role="dialog" aria-label="Navigation menu">
+    <div class="drawer-header">
+      <a href="index.html" class="drawer-logo">
+        <img src="assets/icons/burger-king-8.svg" alt="Burger King">
+      </a>
+      <button class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section-label">Navigate</div>
+      <a href="index.html"     class="drawer-nav-link"><span class="drawer-nav-icon">🏠</span> Home</a>
+      <a href="menu.html"      class="drawer-nav-link"><span class="drawer-nav-icon">🍔</span> Menu</a>
+      <a href="locations.html" class="drawer-nav-link"><span class="drawer-nav-icon">📍</span> Locations</a>
+      <a href="rewards.html"   class="drawer-nav-link"><span class="drawer-nav-icon">🎁</span> Rewards</a>
+      <a href="mood.html"      class="drawer-nav-link active"><span class="drawer-nav-icon">✨</span> Mood Menu</a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Theme</div>
+      <div class="drawer-theme-grid">
+        <button class="drawer-theme-btn active" data-theme="classic"><div class="theme-swatch classic"></div><span>Classic</span></button>
+        <button class="drawer-theme-btn" data-theme="latenight"><div class="theme-swatch latenight"></div><span>Night</span></button>
+        <button class="drawer-theme-btn" data-theme="cafe"><div class="theme-swatch cafe"></div><span>Café</span></button>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="drawer-login-btn">Login / Sign Up</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/components/nav.js"></script>
+
+  <script>
+  /* ================================================================
+     MOOD QUIZ — DATA & LOGIC
+     ================================================================ */
+
+  const RECS = {
+    happy: {
+      classic:   { name:'Whopper',            emoji:'🍔', price:199, why:'A classic for a classic day',       pct:98 },
+      spicy:     { name:'Spicy Whopper',       emoji:'🌶️', price:199, why:'Keep those good vibes fired up',   pct:96 },
+      light:     { name:'Veg Whopper',         emoji:'🥗', price:149, why:'Light, flavourful, just right',    pct:94 },
+      indulgent: { name:'Double Whopper',      emoji:'🧀', price:299, why:'You deserve to go all out today',  pct:97 },
+      sweet:     { name:'Soft Serve Sundae',   emoji:'🍦', price:79,  why:'Celebrate with something sweet',  pct:95 },
+      caffeine:  { name:'BK Cappuccino',       emoji:'☕', price:119, why:'Brew up some good energy',         pct:93 },
+    },
+    hungry: {
+      classic:   { name:'King Meal',           emoji:'👑', price:299, why:'Full, satisfying, legendary',      pct:99 },
+      spicy:     { name:'Spicy Chicken Meal',  emoji:'🌶️', price:279, why:'Heat + size = full satisfaction', pct:97 },
+      light:     { name:'Veg Meal',            emoji:'🥗', price:199, why:'Filling but won\'t weigh you down',pct:92 },
+      indulgent: { name:'Family Combo',        emoji:'🍟', price:499, why:'When only maximum will do',        pct:99 },
+      sweet:     { name:'Chocolate Shake',     emoji:'🍫', price:129, why:'Sweet and filling in one',        pct:90 },
+      caffeine:  { name:'Coffee + Fries',      emoji:'☕', price:178, why:'Caffeine and carbs — pure energy', pct:94 },
+    },
+    tired: {
+      classic:   { name:'Whopper Jr.',         emoji:'🍔', price:129, why:'Easy comfort, no effort needed',  pct:93 },
+      spicy:     { name:'Spicy Fries',         emoji:'🌶️', price:89,  why:'A kick to wake you right up',    pct:91 },
+      light:     { name:'French Fries',        emoji:'🍟', price:79,  why:'Simple. Comforting. Always good', pct:92 },
+      indulgent: { name:'Cheese Whopper',      emoji:'🧀', price:219, why:'Melty cheesy comfort food',       pct:95 },
+      sweet:     { name:'Ice Cream Cone',      emoji:'🍦', price:49,  why:'Sweet little pick-me-up',         pct:90 },
+      caffeine:  { name:'Double Espresso',     emoji:'☕', price:99,  why:'The double shot you desperately need', pct:98 },
+    },
+    stressed: {
+      classic:   { name:'Whopper',             emoji:'🍔', price:199, why:'Comfort in every single bite',    pct:97 },
+      spicy:     { name:'Onion Rings',         emoji:'🧅', price:99,  why:'Crunch that stress away',         pct:93 },
+      light:     { name:'Mozzarella Sticks',   emoji:'🧀', price:129, why:'Melty comfort with a light touch',pct:91 },
+      indulgent: { name:'Double Whopper',      emoji:'🍔', price:299, why:'Go big, forget your problems',    pct:96 },
+      sweet:     { name:'Chocolate Brownie',   emoji:'🍫', price:99,  why:'Chocolate literally cures stress',pct:95 },
+      caffeine:  { name:'BK Mocha',            emoji:'☕', price:139, why:'Chocolate + coffee = true therapy',pct:94 },
+    },
+    adventurous: {
+      classic:   { name:'Bacon Whopper',       emoji:'🥓', price:239, why:'The classic with a bold twist',   pct:94 },
+      spicy:     { name:'Spicy Whopper',       emoji:'🌶️', price:199, why:'Bold flavours for bold people',  pct:98 },
+      light:     { name:'BK Croissant',        emoji:'🥐', price:149, why:'Something completely different',  pct:92 },
+      indulgent: { name:'Double Chicken Meal', emoji:'🍗', price:349, why:'Maximum everything, always',      pct:96 },
+      sweet:     { name:'BK Apple Pie',        emoji:'🥧', price:89,  why:'Unexpectedly, surprisingly good', pct:90 },
+      caffeine:  { name:'BK Donut + Coffee',   emoji:'🍩', price:149, why:'Sweet adventure awaits you',      pct:91 },
+    },
+    chill: {
+      classic:   { name:'Whopper Jr.',         emoji:'🍔', price:129, why:'No fuss. Just good food.',        pct:95 },
+      spicy:     { name:'Chicken Nuggets',     emoji:'🍗', price:149, why:'Easy snacking done perfectly',    pct:93 },
+      light:     { name:'Potato Wedges',       emoji:'🥔', price:99,  why:'Easy vibes, great taste',         pct:92 },
+      indulgent: { name:'Cheese Whopper',      emoji:'🧀', price:219, why:'Laid-back indulgence at its best',pct:94 },
+      sweet:     { name:'Soft Serve Cone',     emoji:'🍦', price:59,  why:'Perfectly relaxed treat',         pct:96 },
+      caffeine:  { name:'BK Iced Tea',         emoji:'🧋', price:79,  why:'Cool, calm, refreshing perfection',pct:95 },
+    },
+  };
+
+  const HUNGER = [
+    { emoji:'🙂', label:'Just a snack' },
+    { emoji:'😐', label:'Peckish'       },
+    { emoji:'😋', label:'Pretty hungry' },
+    { emoji:'🤤', label:'Really hungry' },
+    { emoji:'😤', label:'FEED ME NOW'   },
+  ];
+
+  const HUNGRY_EXTRAS = [
+    { name:'Large Fries',  emoji:'🍟', price:99,  why:'You need the sides too',    pct:88 },
+    { name:'Large Coke',   emoji:'🥤', price:59,  why:'Wash it all down properly', pct:85 },
+  ];
+
+  const MOOD_TITLES = {
+    happy:'You\'re Glowing ✨', hungry:'Time To Eat 🍔',
+    tired:'Fuel Up ⚡',        stressed:'Take A Break 🫂',
+    adventurous:'Let\'s Go 🤩', chill:'Easy Does It 😎',
+  };
+  const MOOD_SUBS = {
+    happy:'You\'re in great spirits — here\'s something to celebrate.',
+    hungry:'We heard you loud and clear. Dig in.',
+    tired:'Comfort food coming right up ☁️',
+    stressed:'Take a breath, take a bite. You\'ve got this.',
+    adventurous:'Something bold for someone bold.',
+    chill:'Easy food for easy vibes.',
+  };
+
+  /* -- State -- */
+  let answers = { mood: null, hunger: 2, vibe: null };
+  let currentStep = 0;
+
+  /* -- DOM refs -- */
+  const steps       = [0,1,2].map(i => document.getElementById(`step-${i}`));
+  const resultsEl   = document.getElementById('mood-results');
+  const dots        = [0,1,2].map(i => document.getElementById(`dot-${i}`));
+  const lines       = [0,1].map(i => document.getElementById(`line-${i}`));
+  const hungerEmoji = document.getElementById('hunger-emoji');
+  const hungerText  = document.getElementById('hunger-text');
+  const slider      = document.getElementById('hunger-slider');
+
+  /* -- Navigate to step -- */
+  function goTo(n) {
+    steps.forEach(s => s.classList.remove('active'));
+    resultsEl.classList.remove('active');
+
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === n);
+      d.classList.toggle('done', i < n);
+    });
+    lines.forEach((l, i) => l.classList.toggle('done', i < n));
+
+    if (n >= 3) {
+      showResults();
+    } else {
+      currentStep = n;
+      steps[n].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  /* -- Option cards -- */
+  document.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.key;
+      document.querySelectorAll(`[data-key="${key}"]`)
+              .forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      answers[key] = card.dataset.val;
+
+      // Enable the Next button for this step
+      if (key === 'mood') document.getElementById('btn-0').disabled = false;
+      if (key === 'vibe') document.getElementById('btn-2').disabled = false;
+    });
+  });
+
+  /* -- Hunger slider -- */
+  function updateSlider(val) {
+    answers.hunger = parseInt(val);
+    const h = HUNGER[answers.hunger - 1];
+    const pct = ((answers.hunger - 1) / 4 * 100) + '%';
+    hungerEmoji.textContent = h.emoji;
+    hungerText.textContent  = h.label;
+    slider.style.setProperty('--fill', pct);
+
+    hungerEmoji.classList.remove('pop');
+    void hungerEmoji.offsetWidth;
+    hungerEmoji.classList.add('pop');
+    setTimeout(() => hungerEmoji.classList.remove('pop'), 250);
+  }
+
+  slider.addEventListener('input', e => updateSlider(e.target.value));
+  updateSlider(slider.value);
+
+  /* -- Nav buttons -- */
+  document.getElementById('btn-0').addEventListener('click', () => goTo(1));
+  document.getElementById('back-1').addEventListener('click', () => goTo(0));
+  document.getElementById('btn-1').addEventListener('click', () => goTo(2));
+  document.getElementById('back-2').addEventListener('click', () => goTo(1));
+  document.getElementById('btn-2').addEventListener('click', () => goTo(3));
+
+  document.getElementById('btn-retake').addEventListener('click', () => {
+    answers = { mood: null, hunger: 2, vibe: null };
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('btn-0').disabled = true;
+    document.getElementById('btn-2').disabled = true;
+    slider.value = 2;
+    updateSlider(2);
+    goTo(0);
+  });
+
+  /* -- Show results -- */
+  function showResults() {
+    const mood = answers.mood || 'happy';
+    const vibe = answers.vibe || 'classic';
+    const item = RECS[mood]?.[vibe] || RECS.happy.classic;
+
+    // Add sides/drink based on hunger
+    const extras = answers.hunger >= 4
+      ? HUNGRY_EXTRAS
+      : answers.hunger >= 3
+      ? [HUNGRY_EXTRAS[1]]
+      : [];
+
+    document.getElementById('results-tag').textContent   = `✨ ${mood.charAt(0).toUpperCase()+mood.slice(1)} Match`;
+    document.getElementById('results-title').textContent = MOOD_TITLES[mood] || 'We Found Your Meal!';
+    document.getElementById('results-sub').textContent   = MOOD_SUBS[mood]   || '';
+
+    const all = [item, ...extras];
+    document.getElementById('results-grid').innerHTML = all.map(r => `
+      <div class="result-card">
+        <div class="result-img">
+          <span>${r.emoji}</span>
+          <div class="result-pct">${r.pct}% match</div>
+        </div>
+        <div class="result-body">
+          <div class="result-name">${r.name}</div>
+          <div class="result-why">${r.why}</div>
+          <div class="result-row">
+            <span class="result-price">₹${r.price}</span>
+            <button class="result-add-btn" onclick="
+              this.textContent='✓ Added';
+              this.classList.add('added');
+              setTimeout(() => { this.textContent='Add'; this.classList.remove('added'); }, 1400);
+            ">Add</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    steps.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
+    lines.forEach(l => l.classList.add('done'));
+    resultsEl.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  </script>
+
+</body>
+</html>
