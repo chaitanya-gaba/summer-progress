@@ -233,12 +233,23 @@ function initActiveLink() {
    ========================================================== */
 
 export function bumpCartBadge() {
-  const badge = document.querySelector('[data-cart-count]');
-  if (!badge) return;
-  badge.classList.remove('bump');
-  void badge.offsetWidth;
-  badge.classList.add('bump');
-  setTimeout(() => badge.classList.remove('bump'), 300);
+  document.querySelectorAll('[data-cart-count], .cart-count').forEach(badge => {
+    badge.classList.remove('bump');
+    void badge.offsetWidth;
+    badge.classList.add('bump');
+    setTimeout(() => badge.classList.remove('bump'), 300);
+  });
+}
+
+/* Sync cart badge from localStorage on every page load */
+function syncCartBadge() {
+  try {
+    const cart  = JSON.parse(localStorage.getItem('bk-cart')) || {};
+    const total = Object.values(cart).reduce((s, i) => s + i.qty, 0);
+    document.querySelectorAll('[data-cart-count], .cart-count').forEach(el => {
+      el.textContent = total;
+    });
+  } catch (e) {}
 }
 
 /* ==========================================================
@@ -250,3 +261,7 @@ initThemeSwitcher();
 initSearch();
 initMobileDrawer();
 initActiveLink();
+syncCartBadge();
+
+/* Keep badge live if cart updated on same page */
+window.addEventListener('storage', syncCartBadge);

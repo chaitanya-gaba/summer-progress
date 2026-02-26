@@ -200,20 +200,23 @@
    MOBILE CART — bottom sheet
    ========================================================== */
 
+/* ==========================================================
+   MOBILE CART — bottom sheet
+   ========================================================== */
+
 @media (max-width: 1024px) {
   .menu-layout {
     grid-template-columns: 0 1fr 280px 0;
-    padding: var(--space-6) var(--space-4);
-    gap: var(--space-4);
+    padding: 24px 16px;
+    gap: 16px;
   }
-
   .spacer { display: none; }
 }
 
 @media (max-width: 820px) {
   .menu-layout {
     display: block;
-    padding: var(--space-4);
+    padding: 16px;
   }
 
   .spacer { display: none; }
@@ -222,8 +225,7 @@
     max-height: none;
     overflow-y: visible;
     padding-right: 0;
-    /* Bottom padding so content isn't hidden behind cart sheet */
-    padding-bottom: 80px;
+    padding-bottom: 80px; /* space above collapsed cart */
   }
 
   /* Cart becomes fixed bottom sheet */
@@ -234,30 +236,23 @@
     right: 0;
     top: auto;
     max-height: 70vh;
-    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-    z-index: var(--z-drawer);
-    transform: translateY(calc(100% - 64px)); /* collapsed = just header */
-    transition: transform 0.38s var(--ease-out);
+    border-radius: 20px 20px 0 0;
+    z-index: 300; /* --z-drawer */
+    transform: translateY(calc(100% - 64px)); /* collapsed = just header visible */
+    transition: transform 0.38s cubic-bezier(0, 0, 0.2, 1);
     box-shadow: 0 -8px 48px rgba(0,0,0,0.20);
     border: none;
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 24px; /* space for drag handle */
+    overflow: hidden;
   }
 
   .cart.open {
     transform: translateY(0);
+    overflow-y: auto;
   }
 
-  /* Drag handle + tappable header */
-  .cart h3 {
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: var(--space-1);
-  }
-
-  /* Drag handle bar */
+  /* Drag handle bar above the h3 */
   .cart h3::before {
     content: '';
     position: absolute;
@@ -266,50 +261,55 @@
     transform: translateX(-50%);
     width: 36px;
     height: 4px;
-    background: var(--border-medium);
-    border-radius: var(--radius-full);
+    background: rgba(0,0,0,0.18);
+    border-radius: 9999px;
   }
 
-  .cart {
-    padding-top: var(--space-6);
+  /* Make h3 the full-width tap target */
+  .cart h3 {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-height: 44px; /* accessible tap target */
   }
 
-  /* Chevron */
+  /* Chevron arrow */
   .cart h3::after {
     content: '▲';
     font-size: 11px;
-    color: var(--text-muted);
-    transition: transform var(--transition-fast);
+    color: #797979;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
   }
 
   .cart.open h3::after {
     transform: rotate(180deg);
   }
 
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: var(--space-3);
-  }
-
-  /* When cart is open, add backdrop */
+  /* Dim backdrop when cart open */
   .cart.open::before {
     content: '';
     position: fixed;
     inset: 0;
     bottom: 70vh;
-    background: rgba(0,0,0,0.30);
+    background: rgba(0,0,0,0.28);
     z-index: -1;
+    pointer-events: none;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .product-grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-2);
-  }
-
-  .home-categories.menu-cats {
-    padding: var(--space-2) var(--space-3);
-    top: 60px;
+    gap: 8px;
   }
 }
