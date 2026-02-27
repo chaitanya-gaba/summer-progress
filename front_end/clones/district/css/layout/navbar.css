@@ -1,202 +1,322 @@
-/* ========================================
-   NAVBAR BASE
-======================================== */
+/* ============================================================
+   NAVBAR  —  District by Zomato style
+   Flat, full-width, sticky. No floating pill.
+============================================================ */
+
+/* ── Sticky wrapper ───────────────────────────────────────── */
 .navbar {
-  position: fixed;
-  top: 0.6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-width: 1200px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-radius: 999px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  transition: all 0.35s ease;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
   z-index: 9999;
 }
 
-.navbar.shrink {
-  width: 75%;
-  max-width: 900px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-}
-
+/* ── Inner row ───────────────────────────────────────────── */
 .nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 0 28px;
-  height: 65px;
+  height: 68px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0;
 }
 
-/* ========================================
-   LEFT & RIGHT
-======================================== */
-.nav-left,
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-/* ========================================
-   LOGO
-======================================== */
+/* ============================================================
+   LOGO  — "district" italic serif  +  "BY ZOMATO" caption
+============================================================ */
+/* Logo wrapper */
 .logo {
   display: flex;
   align-items: center;
 }
 
-.logo img {
-  height: 28px;
+/* Main SVG */
+.district-logo {
+  height: 42px;          /* Controls size */
   width: auto;
-  transition: transform 0.25s ease;
-}
-
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-/* ========================================
-   NAV LINKS
-======================================== */
-.nav-links {
-  display: flex;
-  gap: 18px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: #444;
-  text-decoration: none;
+  display: block;
+  color: #000;           /* Makes it black */
   transition: color 0.2s ease;
-  padding-bottom: 2px;
 }
 
-.nav-links a:hover {
-  color: #6d28d9;
+a.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 14px;
+  gap: 3px;
 }
 
-/* ✅ Active page indicator */
-.nav-links a.active {
-  color: #6d28d9;
+.logo-wordmark {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 28px;
   font-weight: 700;
-  border-bottom: 2px solid #6d28d9;
+  font-style: italic;
+  letter-spacing: -1.5px;
+  color: #1a1a1a;
+  line-height: 1;
 }
 
-/* ========================================
+.logo-sub {
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 600;
+  color: #b0b0b0;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding-left: 2px;
+}
+
+/* Fallback if using an <img> instead of text logo */
+a.logo img { height: 34px; width: auto;}
+
+/* ============================================================
+   VERTICAL DIVIDER  logo | location
+============================================================ */
+.nav-divider {
+  width: 1px;
+  height: 30px;
+  background: #e2e2e2;
+  flex-shrink: 0;
+  margin: 0 16px;
+}
+
+/* ============================================================
    LOCATION DROPDOWN
-======================================== */
-.dropdown-wrapper {
+============================================================ */
+.nav-item.dropdown-wrapper {
   position: relative;
   cursor: pointer;
+  flex-shrink: 0;
+  margin-right: 20px;
 }
 
 .location-label {
-  font-size: 14px;
-  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  user-select: none;
+}
+.location-label:hover { background: #f5f5f5; }
+
+/* red pin svg */
+.location-label > svg:first-child { color: #e23744; flex-shrink: 0; }
+
+.location-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.location-city-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+.sub-location       { font-size: 11px; font-weight: 400; color: #888; }
+
+/* caret chevron */
+.location-caret { color: #aaa; flex-shrink: 0; transition: transform 0.2s; }
+.location-caret.rotate { transform: rotate(180deg); }
+
+/* dropdown panel */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: #fff;
+  min-width: 220px;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border: 1px solid #ebebeb;
+  padding: 6px 0;
+  z-index: 10000;
+}
+.dropdown li {
+  list-style: none;
+  padding: 11px 18px;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.dropdown li:hover { background: #f5f3ff; color: #6d28d9; }
+
+.hidden { display: none !important; }
+
+/* ============================================================
+   NAV LINKS
+============================================================ */
+/* nav-left stretches to fill available space */
+.nav-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
-.sub-location {
-  font-size: 12px;
-  color: #888;
-  margin-left: 4px;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  flex-wrap: nowrap;
 }
 
-/* ✅ Arrow rotation when dropdown is open */
-.location-label svg {
-  transition: transform 0.2s ease;
+.nav-links a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: #1a1a1a; background: #f5f5f5; }
+
+/* ── Active pill — purple, matches screenshot exactly ─────── */
+.nav-links a.active {
+  background: #ede9fe;
+  color: #5b21b6;
+  font-weight: 600;
+}
+
+/* ============================================================
+   RIGHT SIDE  —  only the avatar circle (like District)
+============================================================ */
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
   flex-shrink: 0;
 }
 
-.location-label svg.rotate {
-  transform: rotate(180deg);
-}
-
-.dropdown {
-  position: absolute;
-  top: 120%;
-  left: 0;
-  background: #fff;
-  width: 220px;
-  border-radius: 10px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-  padding: 8px 0;
-  z-index: 10000;
-}
-
-.dropdown li {
-  padding: 10px 16px;
-  font-size: 14px;
+.avatar-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  border: none;
   cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.dropdown li:hover {
-  background: #f5f3ff;
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* ========================================
-   NAV SEARCH
-======================================== */
-.nav-search {
   display: flex;
   align-items: center;
-  background: #f3e8ff;
-  border-radius: 999px;
-  padding: 4px 8px;
-  transition: all 0.3s ease;
+  justify-content: center;
+  color: #888;
+  text-decoration: none;
+  transition: background 0.15s;
+  flex-shrink: 0;
 }
+.avatar-btn:hover { background: #e0e0e0; }
 
-.nav-search input {
-  border: none;
-  background: transparent;
-  outline: none;
-  padding: 6px 10px;
-  font-size: 14px;
-  width: 140px;
-  font-family: inherit;
-}
-
-.nav-search button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--purple-700);
-}
-
-/* ========================================
-   LOGIN BUTTON
-======================================== */
+/* keep login-btn available for login/register pages */
 .login-btn {
   background: #6d28d9;
   color: #fff;
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background 0.2s ease;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
+.login-btn:hover { background: #5b21b6; color: #fff; }
 
-.login-btn:hover {
-  background: #5b21b6;
-  color: #fff;
+/* ============================================================
+   SEARCH BAR  —  full-width row BELOW navbar
+============================================================ */
+.nav-search-bar {
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
+  padding: 10px 28px;
 }
+.nav-search-bar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+.nav-search-bar-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 999px;
+  padding: 11px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: text;
+}
+.nav-search-bar-input:focus-within {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(109,40,217,0.07);
+}
+.nav-search-bar-input svg  { color: #7c3aed; flex-shrink: 0; }
+.nav-search-bar-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  color: #333;
+  background: transparent;
+}
+.nav-search-bar-input input::placeholder { color: #c0c0c0; }
 
-/* ========================================
-   HAMBURGER BUTTON
-======================================== */
+/* ============================================================
+   SEARCH DROPDOWN
+============================================================ */
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #ebebeb;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.11);
+  z-index: 10001;
+  overflow: hidden;
+  animation: sdIn 0.15s ease;
+}
+@keyframes sdIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sd-label {
+  padding: 8px 16px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #ccc;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+}
+.sd-label:first-child { border-top: none; }
+.sd-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.sd-item:hover  { background: #f5f3ff; }
+.sd-thumb       { width: 42px; height: 42px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+.sd-title       { font-size: 14px; font-weight: 600; color: #1a1a1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sd-sub         { font-size: 12px; color: #999; margin-top: 1px; }
+.sd-hl          { background: #fef08a; border-radius: 2px; padding: 0 1px; }
+
+/* ============================================================
+   HAMBURGER  (mobile only)
+============================================================ */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -209,9 +329,9 @@
   background: none;
   border: none;
   padding: 0;
-  z-index: 10001;
+  margin-left: 12px;
+  flex-shrink: 0;
 }
-
 .hamburger span {
   display: block;
   width: 22px;
@@ -221,96 +341,53 @@
   transition: all 0.3s ease;
   transform-origin: center;
 }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ========================================
-   MOBILE MENU DRAWER
-======================================== */
+/* ============================================================
+   MOBILE MENU
+============================================================ */
 .mobile-menu {
   display: none;
   flex-direction: column;
-  gap: 0;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  position: fixed;
-  top: calc(0.6rem + 65px + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 92%;
-  max-width: 480px;
-  border-radius: 20px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-  padding: 16px 0;
-  z-index: 9998;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%) translateY(-12px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
+  padding: 8px 0 16px;
 }
+.mobile-menu.open { display: flex; }
 
-.mobile-menu.open {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateX(-50%) translateY(0);
-}
-
-.mobile-menu a,
-.mobile-menu .mobile-location {
+.mobile-menu a {
   display: block;
-  padding: 13px 24px;
+  padding: 12px 22px;
   font-size: 15px;
   font-weight: 500;
   color: #333;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
-  border-bottom: 1px solid #f0eaff;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background 0.15s, color 0.15s;
 }
-
-.mobile-menu a:last-child {
-  border-bottom: none;
-}
-
-.mobile-menu a:hover {
-  background: #f5f3ff;
-  color: #6d28d9;
-}
-
-/* ✅ Active link in mobile menu */
-.mobile-menu a.active {
-  color: #6d28d9;
-  font-weight: 700;
-  background: #f5f3ff;
-}
+.mobile-menu a:last-child  { border-bottom: none; }
+.mobile-menu a:hover       { background: #f5f3ff; color: #6d28d9; }
+.mobile-menu a.active      { color: #6d28d9; font-weight: 700; background: #f5f3ff; }
 
 .mobile-menu .mobile-search {
   display: flex;
   align-items: center;
-  background: #f3e8ff;
+  background: #f5f5f5;
   border-radius: 999px;
-  margin: 10px 16px 4px;
-  padding: 6px 12px;
+  margin: 10px 16px 6px;
+  padding: 8px 16px;
 }
-
 .mobile-menu .mobile-search input {
   flex: 1;
   border: none;
   background: transparent;
   outline: none;
   font-size: 14px;
-  padding: 4px 8px;
+  padding: 2px 8px;
   font-family: inherit;
 }
-
 .mobile-menu .mobile-search button {
   background: none;
   border: none;
@@ -319,232 +396,38 @@
 }
 
 .mobile-menu .mobile-login {
-  display: block;
-  margin: 10px 16px 6px;
-  background: #6d28d9;
+  margin: 10px 16px 0 !important;
+  background: #6d28d9 !important;
   color: #fff !important;
   text-align: center;
   padding: 11px 18px !important;
-  border-radius: 999px;
+  border-radius: 999px !important;
   font-size: 14px;
   font-weight: 600;
   border-bottom: none !important;
-  transition: background 0.2s ease !important;
 }
+.mobile-menu .mobile-login:hover { background: #5b21b6 !important; }
 
-.mobile-menu .mobile-login:hover {
-  background: #5b21b6 !important;
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+/* Hide last 3 links on medium screens */
+@media (max-width: 1100px) {
+  .nav-links li:nth-child(n+6) { display: none; }
 }
-
-/* ========================================
-   MOBILE BREAKPOINT
-======================================== */
+/* Hide all links on tablet — hamburger takes over */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}
 @media (max-width: 768px) {
-  .navbar {
-    width: 95%;
-    border-radius: 999px;
-    top: 0.6rem;
-  }
-
-  .navbar.shrink {
-    width: 95%;
-    max-width: 100%;
-  }
-
-  .nav-container {
-    height: 58px;
-    padding: 0 20px;
-    flex-wrap: nowrap;
-  }
-
-  .hamburger { display: flex; }
-  .nav-links  { display: none; }
-  .nav-right  { display: none; }
-
-  .nav-left { gap: 12px; }
-
-  .mobile-menu { display: flex; }
+  .nav-container    { padding: 0 16px; height: 58px; }
+  .hamburger        { display: flex; }
+  .nav-right        { display: none; }
+  .nav-divider      { margin: 0 10px; }
+  .nav-search-bar   { padding: 8px 16px; }
 }
-
 @media (max-width: 480px) {
-  .nav-container { padding: 0 16px; }
-  .location-label .sub-location { display: none; }
-}
-
-
-/* ========================================
-   SEARCH DROPDOWN
-======================================== */
-.nav-search {
-  position: relative;
-}
-
-.search-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 360px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.15);
-  z-index: 10001;
-  overflow: hidden;
-  animation: sdFadeIn 0.18s ease;
-}
-
-@keyframes sdFadeIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-.sd-group-label {
-  padding: 10px 16px 6px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: #aaa;
-  background: #fafafa;
-  border-top: 1px solid #f3f4f6;
-}
-
-.sd-group-label:first-child {
-  border-top: none;
-}
-
-.sd-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.15s ease;
-}
-
-.sd-item:hover {
-  background: #f5f3ff;
-}
-
-.sd-thumb {
-  width: 42px;
-  height: 42px;
-  object-fit: cover;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-
-.sd-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.sd-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1a1a2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sd-sub {
-  font-size: 12px;
-  color: #888;
-}
-
-.sd-highlight {
-  background: #fef08a;
-  border-radius: 2px;
-  padding: 0 1px;
-  font-style: normal;
-}
-
-/* Hide on mobile — too cramped in pill navbar */
-@media (max-width: 768px) {
-  .search-dropdown { display: none !important; }
-}
-
-
-/* =====================================================
-   SEARCH DROPDOWN
-===================================================== */
-.nav-search { position: relative; }
-
-.search-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 340px;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  z-index: 9999;
-  overflow: hidden;
-  animation: sdIn 0.15s ease;
-}
-
-@keyframes sdIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-.sd-label {
-  padding: 8px 14px 4px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-  color: #999;
-  background: #fafafa;
-  border-top: 1px solid #f0f0f0;
-}
-.sd-label:first-child { border-top: none; }
-
-.sd-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 14px;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.12s;
-}
-.sd-item:hover { background: #f5f3ff; }
-
-.sd-thumb {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-.sd-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #1a1a2e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sd-sub {
-  font-size: 11px;
-  color: #999;
-  margin-top: 1px;
-}
-
-.sd-hl {
-  background: #fef08a;
-  border-radius: 2px;
-  padding: 0 1px;
-}
-
-@media (max-width: 768px) {
-  .search-dropdown { display: none !important; }
+  .sub-location     { display: none; }
+  .nav-divider      { display: none; }
+  .logo-wordmark    { font-size: 22px; }
 }

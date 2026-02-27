@@ -22,33 +22,32 @@ function initLocationDropdown() {
 
   const locationDropdown = document.getElementById('locationDropdown');
   const locationLabel    = locationMenu.querySelector('.location-label');
-  const svg              = locationLabel.querySelector('svg');
+  const caret            = locationLabel.querySelector('.location-caret');
+  const cityEl           = document.getElementById('cityName');
+  const stateEl          = document.getElementById('stateName');
 
   locationLabel.addEventListener('click', (e) => {
     e.stopPropagation();
     locationDropdown.classList.toggle('hidden');
-    svg.classList.toggle('rotate');
+    if (caret) caret.classList.toggle('rotate');
   });
 
   locationDropdown.querySelectorAll('li').forEach(item => {
     item.addEventListener('click', (e) => {
       e.stopPropagation();
-      const selected = item.textContent.trim();
-      const parts    = selected.split(',');
-      const city     = parts[0].trim();
-      const region   = parts[1] ? parts[1].trim() : '';
-      locationLabel.innerHTML = `
-        ${city}
-        <span class="sub-location">${region}</span>
-        <svg width="12" height="12" viewBox="0 0 24 24">
-          <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-      `;
+      const city  = item.dataset.city  || item.textContent.split(',')[0].replace(/📍/,'').trim();
+      const state = item.dataset.state || (item.textContent.split(',')[1] || '').trim();
+      if (cityEl)  cityEl.textContent  = city;
+      if (stateEl) stateEl.textContent = state;
       locationDropdown.classList.add('hidden');
+      if (caret) caret.classList.remove('rotate');
     });
   });
 
-  document.addEventListener('click', () => locationDropdown.classList.add('hidden'));
+  document.addEventListener('click', () => {
+    locationDropdown.classList.add('hidden');
+    if (caret) caret.classList.remove('rotate');
+  });
 }
 
 
@@ -57,8 +56,8 @@ function initLocationDropdown() {
 ===================================================== */
 function initNavSearch() {
   const input  = document.getElementById("navSearchInput");
-  const btn    = document.getElementById("navSearchBtn");
-  if (!input || !btn) return;
+  
+  if (!input) return;
 
   // Create dropdown
   const dropdown = document.createElement('div');
@@ -127,7 +126,7 @@ function initNavSearch() {
 
   input.addEventListener('input', () => showResults(input.value));
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav-search')) dropdown.classList.add('hidden');
+    if (!e.target.closest('.nav-search-bar')) dropdown.classList.add('hidden');
   });
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { dropdown.classList.add('hidden'); input.blur(); }
